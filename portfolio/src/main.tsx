@@ -1,9 +1,11 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { ChakraProvider, extendBaseTheme } from "@chakra-ui/react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Home from "./pages/Home";
+import "@fontsource/montserrat";
+import "@fontsource/poppins"
 
 const colors = {
   brand: {
@@ -13,7 +15,20 @@ const colors = {
   },
 };
 
-const theme = extendTheme({ colors });
+const fonts = {
+  heading:`'Montserrat'`,
+  body: `'Poppins'`
+}
+const breakpoints = {
+  base: '0em', // 0px
+  sm: '30em', // ~480px. em is a relative unit and is dependant on the font size.
+  md: '48em', // ~768px
+  lg: '62em', // ~992px
+  xl: '80em', // ~1280px
+  '2xl': '96em', // ~1536px
+}
+
+const theme = extendBaseTheme({ colors, fonts, breakpoints });
 
 const router = createBrowserRouter([
   {
