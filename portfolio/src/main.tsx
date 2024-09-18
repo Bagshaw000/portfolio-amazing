@@ -6,6 +6,8 @@ import "./index.css";
 import Home from "./pages/Home";
 import "@fontsource/montserrat";
 import "@fontsource/poppins"
+import "@fontsource/hind"
+import Portfolio from "./pages/Portfolio";
 
 const colors = {
   brand: {
@@ -17,7 +19,8 @@ const colors = {
 
 const fonts = {
   heading:`'Montserrat'`,
-  body: `'Poppins'`
+  body: `'Poppins'`,
+  subheading: `'Hind'`
 }
 const breakpoints = {
   base: '0em', // 0px
@@ -37,7 +40,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/portfolio",
-    element: <div>Hello world!</div>,
+    element: <Portfolio/>,
   },
   {
     path: "/blog",
