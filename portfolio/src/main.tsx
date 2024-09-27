@@ -5,15 +5,23 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Home from "./pages/Home";
 import "@fontsource/montserrat";
+import "@fontsource/montserrat/900.css";
+import "@fontsource/montserrat/800.css";
 import "@fontsource/poppins"
+import "@fontsource/poppins/900.css"
+import "@fontsource/poppins/800.css"
+import "@fontsource/poppins/700.css"
 import "@fontsource/hind"
 import Portfolio from "./pages/Portfolio";
+import Blog from "./pages/Blog";
+import Contact from "./pages/Contact";
 
 const colors = {
   brand: {
-    900: "#1a365d",
+    900: "#1F2020",
     800: "#153e75",
     700: "#2a69ac",
+    600: '#5A2CDA'
   },
 };
 
@@ -44,11 +52,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/blog",
-    element: <div>Hello world!</div>,
+    element: <Blog/>,
   },
   {
     path: "/contact",
-    element: <div>Hello world!</div>,
+    element: <Contact/>,
   },
 ]);
 
