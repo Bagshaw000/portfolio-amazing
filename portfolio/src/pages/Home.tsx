@@ -1,8 +1,11 @@
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import Header from "../component/Header";
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
+import { SocialIcon } from "react-social-icons";
 
 export default function Home() {
+  const testimonial = ["Dog", "Bird", "Cat", "Mouse"];
+
   return (
     <>
       <Header
@@ -164,7 +167,7 @@ export default function Home() {
         <Box
           bgColor="brand.500"
           w={{ base: "90vw" }}
-          m="50px auto"
+          m="100px  auto"
           p={{ base: "25px 25px 45px 25px" }}
           borderRadius={{ base: "20px" }}
         >
@@ -446,38 +449,122 @@ export default function Home() {
             Harnessing Digital Strategies for Optimal Marketing Success.
           </Text>
         </Flex>
-
-        <Flex m={{base:" 20px auto"}}>
-          <Box
-            w={{ base: "100vw" }}
-            h={{ base: "80vw" }}
-            minH={{base: "300px"}}
-            bgColor="brand.900"
-            borderRadius = "20px"
-          >
-            <Flex justifyContent={{base: "space-between"}} 
-            align={{base: "end"}}
-            padding={{base: "0px 20px"}}
+        <Flex m={{ base: " 40px auto" }} flexWrap={{ base: "wrap" }}>
+          {testimonial.map(() => (
+            <Box
+              w={{ base: "100vw" }}
+              h={{ base: "80vw" }}
+              m={{ base: "0px auto 20px auto" }}
+              minH={{ base: "300px" }}
+              bgColor="grey"
+              bgGradient="linear(to-b, transparent, brand.900 90%,brand.900 100%)"
+              borderRadius="20px"
             >
-              <Text color="white">
-                Project Name
-              </Text>
-              
-              <ArrowForwardIcon
-             
-                    p="5px"
-                    rotate="45"
-                    borderRadius="20px"
-                    color="brand.600"
-                    bgColor="brand.800"
-                    // position="absolute"
-                    boxSize="2.3em"
-                    // bottom="40%"
-                    // right="8%"
-                    transform="rotate(-45deg)"
-                  ></ArrowForwardIcon>
-            </Flex>
-          </Box>
+              <Flex
+                justifyContent={{ base: "space-between" }}
+                alignItems={{ base: "end" }}
+                padding={{ base: "0px 20px 20px 20px" }}
+                w={{ base: "100%" }}
+                h={{ base: "100%" }}
+              >
+                <Text color="white">Project Name</Text>
+
+                <ArrowForwardIcon
+                  p="5px"
+                  rotate="45"
+                  borderRadius="20px"
+                  color="brand.600"
+                  bgColor="brand.800"
+                  // position="absolute"
+                  boxSize="2.3em"
+                  // bottom="40%"
+                  // right="8%"
+                  transform="rotate(-45deg)"
+                ></ArrowForwardIcon>
+              </Flex>
+            </Box>
+          ))}
+        </Flex>
+      </Box>
+
+      {/* Testimonials  */}
+
+      <Box p={{ base: "5vw" }}>
+        <Flex flexDir="column">
+          <Text fontSize={{ base: "2.3em" }} fontWeight={{ base: "700" }}>
+            TESTIMONIALS
+          </Text>
+          {/* From the database */}
+
+          <Flex flexDir="row" overflow="auto">
+            {testimonial.map(() => (
+              <Flex
+                flexDir="column"
+                ml={{ base: "10%" }}
+                w={{ base: "80%" }}
+                minW={{ base: "70vw" }}
+              >
+                <Text>
+                  “This team has greatly enhanced our online presence and
+                  conversion rates through their expert digital marketing
+                  services. Their team's professionalism and effective
+                  strategies have made a significant impact. Highly
+                  recommended!”
+                </Text>
+                <Flex
+                  w={{ base: "30%" }}
+                  alignItems={{ base: "center" }}
+                  justifyContent={{ base: "space-between" }}
+                >
+                  <Box
+                    h={{ base: "1px" }}
+                    w={{ base: "35%" }}
+                    bgColor={{ base: "black" }}
+                  ></Box>
+                  <Text>Name</Text>
+                </Flex>
+              </Flex>
+            ))}
+          </Flex>
+        </Flex>
+      </Box>
+
+      <Box m={{ base: "100px auto 50px 5vw" }}>
+        <Flex flexDir={{ base: "column" }}>
+          <Text color="brand.600">Blog</Text>
+          <Text
+            color="brand.900"
+            fontSize={{ base: "2.3rem" }}
+            fontWeight={{ base: "700" }}
+            lineHeight={{ base: "1" }}
+            textTransform={{ base: "uppercase" }}
+          >
+            Recent Blog
+          </Text>
+        </Flex>
+
+        <Flex>
+          <Box
+            w={{ base: "70vw" }}
+            h={{ base: "300px" }}
+            bgColor={{ base: "grey" }}
+            borderRadius={{base: "20px"}}
+            mt={{base: "20px"}}
+          ></Box>
+        </Flex>
+      </Box>
+      {/* Contact Us */}
+      <Box m={{ base: "50px auto auto 5vw" }}>
+        <Flex flexDir={{ base: "column" }}>
+          <Text fontSize={{ base: "2.3em" }} fontWeight={{ base: "700" }}>
+            CONTACT US
+          </Text>
+          <Flex>
+            <SocialIcon
+              bgColor="black"
+              url="https://instagram.com/growwithama"
+            />
+          </Flex>
         </Flex>
       </Box>
     </>
