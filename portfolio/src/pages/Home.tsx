@@ -2,6 +2,7 @@ import { ArrowForwardIcon } from "@chakra-ui/icons";
 import Header from "../component/Header";
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import { SocialIcon } from "react-social-icons";
+import Footer from "../component/Footer";
 
 export default function Home() {
   const testimonial = ["Dog", "Bird", "Cat", "Mouse"];
@@ -529,6 +530,10 @@ export default function Home() {
         </Flex>
       </Box>
 
+      {/* 
+      Blogs
+      */}
+
       <Box m={{ base: "100px auto 50px 5vw" }}>
         <Flex flexDir={{ base: "column" }}>
           <Text color="brand.600">Blog</Text>
@@ -548,13 +553,41 @@ export default function Home() {
             w={{ base: "70vw" }}
             h={{ base: "300px" }}
             bgColor={{ base: "grey" }}
-            borderRadius={{base: "20px"}}
-            mt={{base: "20px"}}
-          ></Box>
+            borderRadius={{ base: "20px" }}
+            mt={{ base: "20px" }}
+            p={{ base: "5%" }}
+          >
+            <Flex
+              flexDir={{ base: "column" }}
+              justify={{ base: "space-between" }}
+              h={{ base: "100%" }}
+            >
+              <Box
+                bgColor="brand.900"
+                w={{ base: "fit-content" }}
+                p={{ base: "2% 4%" }}
+                borderRadius={{ base: "15px" }}
+                color="white"
+                fontWeight="300"
+              >
+                <Text>12th October 24</Text>
+              </Box>
+              <Box
+                bgColor="brand.900"
+                w={{ base: "fit-content" }}
+                p={{ base: "2% 4%" }}
+                borderRadius={{ base: "15px" }}
+                color="white"
+                fontWeight="300"
+              >
+                <Text>Blog Title</Text>
+              </Box>
+            </Flex>
+          </Box>
         </Flex>
       </Box>
       {/* Contact Us */}
-      <Box m={{ base: "50px auto auto 5vw" }}>
+      <Box m={{ base: "50px auto 70px 5vw" }}>
         <Flex flexDir={{ base: "column" }}>
           <Text fontSize={{ base: "2.3em" }} fontWeight={{ base: "700" }}>
             CONTACT US
@@ -567,6 +600,8 @@ export default function Home() {
           </Flex>
         </Flex>
       </Box>
+
+      <Footer></Footer>
     </>
   );
 }
