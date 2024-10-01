@@ -39,9 +39,9 @@ function Footer() {
           padding={{ base: "5%" }}
           borderWidth={{ base: "0.5px" }}
           borderRadius={{ base: "10px" }}
-          fontSize={{base:"1rem"}}
+          fontSize={{ base: "1rem" }}
           bgColor="transparent"
-          color="white"
+          colorScheme="whiteAlpha"
           m={{ base: "10px auto" }}
         />
 
@@ -51,7 +51,7 @@ function Footer() {
           h={{ base: "50px" }}
           borderRadius={{ base: "10px" }}
         >
-          <ArrowForwardIcon  boxSize={8}/>
+          <ArrowForwardIcon boxSize={8} />
         </Button>
       </Box>
     </Box>

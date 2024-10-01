@@ -48,7 +48,7 @@ export default function Home() {
               justifyContent={{ base: "space-between" }}
             >
               <Text
-                fontWeight="900"
+                fontWeight="800"
                 color={{ base: "brand.600" }}
                 fontSize={{ base: "1.rem" }}
               >
@@ -59,13 +59,13 @@ export default function Home() {
                 color={{ base: "brand.900" }}
                 fontSize={{ base: "1.1rem" }}
               >
-                Hi, I'm Amazing! I help brands and businesses grow their online
-                presence with tailored content strategies that perfectly align
-                with your brand. What started as a side hustle to pay the bills
-                quickly became a passion. I fell in love with social media
-                management, especially watching a brand grow into a profitable
-                and influential presence. The thrill of transforming potential
-                into success is what drives me to do this full-time.
+                I help brands and businesses grow their online presence with
+                tailored content strategies that perfectly align with your
+                brand. What started as a side hustle to pay the bills quickly
+                became a passion. I fell in love with social media management,
+                especially watching a brand grow into a profitable and
+                influential presence. The thrill of transforming potential into
+                success is what drives me to do this full-time.
               </Text>
               <Flex
                 flexDir="row"
@@ -197,20 +197,26 @@ export default function Home() {
               {/* First Box */}
               <Box m={{ base: "20px auto" }}>
                 <Box
-                  padding={{ base: "30px" }}
+                  padding={{ base: "30px", sm: "8.5%" }}
                   bg="#3E3E3E"
-                  w={{ base: "97%" }}
-                  h="380px"
+                  w={{ base: "97%", sm: "85%" }}
+                  h={{ base: "380px", sm: "55vh" }}
+                  minH={{ sm: "480px" }}
+                  maxH={{ sm: "500px" }}
+                  maxW={{ sm: "500px" }}
                   m={{ base: "20px auto" }}
                   borderRadius="30px"
                   position="relative"
                 >
                   <Text
-                    fontSize="1.8rem"
+                    fontSize={{
+                      base: "2rem",
+                      sm: "2.5rem",
+                    }}
                     fontWeight="bold"
                     position="absolute"
                     right="8%"
-                    top="5%"
+                    top={{ base: "5%", sm: "7%" }}
                     color="white"
                   >
                     01
@@ -227,12 +233,12 @@ export default function Home() {
                     position="absolute"
                     bottom="40%"
                     right="8%"
-                    boxSize="1.3em"
+                    boxSize={{ base: "1.3em", sm: "2em" }}
                     transform="rotate(-45deg)"
                   ></ArrowForwardIcon>
                   <Box
-                    h="250px"
-                    w="200px"
+                    h={{ base: "250px", sm: "80%" }}
+                    w={{ base: "200px", sm: "80%" }}
                     bg="white"
                     m={{ base: "0px 0px 10px 0px" }}
                     borderWidth="0px"
@@ -251,8 +257,12 @@ export default function Home() {
                       <Box m="10px 10px">
                         <Flex color="white">
                           <Text
-                            fontSize={{ base: "1.3rem" }}
+                            fontSize={{
+                              base: "fontclamp(1rem, 1.8rem, 2.5rem)",
+                              sm: "2.2rem",
+                            }}
                             fontWeight="600"
+                            lineHeight={{ sm: "1" }}
                             color="brand.800"
                           >
                             Content Creation
@@ -264,7 +274,7 @@ export default function Home() {
                   <Text
                     color="white"
                     fontWeight={{ base: "200" }}
-                    fontSize={{ base: "0.9rem" }}
+                    fontSize={{ base: "0.9rem", sm: "1.1rem" }}
                   >
                     Engage your audience with compelling content and consistent
                     management.
@@ -275,20 +285,26 @@ export default function Home() {
               {/* Second Box */}
               <Box m={{ base: "20px auto" }} transform="rotate(-8deg)">
                 <Box
-                  padding={{ base: "30px" }}
+                  padding={{ base: "30px", sm: "8.5%" }}
                   bg="white"
-                  w={{ base: "97%" }}
-                  h="380px"
+                  w={{ base: "97%", sm: "85%" }}
+                  h={{ base: "380px", sm: "55vh" }}
+                  minH={{ sm: "480px" }}
+                  maxH={{ sm: "500px" }}
+                  maxW={{ sm: "500px" }}
                   m={{ base: "20px auto" }}
                   borderRadius="30px"
                   position="relative"
                 >
                   <Text
-                    fontSize="1.8rem"
+                    fontSize={{
+                      base: "2rem",
+                      sm: "2.5rem",
+                    }}
                     fontWeight="bold"
                     position="absolute"
                     right="8%"
-                    top="5%"
+                    top={{ base: "5%", sm: "7%" }}
                     color="#3E3E3E"
                   >
                     02
@@ -305,12 +321,12 @@ export default function Home() {
                     position="absolute"
                     bottom="40%"
                     right="8%"
-                    boxSize="1.3em"
+                    boxSize={{ base: "1.3em", sm: "2em" }}
                     transform="rotate(-45deg)"
                   ></ArrowForwardIcon>
                   <Box
-                    h="250px"
-                    w="200px"
+                    h={{ base: "250px", sm: "80%" }}
+                    w={{ base: "200px", sm: "80%" }}
                     bg="#3E3E3E"
                     m={{ base: "0px 0px 10px 0px" }}
                     borderWidth="0px"
@@ -329,8 +345,12 @@ export default function Home() {
                       <Box m="10px 10px">
                         <Flex color="white">
                           <Text
-                            fontSize={{ base: "1.3rem" }}
+                            fontSize={{
+                              base: "fontclamp(1rem, 1.8rem, 2.5rem)",
+                              sm: "2.2rem",
+                            }}
                             fontWeight="600"
+                            lineHeight={{ sm: "1" }}
                             color="brand.600"
                           >
                             Ads Production
@@ -342,7 +362,7 @@ export default function Home() {
                   <Text
                     color="#3E3E3E"
                     fontWeight={{ base: "200" }}
-                    fontSize={{ base: "0.9rem" }}
+                    fontSize={{ base: "0.9rem", sm: "1.1rem" }}
                   >
                     Drive results with targeted ads and data-driven insights
                     that maximize ROI.
@@ -354,20 +374,26 @@ export default function Home() {
 
               <Box m={{ base: "20px auto" }}>
                 <Box
-                  padding={{ base: "30px" }}
+                  padding={{ base: "30px", sm: "8.5%" }}
                   bg="#3E3E3E"
-                  w={{ base: "97%" }}
-                  h="380px"
+                  w={{ base: "97%", sm: "85%" }}
+                  h={{ base: "380px", sm: "55vh" }}
+                  minH={{ sm: "480px" }}
+                  maxH={{ sm: "500px" }}
+                  maxW={{ sm: "500px" }}
                   m={{ base: "20px auto" }}
                   borderRadius="30px"
                   position="relative"
                 >
                   <Text
-                    fontSize="1.8rem"
+                    fontSize={{
+                      base: "2rem",
+                      sm: "2.5rem",
+                    }}
                     fontWeight="bold"
                     position="absolute"
                     right="8%"
-                    top="5%"
+                    top={{ base: "5%", sm: "7%" }}
                     color="white"
                   >
                     03
@@ -382,14 +408,14 @@ export default function Home() {
                     color="brand.600"
                     bgColor="brand.800"
                     position="absolute"
-                    boxSize="1.3em"
+                    boxSize={{ base: "1.3em", sm: "2em" }}
                     bottom="40%"
                     right="8%"
                     transform="rotate(-45deg)"
                   ></ArrowForwardIcon>
                   <Box
-                    h="250px"
-                    w="200px"
+                    h={{ base: "250px", sm: "80%" }}
+                    w={{ base: "200px", sm: "80%" }}
                     bg="white"
                     m={{ base: "0px 0px 10px 0px" }}
                     borderWidth="0px"
@@ -408,8 +434,12 @@ export default function Home() {
                       <Box m="10px 10px">
                         <Flex color="white">
                           <Text
-                            fontSize={{ base: "1.3rem" }}
+                             fontSize={{
+                              base: "fontclamp(1rem, 1.8rem, 2.5rem)",
+                              sm: "2.2rem",
+                            }}
                             fontWeight="600"
+                            lineHeight={{ sm: "1" }}
                             color="brand.800"
                           >
                             Branding Strategies
@@ -421,7 +451,7 @@ export default function Home() {
                   <Text
                     color="white"
                     fontWeight={{ base: "200" }}
-                    fontSize={{ base: "0.9rem" }}
+                    fontSize={{ base: "0.9rem", sm: "1.1rem" }}
                   >
                     Craft winning social media strategies that align with your
                     brand’s goals.
