@@ -25,40 +25,35 @@ export default function Home() {
           w={{ base: "80vw" }}
           margin="70px auto"
           flexDir={"column"}
-          minH={{ base: "1120px" }}
+          minH={{ base: "1120px", md: "1200px" }}
           justifyContent={{ base: "space-between" }}
         >
           <Flex justifyContent="center" alignItems="center" flexDir={"column"}>
             <Box
               bgImg="url('../src/assets/profile.jpg')"
-              w={{ base: "80vw" }}
-              minH="400PX"
-              bgPos={{ base: "center" }}
+              w={{ base: "80vw" , md:"70vw" }}
+              minH={{ base: "400px", sm: "600px", md: "800px" }}
+              maxH={{ md: "900px" }}
+              bgPos={{ base: "center", md:"top" }}
               bgRepeat="no-repeat"
-              bgSize={{ base: "cover" }}
+              bgSize={{ base: "cover"  }}
               borderRadius="20px"
             ></Box>
 
             <Flex
               mt={{ base: "50px" }}
-              w={{ base: "80vw" }}
-              minH={{ base: "550px" }}
+              w={{ base: "80vw", sm: "70vw" }}
+              minH={{ base: "550px", md: "700px" }}
+              maxH={{ sm: "650px", md: "100vh" }}
               textAlign={{ base: "justify" }}
               flexDir={{ base: "column" }}
               justifyContent={{ base: "space-between" }}
+              fontSize={{ base: "1.1rem", sm: "1.3rem", md: "1.5rem" }}
             >
-              <Text
-                fontWeight="800"
-                color={{ base: "brand.600" }}
-                fontSize={{ base: "1.rem" }}
-              >
+              <Text fontWeight="800" color={{ base: "brand.600" }}>
                 HI, I AM AMAZING IRECHUKWU A DIGITAL MARKETER
               </Text>
-              <Text
-                fontWeight="300"
-                color={{ base: "brand.900" }}
-                fontSize={{ base: "1.1rem" }}
-              >
+              <Text fontWeight="300" color={{ base: "brand.900" }}>
                 I help brands and businesses grow their online presence with
                 tailored content strategies that perfectly align with your
                 brand. What started as a side hustle to pay the bills quickly
@@ -70,7 +65,6 @@ export default function Home() {
               <Flex
                 flexDir="row"
                 color={{ base: "brand.900" }}
-                fontSize={{ base: "1.1rem" }}
                 w={{ base: "80vw" }}
                 fontWeight="300"
               >
@@ -94,11 +88,12 @@ export default function Home() {
           <Button
             bgColor="brand.600"
             color="white"
-            w={{ base: "100%" }}
-            p={{ base: "15px 15px" }}
-            fontSize={{ base: "1.2rem" }}
+            w={{ base: "100%", sm: "90%" }}
+            p={{ base: "15px 15px", sm: "20px 20px" }}
+            fontSize={{ base: "1.2rem", sm: "1.4rem" }}
             fontWeight={{ base: "500" }}
             borderRadius="10px"
+            margin={{ base: "auto", md: "50px  auto 0px auto" }}
           >
             Get Started
           </Button>
@@ -107,7 +102,7 @@ export default function Home() {
         <Box textAlign={{ base: "center" }}>
           <Flex
             flexDir={{ base: "row" }}
-            w={{ base: "90vw" }}
+            w={{ base: "90vw", sm: "80vw" }}
             justifyContent={{ base: "space-between" }}
             m={{ base: "0px auto" }}
             h="fit-content"
@@ -121,7 +116,7 @@ export default function Home() {
                 4
               </Text>
               <Text
-                fontSize={{ base: "0.8rem" }}
+                fontSize={{ base: "0.8rem", sm: "1rem" }}
                 fontWeight={{ base: "100" }}
                 color="brand.900"
               >
@@ -138,7 +133,7 @@ export default function Home() {
                 12
               </Text>
               <Text
-                fontSize={{ base: "0.8rem" }}
+                fontSize={{ base: "0.8rem", sm: "1rem" }}
                 fontWeight={{ base: "100" }}
                 color="brand.900"
               >
@@ -155,7 +150,7 @@ export default function Home() {
                 20
               </Text>
               <Text
-                fontSize={{ base: "0.8rem" }}
+                fontSize={{ base: "0.8rem", sm: "1rem" }}
                 fontWeight={{ base: "100" }}
                 color="brand.900"
               >
@@ -173,12 +168,16 @@ export default function Home() {
           borderRadius={{ base: "20px" }}
         >
           <Box w="100%">
-            <Flex flexDir={{ base: "column" }}>
+            <Flex
+              flexDir={{ base: "column" }}
+              p={{ sm: "2% 6%" }}
+              justify={{ base: "center" }}
+            >
               <Text
                 color="white"
                 fontFamily="body"
                 fontWeight="500"
-                fontSize={{ base: "1rem" }}
+                fontSize={{ base: "1rem", sm: "1.3rem" }}
               >
                 Our Expertise
               </Text>
@@ -186,7 +185,7 @@ export default function Home() {
                 color="white"
                 fontFamily="body"
                 fontWeight="200"
-                fontSize={{ base: "0.8rem" }}
+                fontSize={{ base: "0.8rem", sm: "1.1rem" }}
               >
                 We provide tailored digital marketing services, from strategy
                 and content creation to targeted ads and performance analysis,
@@ -434,7 +433,7 @@ export default function Home() {
                       <Box m="10px 10px">
                         <Flex color="white">
                           <Text
-                             fontSize={{
+                            fontSize={{
                               base: "fontclamp(1rem, 1.8rem, 2.5rem)",
                               sm: "2.2rem",
                             }}
@@ -467,7 +466,7 @@ export default function Home() {
         This should be fetch from the database
       */}
 
-      <Box p={{ base: "5vw" }}>
+      <Box p={{ base: "5vw", sm: "10vw" }}>
         <Flex flexDir={{ base: "column" }}>
           <Text color="brand.600">Recent Project</Text>
           <Text
@@ -485,8 +484,9 @@ export default function Home() {
             <Box
               w={{ base: "100vw" }}
               h={{ base: "80vw" }}
-              m={{ base: "0px auto 20px auto" }}
+              m={{ base: "0px auto 20px auto", sm: "0px auto 30px auto" }}
               minH={{ base: "300px" }}
+              maxH={{ sm: "500px" }}
               bgColor="grey"
               bgGradient="linear(to-b, transparent, brand.900 90%,brand.900 100%)"
               borderRadius="20px"
@@ -580,8 +580,8 @@ export default function Home() {
 
         <Flex>
           <Box
-            w={{ base: "70vw" }}
-            h={{ base: "300px" }}
+            w={{ base: "70vw", md: "50vw" }}
+            h={{ base: "300px", md: "450px" }}
             bgColor={{ base: "grey" }}
             borderRadius={{ base: "20px" }}
             mt={{ base: "20px" }}

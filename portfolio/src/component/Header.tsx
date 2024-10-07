@@ -25,7 +25,7 @@ export default function Header(props: HeaderProps) {
   return (
     <Box
       w={{ base: "100vw" }}
-      h={{ base: "70vh", md: "90vh" }}
+      h={{ base: "80vh", md: "90vh" }}
       minW={{ base: "100vw" }}
       minH="fit-content"
       m="0px"
@@ -44,7 +44,7 @@ export default function Header(props: HeaderProps) {
         display={{ base: "none", md: "flex" }}
         fontSize={{ md: "clamp(0.5rem, 0.7rem, 2rem)" }}
       >
-        <Flex w="30vw" color="white">
+        <Flex w={{sm:"40vw"}} color="white">
           <Box>
             <ChakraLink
               as={ReactRouterLink}

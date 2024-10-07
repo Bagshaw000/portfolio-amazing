@@ -3,7 +3,12 @@ import { Box, Button, Flex, Input, Text } from "@chakra-ui/react";
 
 function Footer() {
   return (
-    <Box bgColor="brand.900" h={{ base: "500px" }} w={{ base: "100vw" }}>
+    <Box
+      bgColor="brand.900"
+      h={{ base: "fit-content" }}
+      p={{ md: "7%" }}
+      w={{ base: "100vw" }}
+    >
       <Flex
         color="grey"
         flexDir={{ base: "column" }}
@@ -11,9 +16,10 @@ function Footer() {
         fontWeight={{ base: "300" }}
         justifyContent={{ base: "space-between" }}
         alignItems={{ base: "center" }}
-        p={{ base: "10%" }}
-        h={{ base: "90%" }}
-        maxH={{ base: "270px" }}
+        m={{ md: "auto auto 50px auto" }}
+        h={{ base: "90%", md: "100%" }}
+        minH={{md:"200px"}}
+        maxH={{ base: "270px", md: "350px" }}
       >
         <Text> Home</Text>
         <Text> Portfolio</Text>
@@ -24,7 +30,7 @@ function Footer() {
         m={{ base: "auto" }}
         fontSize={{ base: "1.3rem" }}
         fontWeight={{ base: "300" }}
-        w={{ base: "fit-content" }}
+        w={{ base: "fit-content", sm: "70%" }}
       >
         <Text color={{ base: "white" }} w={{ base: "fit-content" }}>
           {" "}
@@ -48,7 +54,7 @@ function Footer() {
         <Button
           bgColor="brand.800"
           w={{ base: "100%" }}
-          h={{ base: "50px" }}
+          h={{ base: "50px", sm: "70px" }}
           borderRadius={{ base: "10px" }}
         >
           <ArrowForwardIcon boxSize={8} />
