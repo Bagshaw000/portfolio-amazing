@@ -6,7 +6,8 @@ function Footer() {
     <Box
       bgColor="brand.900"
       h={{ base: "fit-content" }}
-      p={{ md: "7%" }}
+      minH={{base:"400px"}}
+      p={{ base:"7%", md: "7%", lg: "5%" }}
       w={{ base: "100vw" }}
     >
       <Flex
@@ -16,9 +17,9 @@ function Footer() {
         fontWeight={{ base: "300" }}
         justifyContent={{ base: "space-between" }}
         alignItems={{ base: "center" }}
-        m={{ md: "auto auto 50px auto" }}
-        h={{ base: "90%", md: "100%" }}
-        minH={{md:"200px"}}
+        m={{ base: "auto auto 50px auto" ,md: "auto auto 50px auto" }}
+        h={{ base: "100%", md: "100%" }}
+        minH={{ base:"200px",md: "200px" }}
         maxH={{ base: "270px", md: "350px" }}
       >
         <Text> Home</Text>
@@ -30,7 +31,8 @@ function Footer() {
         m={{ base: "auto" }}
         fontSize={{ base: "1.3rem" }}
         fontWeight={{ base: "300" }}
-        w={{ base: "fit-content", sm: "70%" }}
+        w={{ base: "fit-content", md: "500px" }}
+        // p={{ base: "auto" }}
       >
         <Text color={{ base: "white" }} w={{ base: "fit-content" }}>
           {" "}
@@ -39,7 +41,8 @@ function Footer() {
         <Input
           placeholder="Your email here..."
           size="lg"
-          w={{ base: "100%" }}
+          w={{ base: "100%", md: "500px" }}
+          maxW={{ sm: "500px" }}
           h={{ base: "60px" }}
           variant="outline"
           padding={{ base: "5%" }}
@@ -54,6 +57,8 @@ function Footer() {
         <Button
           bgColor="brand.800"
           w={{ base: "100%" }}
+          // w={{ base: "100%", }}
+          maxW={{ sm: "500px" }}
           h={{ base: "50px", sm: "70px" }}
           borderRadius={{ base: "10px" }}
         >

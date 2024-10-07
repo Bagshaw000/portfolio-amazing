@@ -42,9 +42,12 @@ export default function Header(props: HeaderProps) {
         justifyContent="end"
         transform="rotateY(180deg)"
         display={{ base: "none", md: "flex" }}
-        fontSize={{ md: "clamp(0.5rem, 0.7rem, 2rem)" }}
+        fontSize={{
+          md: "clamp(0.5rem, 0.7rem, 2rem)",
+          lg: "clamp(0.5rem, 1rem, 2rem)",
+        }}
       >
-        <Flex w={{sm:"40vw"}} color="white">
+        <Flex w={{ sm: "40vw" }} color="white">
           <Box>
             <ChakraLink
               as={ReactRouterLink}
@@ -187,8 +190,9 @@ export default function Header(props: HeaderProps) {
                     fontSize={{
                       sm: "clamp(0.2rem, 0.5em, 1rem)",
                       md: "clamp(0.4rem, 0.5rem, 1rem)",
+                      lg: "clamp(0.4rem, 0.9rem, 1.5rem)",
                     }}
-                    fontWeight="500"
+                    fontWeight={{ md: "300" }}
                     display={{ base: "none", md: "block" }}
                   >
                     {props.quote.authorQuote}
@@ -205,8 +209,9 @@ export default function Header(props: HeaderProps) {
                     fontSize={{
                       sm: "clamp(0.2rem, 0.5em, 1rem)",
                       md: "clamp(0.4rem, 0.7rem, 1rem)",
+                      lg: "clamp(0.4rem, 1rem, 1.5rem)",
                     }}
-                    fontWeight="500"
+                    fontWeight={{ md: "300" }}
                     display={{ base: "none", md: "block" }}
                   >
                     {props.quote.author}
@@ -254,15 +259,24 @@ export default function Header(props: HeaderProps) {
               <Stack>
                 <Text
                   color="#DBFF00"
-                  fontSize="1.5rem"
+                  fontSize={{ base: "1.5rem", md: "2.5rem" }}
                   sx={{ fontFamily: "subheading" }}
                 >
                   {props.subheading}
                 </Text>
                 <Text
-                  fontSize={{ md: "clamp(2rem, 3rem, 10rem)" }}
-                  fontWeight="900"
-                  w="50%"
+                  w="90%"
+                  lineHeight={{ md: "1" }}
+                  fontSize={{
+                    base: "clamp(3rem, 3rem, 10rem)",
+                    sm: "clamp(3rem, 3.9rem, 10rem)",
+                    md: "clamp(4rem, 5rem, 10rem)",
+                    lg: "clamp(5rem, 6.4rem, 10rem)",
+                    xl: "clamp(5rem, 7rem, 20rem)",
+                    "2xl": "clamp(5rem, 10rem, 20rem)",
+                  }}
+                  fontWeight="800"
+                  sx={{ fontStretch: "ultra-expanded" }}
                 >
                   {props.heading}
                 </Text>
