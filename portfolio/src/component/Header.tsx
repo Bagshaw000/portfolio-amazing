@@ -255,8 +255,8 @@ export default function Header(props: HeaderProps) {
           </>
         ) : (
           <>
-            <Box w="100%" h="60%" pt="30%">
-              <Stack>
+            <Box w="100%" h="100%" m={{base:"30vh auto auto auto"}}>
+              <Stack h={{sm:"fit-content"}} >
                 <Text
                   color="#DBFF00"
                   fontSize={{ base: "1.5rem", md: "2.5rem" }}
@@ -266,7 +266,7 @@ export default function Header(props: HeaderProps) {
                 </Text>
                 <Text
                   w="90%"
-                  lineHeight={{ md: "1" }}
+                  lineHeight={{ base:"1" , md: "1" }}
                   fontSize={{
                     base: "clamp(3rem, 3rem, 10rem)",
                     sm: "clamp(3rem, 3.9rem, 10rem)",

@@ -24,8 +24,7 @@ export default function Home() {
         <Flex
           w={{ base: "80vw", lg: "75vw" }}
           h={{ lg: "fit-content" }}
-          margin="70px auto"
-          m={{ base: "70px auto", sm: "70px auto" }}
+          m={{ base: "70px auto auto auto", sm: "70px auto auto auto" }}
           flexDir={{ base: "column", lg: "row" }}
           minH={{ base: "1120px", md: "1200px", lg: "fit-content" }}
           justifyContent={{ base: "space-between" }}

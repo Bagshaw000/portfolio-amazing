@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from '../component/Header'
+import Footer from '../component/Footer'
 
 function Blog() {
   return (
@@ -8,6 +9,7 @@ function Blog() {
       heading="EXPLORE MY BLOG"
       subheading = 'BLOG'
     ></Header>
+     <Footer></Footer>
   </>
   )
 }
