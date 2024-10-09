@@ -5,9 +5,9 @@ import {
   Link,
   Menu,
   MenuButton,
-  MenuItem,
+  MenuItemOption,
   MenuList,
-
+  MenuOptionGroup,
   Text,
 } from "@chakra-ui/react";
 import Header from "../component/Header";
@@ -43,61 +43,109 @@ function Portfolio() {
             <option value="option4">BRANDING</option>
           </Select> */}
 
-          <Menu >
-            <MenuButton m={{base:"auto"}} display={{ base: "block", md: "none" }} as={Button} rightIcon={<ChevronDownIcon />}>
+          <Menu closeOnSelect={false}>
+            <MenuButton
+              m={{ base: "auto" }}
+              display={{ base: "block", md: "none" }}
+              as={Button}
+              rightIcon={<ChevronDownIcon />}
+            >
               CATEGORY
             </MenuButton>
-            <MenuList bg="white" p={{base:"10px 20px"}} borderRadius={{base:"10px"}} borderColor={{base:"grey"}}>
-              <MenuItem>ALL</MenuItem>
-              <MenuItem>CONTENT CREATION</MenuItem>
-              <MenuItem>AD PRODUCTION</MenuItem>
-              <MenuItem>BRANDING</MenuItem>
+            <MenuList
+              bg="white"
+              p={{ base: "10px 20px" }}
+              borderRadius={{ base: "10px" }}
+              borderColor={{ base: "grey" }}
+            >
+              <MenuOptionGroup defaultValue="all" title="CATEGORY" type="radio">
+                <MenuItemOption value="all">ALL</MenuItemOption>
+                <MenuItemOption value="content">
+                  CONTENT CREATION
+                </MenuItemOption>
+                <MenuItemOption value="ad">AD PRODUCTION</MenuItemOption>
+                <MenuItemOption value="brand">BRANDING</MenuItemOption>
+              </MenuOptionGroup>
             </MenuList>
           </Menu>
 
           <Flex
-            display={{ base: "none", md: "block" }}
+            display={{ base: "none", md: "flex" }}
             flexDir={{ md: "row" }}
             alignItems={{ md: "center" }}
-            m={{ md: "auto" }}
+            m={{ md: " 20px auto" }}
+            maxW={{md:"750px"}}
             justifyContent={{ md: "space-between" }}
-            w={{ md: "fit-content" }}
+            w={{ md: "80vw" }}
             minW={{ md: "70vw" }}
           >
-            <Link href="https://chakra-ui.com" isExternal>
-              VIEW ALL
-            </Link>
-            <Link href="https://chakra-ui.com" isExternal>
-              CONTENT CREATION
-            </Link>
-            <Link href="https://chakra-ui.com" isExternal>
-              AD PRODUCTION
-            </Link>
-            <Link href="https://chakra-ui.com" isExternal>
-              BRANDING
-            </Link>
+            <Box w={{md:"fit-content"}}>
+              <Link href="https://chakra-ui.com" isExternal>
+                VIEW ALL
+              </Link>
+            </Box>
+            <Box w={{md:"fit-content"}}>
+              <Link href="https://chakra-ui.com" isExternal>
+                CONTENT CREATION
+              </Link>
+            </Box>
+
+            <Box w={{md:"fit-content"}}>
+              <Link href="https://chakra-ui.com" isExternal>
+                AD PRODUCTION
+              </Link>
+            </Box>
+
+            <Box w={{md:"fit-content"}}>
+              <Link href="https://chakra-ui.com" isExternal>
+                BRANDING
+              </Link>
+            </Box>
           </Flex>
         </Box>
 
-        <Box>
+        <Box   w={{ base: "100vw" }}>
           <Flex
             flexDir="row"
             flexWrap="wrap"
-            w={{ base: "100vw" }}
+            w={{ base: "inherit" }}
+            maxW={{md:"1100px"}}
+            m={{md:"auto"}}
             justifyContent={{ base: "center" }}
           >
             {/* For loop */}
             <Box
-              w={{ base: "inherit" }}
-              m={{ base: "50px auto" }}
+              w={{ base: "70%" , md:"60%"}}
+              maxW={{md:"450px"}}
+              m={{ base: "50px auto 20px auto" , md:"50px auto 50px auto" }}
               textAlign={{ base: "center" }}
+              onClick={()=>{}}
             >
               <Box
-                w={{ base: "70%" }}
+                w={{ base: "70%" , md: "100%"}}
                 h={{ base: "250px" }}
                 bg="grey"
+                maxW={{ base: "450px",  md:"500px" }}
                 m={{ base: "auto" }}
-                
+              ></Box>
+              <Text mt={{ base: "30px" }} fontSize={{ base: "1.2rem" }}>
+                {" "}
+                TITLE
+              </Text>
+            </Box>
+            <Box
+               w={{ base: "70%" , md:"60%"}}
+               maxW={{md:"450px"}}
+               m={{ base: "50px auto 20px auto" , md:"50px auto 50px auto" }}
+               textAlign={{ base: "center" }}
+               onClick={()=>{}}
+            >
+              <Box
+                 w={{ base: "70%" , md: "100%"}}
+                h={{ base: "250px" }}
+                maxW={{ base: "450px", md:"500px" }}
+                bg="grey"
+                m={{ base: "auto" }}
               ></Box>
               <Text mt={{ base: "30px" }} fontSize={{ base: "1.2rem" }}>
                 {" "}
