@@ -22,9 +22,9 @@ function Portfolio() {
       <Box>
         <Box
           w="100vw"
-          m={{ base: "50px auto 20px auto", md: "auto" }}
+          m={{ base: "50px auto 20px auto", md: "50px auto 30px auto" }}
           textAlign="center"
-          fontSize={{ base: "1.8rem" }}
+          fontSize={{ base: "1.8rem", md: "2.5rem", xl: "3rem" }}
           fontWeight={{ base: "600" }}
         >
           <Text m={{ md: "auto" }}>PORTFOLIO</Text>
@@ -74,29 +74,29 @@ function Portfolio() {
             flexDir={{ md: "row" }}
             alignItems={{ md: "center" }}
             m={{ md: " 20px auto" }}
-            maxW={{md:"750px"}}
+            maxW={{ md: "750px" }}
             justifyContent={{ md: "space-between" }}
             w={{ md: "80vw" }}
-            minW={{ md: "70vw" }}
+            minW={{ md: "50vw" }}
           >
-            <Box w={{md:"fit-content"}}>
+            <Box w={{ md: "fit-content" }}>
               <Link href="https://chakra-ui.com" isExternal>
                 VIEW ALL
               </Link>
             </Box>
-            <Box w={{md:"fit-content"}}>
+            <Box w={{ md: "fit-content" }}>
               <Link href="https://chakra-ui.com" isExternal>
                 CONTENT CREATION
               </Link>
             </Box>
 
-            <Box w={{md:"fit-content"}}>
+            <Box w={{ md: "fit-content" }}>
               <Link href="https://chakra-ui.com" isExternal>
                 AD PRODUCTION
               </Link>
             </Box>
 
-            <Box w={{md:"fit-content"}}>
+            <Box w={{ md: "fit-content" }}>
               <Link href="https://chakra-ui.com" isExternal>
                 BRANDING
               </Link>
@@ -104,28 +104,30 @@ function Portfolio() {
           </Flex>
         </Box>
 
-        <Box   w={{ base: "100vw" }}>
+        <Box w={{ base: "100vw" }}>
           <Flex
             flexDir="row"
             flexWrap="wrap"
             w={{ base: "inherit" }}
-            maxW={{md:"1100px"}}
-            m={{md:"auto"}}
+            maxW={{ md: "1000px", xl: "1300px" }}
+            m={{ md: "auto" }}
             justifyContent={{ base: "center" }}
           >
             {/* For loop */}
             <Box
-              w={{ base: "70%" , md:"60%"}}
-              maxW={{md:"450px"}}
-              m={{ base: "50px auto 20px auto" , md:"50px auto 50px auto" }}
+              w={{ base: "70%", md: "50%", xl:"40%"  }}
+              maxW={{ md: "500px", xl: "600px" }}
+              m={{ base: "50px auto 20px auto", md: "30px auto 50px auto" }}
               textAlign={{ base: "center" }}
-              onClick={()=>{}}
+              p={{ md: "20px", xl:"10px" }}
+              onClick={() => {}}
             >
               <Box
-                w={{ base: "70%" , md: "100%"}}
-                h={{ base: "250px" }}
+                w={{ base: "70%", md: "100%" }}
+                h={{ base: "250px", xl: "300px" }}
+                minW={{ base: "300px", xl:"530px" }}
                 bg="grey"
-                maxW={{ base: "450px",  md:"500px" }}
+                maxW={{ base: "450px", md: "450px", xl: "550px" }}
                 m={{ base: "auto" }}
               ></Box>
               <Text mt={{ base: "30px" }} fontSize={{ base: "1.2rem" }}>
@@ -134,17 +136,19 @@ function Portfolio() {
               </Text>
             </Box>
             <Box
-               w={{ base: "70%" , md:"60%"}}
-               maxW={{md:"450px"}}
-               m={{ base: "50px auto 20px auto" , md:"50px auto 50px auto" }}
-               textAlign={{ base: "center" }}
-               onClick={()=>{}}
+              w={{ base: "70%", md: "50%", xl:"40%" }}
+              maxW={{ md: "500px", xl: "600px" }}
+              m={{ base: "50px auto 20px auto", md: "30px auto 50px auto",  }}
+              p={{ md: "20px", xl:"10px" }}
+              textAlign={{ base: "center" }}
+              onClick={() => {}}
             >
               <Box
-                 w={{ base: "70%" , md: "100%"}}
-                h={{ base: "250px" }}
-                maxW={{ base: "450px", md:"500px" }}
+                w={{ base: "70%", md: "100%" }}
+                h={{ base: "250px", xl: "300px" }}
+                minW={{ base: "300px", xl:"530px"  }}
                 bg="grey"
+                maxW={{ base: "450px", md: "450px", xl: "550px" }}
                 m={{ base: "auto" }}
               ></Box>
               <Text mt={{ base: "30px" }} fontSize={{ base: "1.2rem" }}>

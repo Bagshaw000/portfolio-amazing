@@ -27,7 +27,7 @@ export default function Header(props: HeaderProps) {
       w={{ base: "100vw" }}
       h={{ base: "80vh", md: "90vh" }}
       minW={{ base: "100vw" }}
-      minH="fit-content"
+      minH={{base:"60vh"}}
       m="0px"
       maxH={{ base: "800px", md: "1300px" }}
       bgImage="url('../src/assets/bg.jpg')"
