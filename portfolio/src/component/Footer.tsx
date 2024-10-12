@@ -9,6 +9,7 @@ function Footer() {
       minH={{base:"400px"}}
       p={{ base:"7%", md: "7%", lg: "5%" }}
       w={{ base: "100vw" }}
+      mb="0px"
     >
       <Flex
         color="grey"

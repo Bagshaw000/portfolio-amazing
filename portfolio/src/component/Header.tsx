@@ -27,7 +27,7 @@ export default function Header(props: HeaderProps) {
       w={{ base: "100vw" }}
       h={{ base: "80vh", md: "90vh" }}
       minW={{ base: "100vw" }}
-      minH={{base:"60vh"}}
+      minH={{base:"60vh" ,md:"40vh" }}
       m="0px"
       maxH={{ base: "800px", md: "1300px" }}
       bgImage="url('../src/assets/bg.jpg')"
@@ -35,7 +35,8 @@ export default function Header(props: HeaderProps) {
       bgRepeat="no-repeat"
       bgSize={{ base: "cover", sm: "cover", md: "cover" }}
       transform="rotateY(180deg)"
-      p="3vw 5vw"
+      // p="3vw 5vw"
+      p={{base:"3vh 5vw", xl:"3v 5vw"}}
       sx={{ fontFamily: "heading" }}
     >
       <Flex

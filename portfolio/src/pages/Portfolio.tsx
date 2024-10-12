@@ -31,18 +31,6 @@ function Portfolio() {
         </Box>
 
         <Box w="100vw" textAlign="center">
-          {/* <Select
-            placeholder="CATEGORY"
-            size="md"
-            variant="outline"
-            display={{ base: "block", md: "none" }}
-          >
-            <option value="option1">ALL</option>
-            <option value="option2">CONTENT CREATION</option>
-            <option value="option3">AD PRODUCTION</option>
-            <option value="option4">BRANDING</option>
-          </Select> */}
-
           <Menu closeOnSelect={false}>
             <MenuButton
               m={{ base: "auto" }}
@@ -115,17 +103,17 @@ function Portfolio() {
           >
             {/* For loop */}
             <Box
-              w={{ base: "70%", md: "50%", xl:"40%"  }}
+              w={{ base: "70%", md: "50%", xl: "40%" }}
               maxW={{ md: "500px", xl: "600px" }}
               m={{ base: "50px auto 20px auto", md: "30px auto 50px auto" }}
               textAlign={{ base: "center" }}
-              p={{ md: "20px", xl:"10px" }}
+              p={{ md: "20px", xl: "10px" }}
               onClick={() => {}}
             >
               <Box
                 w={{ base: "70%", md: "100%" }}
                 h={{ base: "250px", xl: "300px" }}
-                minW={{ base: "300px", xl:"530px" }}
+                minW={{ base: "300px", xl: "530px" }}
                 bg="grey"
                 maxW={{ base: "450px", md: "450px", xl: "550px" }}
                 m={{ base: "auto" }}
@@ -136,17 +124,17 @@ function Portfolio() {
               </Text>
             </Box>
             <Box
-              w={{ base: "70%", md: "50%", xl:"40%" }}
+              w={{ base: "70%", md: "50%", xl: "40%" }}
               maxW={{ md: "500px", xl: "600px" }}
-              m={{ base: "50px auto 20px auto", md: "30px auto 50px auto",  }}
-              p={{ md: "20px", xl:"10px" }}
+              m={{ base: "50px auto 20px auto", md: "30px auto 50px auto" }}
+              p={{ md: "20px", xl: "10px" }}
               textAlign={{ base: "center" }}
               onClick={() => {}}
             >
               <Box
                 w={{ base: "70%", md: "100%" }}
                 h={{ base: "250px", xl: "300px" }}
-                minW={{ base: "300px", xl:"530px"  }}
+                minW={{ base: "300px", xl: "530px" }}
                 bg="grey"
                 maxW={{ base: "450px", md: "450px", xl: "550px" }}
                 m={{ base: "auto" }}
