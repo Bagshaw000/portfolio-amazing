@@ -31,7 +31,7 @@ function Portfolio() {
         </Box>
 
         <Box w="100vw" textAlign="center">
-          <Menu closeOnSelect={false}>
+          <Menu closeOnSelect={false} >
             <MenuButton
               m={{ base: "auto" }}
               display={{ base: "block", md: "none" }}
@@ -45,6 +45,7 @@ function Portfolio() {
               p={{ base: "10px 20px" }}
               borderRadius={{ base: "10px" }}
               borderColor={{ base: "grey" }}
+              
             >
               <MenuOptionGroup defaultValue="all" title="CATEGORY" type="radio">
                 <MenuItemOption value="all">ALL</MenuItemOption>
