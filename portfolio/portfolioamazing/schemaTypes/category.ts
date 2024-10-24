@@ -6,14 +6,18 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
+      name: 'category',
+      title: 'Category',
       type: 'string',
-    }),
-    defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'text',
+      initialValue: 'content',
+      options: {
+        list: [
+          {title: 'Conten Creation', value: 'content'},
+          {title: 'Ad Production', value: 'ad'},
+          {title: 'Branding', value: 'brand'},
+        ],
+        layout: 'radio',
+      },
     }),
   ],
 })

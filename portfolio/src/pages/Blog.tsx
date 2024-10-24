@@ -13,8 +13,17 @@ import {
   MenuOptionGroup,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+// import { client } from "../services";
+// import { useEffect, useState } from "react";
 
-function Blog() {
+ function Blog() {
+  // const [posts, setPosts] = useState([])
+  //   useEffect(()=>{
+  //     client.getDocument("post").then((data)=> setPosts(data!)).catch(console.error)
+  //   }, [])
+  // const post =  client.getDocument("post").then ((bike) => {
+  //   console.log(bike)})
+  // console.log(post)
   return (
     <>
       <Header heading="EXPLORE MY BLOG" subheading="BLOG"></Header>
