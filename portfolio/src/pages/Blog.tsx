@@ -13,17 +13,23 @@ import {
   MenuOptionGroup,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-// import { client } from "../services";
-// import { useEffect, useState } from "react";
+import { client } from "../services";
+import { useEffect, useState } from "react";
 
- function Blog() {
-  // const [posts, setPosts] = useState([])
-  //   useEffect(()=>{
-  //     client.getDocument("post").then((data)=> setPosts(data!)).catch(console.error)
-  //   }, [])
-  // const post =  client.getDocument("post").then ((bike) => {
+function Blog() {
+  const [posts, setPosts] = useState(null);
+  useEffect(() => {
+    client
+      .fetch('*[_type == "post"]')
+      .then((data) => {
+        // console.log(data?._id)
+        return setPosts(data);
+      })
+      .catch(console.error);
+  }, []);
+  // client.getDocument("post").then ((bike) => {
   //   console.log(bike)})
-  // console.log(post)
+  console.log(posts);
   return (
     <>
       <Header heading="EXPLORE MY BLOG" subheading="BLOG"></Header>
@@ -54,7 +60,6 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
               borderRadius={{ base: "10px" }}
               borderColor={{ base: "grey" }}
               zIndex="2"
-              
             >
               <MenuOptionGroup defaultValue="all" title="CATEGORY" type="radio">
                 <MenuItemOption value="all">ALL</MenuItemOption>
@@ -107,11 +112,10 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
             flexDir="row"
             flexWrap="wrap"
             w={{ base: "100vw" }}
-            maxW={{ sm: "600px", md:"900px",xl: "1300px" }}
-            minW={{sm: "10vw"}}
+            maxW={{ sm: "600px", md: "900px", xl: "1300px" }}
+            minW={{ sm: "10vw" }}
             m={{ base: "auto" }}
-            justifyContent={{ base: "center" }} 
-            
+            justifyContent={{ base: "center" }}
           >
             {/* Loop from the database */}
             <Box
@@ -122,7 +126,7 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
             >
               <Box
                 w={{ base: "100%" }}
-                h={{ base: "200px", md:"230px" }}
+                h={{ base: "200px", md: "230px" }}
                 bgColor="gray"
                 pos={{ base: "relative" }}
               >
@@ -176,7 +180,7 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
             >
               <Box
                 w={{ base: "100%" }}
-                h={{ base: "200px", md:"230px" }}
+                h={{ base: "200px", md: "230px" }}
                 bgColor="gray"
                 pos={{ base: "relative" }}
               >

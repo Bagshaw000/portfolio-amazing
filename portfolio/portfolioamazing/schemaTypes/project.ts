@@ -54,7 +54,7 @@ export default defineType({
     defineField({
       name: 'overview',
       title: 'Overview',
-      type: 'blockContent',
+      type: 'text',
     }),
   ],
   preview: {
