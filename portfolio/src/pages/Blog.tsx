@@ -13,23 +13,17 @@ import {
   MenuOptionGroup,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import { client } from "../services";
-import { useEffect, useState } from "react";
+import { IBlogPost } from "../services";
+// import { useEffect, useState } from "react";
+import { getAllPost } from "../services/blog";
+import BlogContent from "../component/BlogContent";
+import { useState } from "react";
 
 function Blog() {
-  const [posts, setPosts] = useState(null);
-  useEffect(() => {
-    client
-      .fetch('*[_type == "post"]')
-      .then((data) => {
-        // console.log(data?._id)
-        return setPosts(data);
-      })
-      .catch(console.error);
-  }, []);
-  // client.getDocument("post").then ((bike) => {
-  //   console.log(bike)})
-  console.log(posts);
+ 
+  const [post, setPost] = useState<Array<IBlogPost>|undefined>([])
+
+
   return (
     <>
       <Header heading="EXPLORE MY BLOG" subheading="BLOG"></Header>
@@ -83,7 +77,11 @@ function Blog() {
             minW={{ md: "50vw" }}
           >
             <Box w={{ md: "fit-content" }}>
-              <Link href="https://chakra-ui.com" isExternal>
+              <Link onClick={async ()=>{
+                const data:Array<IBlogPost>|undefined = await getAllPost();
+                
+                setPost(data)
+              }}>
                 VIEW ALL
               </Link>
             </Box>
@@ -107,126 +105,7 @@ function Blog() {
           </Flex>
         </Box>
 
-        <Box justifyContent={{ base: "center" }}>
-          <Flex
-            flexDir="row"
-            flexWrap="wrap"
-            w={{ base: "100vw" }}
-            maxW={{ sm: "600px", md: "900px", xl: "1300px" }}
-            minW={{ sm: "10vw" }}
-            m={{ base: "auto" }}
-            justifyContent={{ base: "center" }}
-          >
-            {/* Loop from the database */}
-            <Box
-              m={{ base: "50px auto" }}
-              w={{ base: "70vw" }}
-              minW={{ base: "300px" }}
-              maxW={{ base: "350px" }}
-            >
-              <Box
-                w={{ base: "100%" }}
-                h={{ base: "200px", md: "230px" }}
-                bgColor="gray"
-                pos={{ base: "relative" }}
-              >
-                <Box
-                  p={{ base: " 10px" }}
-                  bgColor={{ base: "black" }}
-                  color="white"
-                  width={{ base: "fit-content" }}
-                  pos={{ base: "absolute" }}
-                  top={{ base: "5%" }}
-                  left={{ base: "5%" }}
-                  fontSize={{ base: "0.6rem" }}
-                >
-                  <Text> 10 December 2023</Text>
-                </Box>
-              </Box>
-              <Flex
-                flexDir="column"
-                w={{ base: "100%" }}
-                h={{ base: "100px" }}
-                m={{ base: "10px auto auto auto" }}
-                justify={{ base: "space-between" }}
-              >
-                <Text>Title</Text>
-                <Flex
-                  w={{ base: "100%" }}
-                  flexDir="row"
-                  justify={{ base: "space-between" }}
-                  alignItems={{ base: "end" }}
-                >
-                  <Text fontSize={{ base: "0.6rem" }} w={{ base: "60%" }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor.
-                  </Text>
-                  <Text
-                    fontSize={{ base: "0.6rem" }}
-                    color={{ base: "brand.600" }}
-                  >
-                    {" "}
-                    Read more
-                  </Text>
-                </Flex>
-              </Flex>
-            </Box>
-
-            <Box
-              m={{ base: " 50px  auto" }}
-              w={{ base: "70vw" }}
-              minW={{ base: "300px" }}
-              maxW={{ base: "350px" }}
-            >
-              <Box
-                w={{ base: "100%" }}
-                h={{ base: "200px", md: "230px" }}
-                bgColor="gray"
-                pos={{ base: "relative" }}
-              >
-                <Box
-                  p={{ base: " 10px" }}
-                  bgColor={{ base: "black" }}
-                  color="white"
-                  width={{ base: "fit-content" }}
-                  pos={{ base: "absolute" }}
-                  top={{ base: "5%" }}
-                  left={{ base: "5%" }}
-                  fontSize={{ base: "0.6rem" }}
-                >
-                  <Text> 10 December 2023</Text>
-                </Box>
-              </Box>
-              <Flex
-                flexDir="column"
-                w={{ base: "100%" }}
-                h={{ base: "100px" }}
-                m={{ base: "10px auto auto auto" }}
-                justify={{ base: "space-between" }}
-              >
-                <Text>Title</Text>
-                <Flex
-                  w={{ base: "100%" }}
-                  flexDir="row"
-                  justify={{ base: "space-between" }}
-                  alignItems={{ base: "end" }}
-                >
-                  <Text fontSize={{ base: "0.6rem" }} w={{ base: "60%" }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor.
-                  </Text>
-                  <Text
-                    fontSize={{ base: "0.6rem" }}
-                    color={{ base: "brand.600" }}
-                  >
-                    {" "}
-                    Read more
-                  </Text>
-                </Flex>
-              </Flex>
-            </Box>
-          </Flex>
-        </Box>
+       <BlogContent {...post} />
       </Box>
       <Footer></Footer>
     </>
