@@ -9,14 +9,14 @@ export interface HeaderProps{
 }
 
 export interface IBlogPost {
-    _id?:string,
-    author?:string,
-    body?: string,
-    title?: string,
-    categories?: Array<BlogCategories>,
-    mainImage?: Image,
-    publishedAt?: Date,
-    slug?: Slug
+    _id:string,
+    author:string,
+    body: string,
+    title: string,
+    categories: Array<BlogCategories>,
+    mainImage: Image,
+    publishedAt: Date,
+    slug: Slug
 
 
 }

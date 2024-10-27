@@ -17,12 +17,17 @@ import { IBlogPost } from "../services";
 // import { useEffect, useState } from "react";
 import { getAllPost } from "../services/blog";
 import BlogContent from "../component/BlogContent";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Blog() {
- 
-  const [post, setPost] = useState<Array<IBlogPost>|undefined>([])
-
+  const [post, setPost] = useState<Array<IBlogPost> | undefined>([]);
+  useEffect(() => {
+    async function fetchData() {
+      setPost(await getAllPost());
+    }
+    fetchData();
+  });
+  console.log(post)
 
   return (
     <>
@@ -77,13 +82,7 @@ function Blog() {
             minW={{ md: "50vw" }}
           >
             <Box w={{ md: "fit-content" }}>
-              <Link onClick={async ()=>{
-                const data:Array<IBlogPost>|undefined = await getAllPost();
-                
-                setPost(data)
-              }}>
-                VIEW ALL
-              </Link>
+              <Link onClick={async () => {}}>VIEW ALL</Link>
             </Box>
             <Box w={{ md: "fit-content" }}>
               <Link href="https://chakra-ui.com" isExternal>
@@ -104,8 +103,10 @@ function Blog() {
             </Box>
           </Flex>
         </Box>
+  
+        <BlogContent {...post!} />
 
-       <BlogContent {...post} />
+
       </Box>
       <Footer></Footer>
     </>
