@@ -5,11 +5,15 @@ import { IBlogPost } from "../services";
 function BlogContent(props: Array<IBlogPost>) {
   const [posts, setPosts] = useState<Array<IBlogPost>>([]);
   // setPosts(props);
+  // console.log(posts)
   useEffect(() => {
-    return setPosts(props);
-  }, );
+    return setPosts(Object.values(props));
+  }, [props]);
 
   if (posts.length > 0) {
+    {
+      console.log(posts);
+    }
     return (
       <Box justifyContent={{ base: "center" }}>
         <Flex
@@ -23,7 +27,6 @@ function BlogContent(props: Array<IBlogPost>) {
         >
           {/* Loop from the database */}
 
-          {}
           {posts!.map((data) => (
             <Box
               m={{ base: "50px auto" }}
@@ -51,11 +54,11 @@ function BlogContent(props: Array<IBlogPost>) {
                 >
                   <Text>
                     {" "}
-                    {/* {new Date(data.publishedAt!).toLocaleDateString(undefined, {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })} */}
+                    {new Date(data.publishedAt!).toLocaleDateString(undefined, {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
                   </Text>
                 </Box>
               </Box>
@@ -74,12 +77,15 @@ function BlogContent(props: Array<IBlogPost>) {
                   alignItems={{ base: "end" }}
                 >
                   {/* Paginate this body text */}
-                  <Text fontSize={{ base: "0.6rem" }} w={{ base: "60%" }}>
+                  <Text fontSize={{ base: "0.6rem" }} w={{ base: "60%" }} noOfLines={2}>
                     {data.body}
+                    {}
+        
                   </Text>
                   <Text
                     fontSize={{ base: "0.6rem" }}
                     color={{ base: "brand.600" }}
+                    onClick={() => {}}
                   >
                     {" "}
                     Read more
@@ -91,6 +97,8 @@ function BlogContent(props: Array<IBlogPost>) {
         </Flex>
       </Box>
     );
+  } else {
+    return <Box></Box>;
   }
 }
 

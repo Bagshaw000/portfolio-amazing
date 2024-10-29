@@ -15,7 +15,12 @@ import {
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { IBlogPost } from "../services";
 // import { useEffect, useState } from "react";
-import { getAllPost } from "../services/blog";
+import {
+  getAdPost,
+  getAllPost,
+  getBrandPost,
+  getContentPost,
+} from "../services/blog";
 import BlogContent from "../component/BlogContent";
 import { useEffect, useState } from "react";
 
@@ -26,8 +31,8 @@ function Blog() {
       setPost(await getAllPost());
     }
     fetchData();
-  });
-  console.log(post)
+  }, []);
+  console.log(post);
 
   return (
     <>
@@ -61,12 +66,46 @@ function Blog() {
               zIndex="2"
             >
               <MenuOptionGroup defaultValue="all" title="CATEGORY" type="radio">
-                <MenuItemOption value="all">ALL</MenuItemOption>
-                <MenuItemOption value="content">
+                <MenuItemOption
+                  value="all"
+                  onClick={async () => {
+                    const data = await getAllPost();
+
+                    setPost(data);
+                  }}
+                >
+                  ALL
+                </MenuItemOption>
+                <MenuItemOption
+                  value="content"
+                  onClick={async () => {
+                    const data = await getContentPost();
+
+                    setPost(data);
+                  }}
+                >
                   CONTENT CREATION
                 </MenuItemOption>
-                <MenuItemOption value="ad">AD PRODUCTION</MenuItemOption>
-                <MenuItemOption value="brand">BRANDING</MenuItemOption>
+                <MenuItemOption
+                  value="ad"
+                  onClick={async () => {
+                    const data = await getAdPost();
+
+                    setPost(data);
+                  }}
+                >
+                  AD PRODUCTION
+                </MenuItemOption>
+                <MenuItemOption
+                  value="brand"
+                  onClick={async () => {
+                    const data = await getBrandPost();
+
+                    setPost(data);
+                  }}
+                >
+                  BRANDING
+                </MenuItemOption>
               </MenuOptionGroup>
             </MenuList>
           </Menu>
@@ -82,31 +121,55 @@ function Blog() {
             minW={{ md: "50vw" }}
           >
             <Box w={{ md: "fit-content" }}>
-              <Link onClick={async () => {}}>VIEW ALL</Link>
+              <Link
+                onClick={async () => {
+                  const data = await getAllPost();
+
+                  setPost(data);
+                }}
+              >
+                VIEW ALL
+              </Link>
             </Box>
             <Box w={{ md: "fit-content" }}>
-              <Link href="https://chakra-ui.com" isExternal>
+              <Link
+                onClick={async () => {
+                  const data = await getContentPost();
+
+                  setPost(data);
+                }}
+              >
                 CONTENT CREATION
               </Link>
             </Box>
 
             <Box w={{ md: "fit-content" }}>
-              <Link href="https://chakra-ui.com" isExternal>
+              <Link
+                onClick={async () => {
+                  const data = await getAdPost();
+
+                  setPost(data);
+                }}
+              >
                 AD PRODUCTION
               </Link>
             </Box>
 
             <Box w={{ md: "fit-content" }}>
-              <Link href="https://chakra-ui.com" isExternal>
+              <Link
+                onClick={async () => {
+                  const data = await getBrandPost();
+
+                  setPost(data);
+                }}
+              >
                 BRANDING
               </Link>
             </Box>
           </Flex>
         </Box>
-  
+
         <BlogContent {...post!} />
-
-
       </Box>
       <Footer></Footer>
     </>

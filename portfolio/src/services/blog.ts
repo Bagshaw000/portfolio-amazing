@@ -20,7 +20,7 @@ export async function getAllPost(): Promise<IBlogPost[] | undefined> {
 export async function getContentPost(): Promise<IBlogPost[] | undefined> {
   try {
     const getData: Array<IBlogPost> = await client.fetch(
-      `*[_type == "post" && categories== "content"]{title,_id,slug,author,mainImage { asset -> {
+      `*[_type == "post" && category == "content"]{title,_id,slug,author,mainImage { asset -> {
               _id,
               url
             },
@@ -36,7 +36,7 @@ export async function getContentPost(): Promise<IBlogPost[] | undefined> {
 export async function getAdPost(): Promise<IBlogPost[] | undefined> {
   try {
     const getData: Array<IBlogPost> = await client.fetch(
-      `*[_type == "post" && categories== "ad"]{title,_id,slug,author,mainImage { asset -> {
+      `*[_type == "post" && category== "ad"]{title,_id,slug,author,mainImage { asset -> {
               _id,
               url
             },

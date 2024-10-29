@@ -12,7 +12,7 @@ export default defineType({
       initialValue: 'content',
       options: {
         list: [
-          {title: 'Conten Creation', value: 'content'},
+          {title: 'Content Creation', value: 'content'},
           {title: 'Ad Production', value: 'ad'},
           {title: 'Branding', value: 'brand'},
         ],
