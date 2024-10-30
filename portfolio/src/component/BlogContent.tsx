@@ -10,96 +10,93 @@ function BlogContent(props: Array<IBlogPost>) {
     return setPosts(Object.values(props));
   }, [props]);
 
-  if (posts.length > 0) {
-    {
-      console.log(posts);
-    }
-    return (
-      <Box justifyContent={{ base: "center" }}>
-        <Flex
-          flexDir="row"
-          flexWrap="wrap"
-          w={{ base: "100vw" }}
-          maxW={{ sm: "600px", md: "900px", xl: "1300px" }}
-          minW={{ sm: "10vw" }}
-          m={{ base: "auto" }}
-          justifyContent={{ base: "center" }}
-        >
-          {/* Loop from the database */}
+  return posts.length > 0 ? (
+    <Box justifyContent={{ base: "center" }}>
+      <Flex
+        flexDir="row"
+        flexWrap="wrap"
+        w={{ base: "100vw" }}
+        maxW={{ sm: "600px", md: "900px", xl: "1300px" }}
+        minW={{ sm: "10vw" }}
+        m={{ base: "auto" }}
+        justifyContent={{ base: "center" }}
+      >
+        {/* Loop from the database */}
 
-          {posts!.map((data) => (
+        {posts!.map((data) => (
+          <Box
+            m={{ base: "50px auto" }}
+            w={{ base: "70vw" }}
+            minW={{ base: "300px" }}
+            maxW={{ base: "350px" }}
+            key={data._id}
+          >
             <Box
-              m={{ base: "50px auto" }}
-              w={{ base: "70vw" }}
-              minW={{ base: "300px" }}
-              maxW={{ base: "350px" }}
-              key={data._id}
+              w={{ base: "100%" }}
+              h={{ base: "200px", md: "230px" }}
+              bgColor="gray"
+              bgImage={data.mainImage!.asset.url}
+              pos={{ base: "relative" }}
             >
               <Box
-                w={{ base: "100%" }}
-                h={{ base: "200px", md: "230px" }}
-                bgColor="gray"
-                bgImage={data.mainImage!.asset.url}
-                pos={{ base: "relative" }}
+                p={{ base: " 10px" }}
+                bgColor={{ base: "black" }}
+                color="white"
+                width={{ base: "fit-content" }}
+                pos={{ base: "absolute" }}
+                top={{ base: "5%" }}
+                left={{ base: "5%" }}
+                fontSize={{ base: "0.6rem" }}
               >
-                <Box
-                  p={{ base: " 10px" }}
-                  bgColor={{ base: "black" }}
-                  color="white"
-                  width={{ base: "fit-content" }}
-                  pos={{ base: "absolute" }}
-                  top={{ base: "5%" }}
-                  left={{ base: "5%" }}
-                  fontSize={{ base: "0.6rem" }}
-                >
-                  <Text>
-                    {" "}
-                    {new Date(data.publishedAt!).toLocaleDateString(undefined, {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
-                  </Text>
-                </Box>
+                <Text>
+                  {" "}
+                  {new Date(data.publishedAt!).toLocaleDateString(undefined, {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </Text>
               </Box>
-              <Flex
-                flexDir="column"
-                w={{ base: "100%" }}
-                h={{ base: "100px" }}
-                m={{ base: "10px auto auto auto" }}
-                justify={{ base: "space-between" }}
-              >
-                <Text>{data.title}</Text>
-                <Flex
-                  w={{ base: "100%" }}
-                  flexDir="row"
-                  justify={{ base: "space-between" }}
-                  alignItems={{ base: "end" }}
-                >
-                  {/* Paginate this body text */}
-                  <Text fontSize={{ base: "0.6rem" }} w={{ base: "60%" }} noOfLines={2}>
-                    {data.body}
-                    {}
-        
-                  </Text>
-                  <Text
-                    fontSize={{ base: "0.6rem" }}
-                    color={{ base: "brand.600" }}
-                    onClick={() => {}}
-                  >
-                    {" "}
-                    Read more
-                  </Text>
-                </Flex>
-              </Flex>
             </Box>
-          ))}
-        </Flex>
-      </Box>
-    );
-  } else {
-    return <Box></Box>;
-  }
+            <Flex
+              flexDir="column"
+              w={{ base: "100%" }}
+              h={{ base: "100px" }}
+              m={{ base: "10px auto auto auto" }}
+              justify={{ base: "space-between" }}
+            >
+              <Text>{data.title}</Text>
+              <Flex
+                w={{ base: "100%" }}
+                flexDir="row"
+                justify={{ base: "space-between" }}
+                alignItems={{ base: "end" }}
+              >
+                {/* Paginate this body text */}
+                <Text
+                  fontSize={{ base: "0.6rem" }}
+                  w={{ base: "60%" }}
+                  noOfLines={2}
+                >
+                  {data.body}
+                  {}
+                </Text>
+                <Text
+                  fontSize={{ base: "0.6rem" }}
+                  color={{ base: "brand.600" }}
+                  onClick={() => {}}
+                >
+                  Read more
+                </Text>
+              </Flex>
+            </Flex>
+          </Box>
+        ))}
+      </Flex>
+    </Box>
+  ) : (
+    <Box></Box>
+  );
 }
 
 export default BlogContent;

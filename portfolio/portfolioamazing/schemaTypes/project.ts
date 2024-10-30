@@ -22,10 +22,18 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'categories',
-      title: 'Categories',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'category'}}],
+      name: 'category',
+      title: 'Category',
+      type: 'string',
+      initialValue: 'content',
+      options: {
+        list: [
+          {title: 'Content Creation', value: 'content'},
+          {title: 'Ad Production', value: 'ad'},
+          {title: 'Branding', value: 'brand'},
+        ],
+        layout: 'radio',
+      },
     }),
     defineField({
       name: 'duration',
@@ -46,7 +54,7 @@ export default defineType({
           {title: 'Canva', value: 'canva'},
           {title: 'Capcut', value: 'capcut'},
           {title: 'Metricool', value: 'metricool'},
-          {title: 'Metricool', value: 'metricool'},
+          {title: 'Adobe premier', value: 'adobe'},
         ],
         layout: 'grid',
       },
@@ -55,6 +63,21 @@ export default defineType({
       name: 'overview',
       title: 'Overview',
       type: 'text',
+    }),
+    defineField({
+      name: 'comment',
+      title: 'Comment',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {name: 'name', type: 'string', title: 'Name'},
+            {name: 'email', type: 'string', title: 'Email'},
+            {name: 'comment', type: 'text', title: 'Comment'},
+          ],
+        },
+      ],
     }),
   ],
   preview: {

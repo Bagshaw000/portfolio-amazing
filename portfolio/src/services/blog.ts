@@ -64,3 +64,19 @@ export async function getBrandPost(): Promise<IBlogPost[] | undefined> {
     if (err instanceof Error) console.log(err.message);
   }
 }
+
+export async function getPost(id:string): Promise<IBlogPost[] | undefined> {
+  try {
+    const getData: Array<IBlogPost> = await client.fetch(
+      `*[_type == "post" && _id == ${id}]{title,_id,slug,author,mainImage { asset -> {
+              _id,
+              url
+            },
+            alt,},categories,publishedAt, body}`
+    );
+
+    return getData;
+  } catch (err) {
+    if (err instanceof Error) console.log(err.message);
+  }
+}

@@ -13,8 +13,22 @@ import {
 import Header from "../component/Header";
 import Footer from "../component/Footer";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import PortfolioContent from "../component/PortfolioContent";
+import { useState, useEffect } from "react";
+import { IProject } from "../services";
+
+import { getAllProject } from "../services/project";
 
 function Portfolio() {
+
+  const [post, setPost] = useState<Array<IProject> | undefined>([]);
+  useEffect(() => {
+    async function fetchData() {
+      setPost(await getAllProject());
+    }
+    fetchData();
+  }, []);
+  console.log(post);
   return (
     <>
       <Header heading="EXPLORE MY FEATURE WORK" subheading="PORTFOLIO"></Header>
@@ -69,7 +83,11 @@ function Portfolio() {
             minW={{ md: "50vw" }}
           >
             <Box w={{ md: "fit-content" }}>
-              <Link href="https://chakra-ui.com" isExternal>
+              <Link onClick={async () => {
+                    const data = await getAllProject();
+
+                    setPost(data);
+                  }}>
                 VIEW ALL
               </Link>
             </Box>
@@ -93,60 +111,7 @@ function Portfolio() {
           </Flex>
         </Box>
 
-        <Box w={{ base: "100vw" }}>
-          <Flex
-            flexDir="row"
-            flexWrap="wrap"
-            w={{ base: "inherit" }}
-            maxW={{ md: "1000px", xl: "1300px" }}
-            m={{ md: "auto" }}
-            justifyContent={{ base: "center" }}
-          >
-            {/* For loop */}
-            <Box
-              w={{ base: "70%", md: "50%", xl: "40%" }}
-              maxW={{ md: "500px", xl: "600px" }}
-              m={{ base: "50px auto 20px auto", md: "30px auto 50px auto" }}
-              textAlign={{ base: "center" }}
-              p={{ md: "20px", xl: "10px" }}
-              onClick={() => {}}
-            >
-              <Box
-                w={{ base: "70%", md: "100%" }}
-                h={{ base: "250px", xl: "300px" }}
-                minW={{ base: "300px", xl: "530px" }}
-                bg="grey"
-                maxW={{ base: "450px", md: "450px", xl: "550px" }}
-                m={{ base: "auto" }}
-              ></Box>
-              <Text mt={{ base: "30px" }} fontSize={{ base: "1.2rem" }}>
-                {" "}
-                TITLE
-              </Text>
-            </Box>
-            <Box
-              w={{ base: "70%", md: "50%", xl: "40%" }}
-              maxW={{ md: "500px", xl: "600px" }}
-              m={{ base: "50px auto 20px auto", md: "30px auto 50px auto" }}
-              p={{ md: "20px", xl: "10px" }}
-              textAlign={{ base: "center" }}
-              onClick={() => {}}
-            >
-              <Box
-                w={{ base: "70%", md: "100%" }}
-                h={{ base: "250px", xl: "300px" }}
-                minW={{ base: "300px", xl: "530px" }}
-                bg="grey"
-                maxW={{ base: "450px", md: "450px", xl: "550px" }}
-                m={{ base: "auto" }}
-              ></Box>
-              <Text mt={{ base: "30px" }} fontSize={{ base: "1.2rem" }}>
-                {" "}
-                TITLE
-              </Text>
-            </Box>
-          </Flex>
-        </Box>
+        <PortfolioContent {...post!}/>
       </Box>
       <Footer></Footer>
     </>
