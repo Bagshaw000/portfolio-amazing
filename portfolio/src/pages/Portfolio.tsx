@@ -17,7 +17,7 @@ import PortfolioContent from "../component/PortfolioContent";
 import { useState, useEffect } from "react";
 import { IProject } from "../services";
 
-import { getAllProject } from "../services/project";
+import { getAdProject, getAllProject, getBrandProject, getContentProject } from "../services/project";
 
 function Portfolio() {
 
@@ -28,7 +28,11 @@ function Portfolio() {
     }
     fetchData();
   }, []);
-  console.log(post);
+  // console.log(post);
+
+
+
+
   return (
     <>
       <Header heading="EXPLORE MY FEATURE WORK" subheading="PORTFOLIO"></Header>
@@ -85,26 +89,38 @@ function Portfolio() {
             <Box w={{ md: "fit-content" }}>
               <Link onClick={async () => {
                     const data = await getAllProject();
-
+                    console.log(data)
                     setPost(data);
                   }}>
                 VIEW ALL
               </Link>
             </Box>
             <Box w={{ md: "fit-content" }}>
-              <Link href="https://chakra-ui.com" isExternal>
+              <Link onClick={async () => {
+                    const data = await getContentProject();
+                    console.log(data)
+                    setPost(data);
+                  }}>
                 CONTENT CREATION
               </Link>
             </Box>
 
             <Box w={{ md: "fit-content" }}>
-              <Link href="https://chakra-ui.com" isExternal>
+              <Link onClick={async () => {
+                    const data = await getAdProject();
+
+                    setPost(data);
+                  }}>
                 AD PRODUCTION
               </Link>
             </Box>
 
             <Box w={{ md: "fit-content" }}>
-              <Link href="https://chakra-ui.com" isExternal>
+              <Link onClick={async () => {
+                    const data = await getBrandProject();
+
+                    setPost(data);
+                  }}>
                 BRANDING
               </Link>
             </Box>

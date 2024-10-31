@@ -37,8 +37,9 @@ interface Slug {
 }
 
 export interface IProject {
+  _id: string;
   title: string;
-  image: Array<string>;
+  images: Array<Image>;
   client: string;
   category: string;
   duration: number;

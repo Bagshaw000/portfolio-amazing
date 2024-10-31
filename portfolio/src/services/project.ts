@@ -20,15 +20,14 @@ export async function getAllProject(): Promise<IProject[] | undefined> {
 
 export async function getContentProject(): Promise<IProject[] | undefined> {
   try {
-    const getData: Array<IProject> = await client.fetch(
-      `*[_type == "project" && category == content ]{title,_id,category, duration,tools,overview
+    const getData = await client.fetch(
+      `*[_type == "project" && category == "content" ]{title,_id,category, duration,tools,overview
       ,images { asset -> {
               _id,
               url
-            },
-            alt,}, comment}`
+            }, alt}, comment}`
     );
-
+    console.log(getData);
     return getData;
   } catch (err) {
     if (err instanceof Error) console.log(err.message);
@@ -38,7 +37,7 @@ export async function getContentProject(): Promise<IProject[] | undefined> {
 export async function getAdProject(): Promise<IProject[] | undefined> {
   try {
     const getData: Array<IProject> = await client.fetch(
-      `*[_type == "project" && category == ad ]{title,_id,category, duration,tools,overview
+      `*[_type == "project" && category == "ad" ]{title,_id,category, duration,tools,overview
       ,images { asset -> {
               _id,
               url
@@ -55,7 +54,7 @@ export async function getAdProject(): Promise<IProject[] | undefined> {
 export async function getBrandProject(): Promise<IProject[] | undefined> {
   try {
     const getData: Array<IProject> = await client.fetch(
-      `*[_type == "project" && category == brand ]{title,_id,category, duration,tools,overview
+      `*[_type == "project" && category == "brand" ]{title,_id,category, duration,tools,overview
       ,images { asset -> {
               _id,
               url
