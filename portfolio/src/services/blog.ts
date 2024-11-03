@@ -68,7 +68,7 @@ export async function getBrandPost(): Promise<IBlogPost[] | undefined> {
 export async function getPost(id:string): Promise<IBlogPost[] | undefined> {
   try {
     const getData: Array<IBlogPost> = await client.fetch(
-      `*[_type == "post" && _id == ${id}]{title,_id,slug,author,mainImage { asset -> {
+      `*[_type == "post" && _id == "${id}"]{title,_id,slug,author,mainImage { asset -> {
               _id,
               url
             },

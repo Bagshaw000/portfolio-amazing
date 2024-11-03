@@ -32,7 +32,7 @@ function Blog() {
     }
     fetchData();
   }, []);
-  console.log(post);
+  // console.log(post);
 
   return (
     <>

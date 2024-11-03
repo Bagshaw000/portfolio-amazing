@@ -27,6 +27,8 @@ import "@fontsource/hind"
 import Portfolio from "./pages/Portfolio";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
+import PortfolioPost from "./component/PortfolioPost";
+import BlogPost from "./component/BlogPost";
 
 const colors = {
   brand: {
@@ -62,15 +64,26 @@ const router = createBrowserRouter([
   {
     path: "/portfolio",
     element: <Portfolio/>,
+    children: [
+      {
+        path: "/portfolio/:projectId",
+        element:<PortfolioPost/>
+      }
+    ]
   },
   {
     path: "/blog",
     element: <Blog/>,
+  
+  },
+  {
+    path: "/blog/:blogId",
+    element:<BlogPost/>
   },
   {
     path: "/contact",
     element: <Contact/>,
-  },
+  }
 ]);
 
 createRoot(document.getElementById("root")!).render(

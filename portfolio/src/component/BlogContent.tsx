@@ -1,6 +1,8 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Text, Link } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { Link as ReactRouterLink } from "react-router-dom";
 import { IBlogPost } from "../services";
+import BlogPost from "./BlogPost";
 
 function BlogContent(props: Array<IBlogPost>) {
   const [posts, setPosts] = useState<Array<IBlogPost>>([]);
@@ -81,13 +83,19 @@ function BlogContent(props: Array<IBlogPost>) {
                   {data.body}
                   {}
                 </Text>
-                <Text
+                <Link
                   fontSize={{ base: "0.6rem" }}
                   color={{ base: "brand.600" }}
-                  onClick={() => {}}
+                  as={ReactRouterLink}
+                  onClick={()=>{
+                    console.log(data);
+                    <BlogPost {...data!}/>
+                  }}
+                  to={`/blog/:singlepost`}
+              
                 >
                   Read more
-                </Text>
+                </Link>
               </Flex>
             </Flex>
           </Box>
