@@ -2,7 +2,7 @@ import { Box, Flex, Text, Link } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { IBlogPost } from "../services";
-import BlogPost from "./BlogPost";
+
 
 function BlogContent(props: Array<IBlogPost>) {
   const [posts, setPosts] = useState<Array<IBlogPost>>([]);
@@ -51,7 +51,7 @@ function BlogContent(props: Array<IBlogPost>) {
                 fontSize={{ base: "0.6rem" }}
               >
                 <Text>
-                  {" "}
+                 
                   {new Date(data.publishedAt!).toLocaleDateString(undefined, {
                     year: "numeric",
                     month: "long",
@@ -80,19 +80,18 @@ function BlogContent(props: Array<IBlogPost>) {
                   w={{ base: "60%" }}
                   noOfLines={2}
                 >
-                  {data.body}
+                  {data.body[0].body}
                   {}
                 </Text>
                 <Link
                   fontSize={{ base: "0.6rem" }}
                   color={{ base: "brand.600" }}
                   as={ReactRouterLink}
-                  onClick={()=>{
-                    console.log(data);
-                    <BlogPost {...data!}/>
-                  }}
-                  to={`/blog/:singlepost`}
-              
+                  // onClick={() => {
+                  //   // console.log(data);
+                  //   <BlogPost  />;
+                  // }}
+                  to={`/blog/:${data._id}`}
                 >
                   Read more
                 </Link>

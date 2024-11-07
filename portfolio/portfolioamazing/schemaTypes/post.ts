@@ -55,14 +55,23 @@ export default defineType({
     defineField({
       name: 'body',
       title: 'Body',
-      type: 'text',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {name: 'subtitle', type: 'string', title: 'Subtitle'},
+            {name: 'body', type: 'string', title: 'Body'},
+          ],
+        },
+      ],
     }),
   ],
 
   preview: {
     select: {
       title: 'title',
-      subtitle: 'body',
+      // subtitle: 'body',
       author: 'author.name',
       media: 'mainImage',
     },

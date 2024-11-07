@@ -10,12 +10,19 @@ export interface HeaderProps {
 export interface IBlogPost {
   _id: string;
   author: string;
-  body: string;
+  body: Array<IBody>;
   title: string;
   categories: Array<BlogCategories>;
   mainImage: Image;
   publishedAt: Date;
   slug: Slug;
+}
+
+interface IBody{
+  _key: string;
+  subtitle:string,
+  body:string
+
 }
 
 interface BlogCategories {
