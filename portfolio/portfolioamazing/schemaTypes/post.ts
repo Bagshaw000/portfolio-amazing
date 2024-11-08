@@ -60,6 +60,7 @@ export default defineType({
         {
           type: 'object',
           fields: [
+            {name: 'image', type: 'image', title: 'Image'},
             {name: 'subtitle', type: 'string', title: 'Subtitle'},
             {name: 'body', type: 'string', title: 'Body'},
           ],

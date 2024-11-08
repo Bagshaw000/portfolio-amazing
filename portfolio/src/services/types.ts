@@ -20,7 +20,8 @@ export interface IBlogPost {
 
 interface IBody{
   _key: string;
-  subtitle:string,
+  image: Image;
+  subtitle:string;
   body:string
 
 }

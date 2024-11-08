@@ -9,6 +9,6 @@ const config: ClientConfig = {
 };
 export const client = createClient(config);
 
-const data = await client.fetch<number>(`count(*)`);
-// data is typed as `number`
-console.log(`Number of documents: ${data}`);
+// const data = await client.fetch<number>(`count(*)`);
+// // data is typed as `number`
+// console.log(`Number of documents: ${data}`);

@@ -25,10 +25,11 @@ import BlogContent from "../component/BlogContent";
 import { useEffect, useState } from "react";
 
 function Blog() {
-  const [post, setPost] = useState<Array<IBlogPost> | undefined>([]);
+  const [post, setPost] = useState<Array<IBlogPost>>([]);
   useEffect(() => {
     async function fetchData() {
-      setPost(await getAllPost());
+      const data = await getAllPost();
+      setPost(data!);
     }
     fetchData();
   }, []);
@@ -71,7 +72,7 @@ function Blog() {
                   onClick={async () => {
                     const data = await getAllPost();
 
-                    setPost(data);
+                    setPost(data!);
                   }}
                 >
                   ALL
@@ -81,7 +82,7 @@ function Blog() {
                   onClick={async () => {
                     const data = await getContentPost();
 
-                    setPost(data);
+                    setPost(data!);
                   }}
                 >
                   CONTENT CREATION
@@ -91,7 +92,7 @@ function Blog() {
                   onClick={async () => {
                     const data = await getAdPost();
 
-                    setPost(data);
+                    setPost(data!);
                   }}
                 >
                   AD PRODUCTION
@@ -101,7 +102,7 @@ function Blog() {
                   onClick={async () => {
                     const data = await getBrandPost();
 
-                    setPost(data);
+                    setPost(data!);
                   }}
                 >
                   BRANDING
@@ -125,7 +126,7 @@ function Blog() {
                 onClick={async () => {
                   const data = await getAllPost();
 
-                  setPost(data);
+                  setPost(data!);
                 }}
               >
                 VIEW ALL
@@ -136,7 +137,7 @@ function Blog() {
                 onClick={async () => {
                   const data = await getContentPost();
 
-                  setPost(data);
+                  setPost(data!);
                 }}
               >
                 CONTENT CREATION
@@ -148,7 +149,7 @@ function Blog() {
                 onClick={async () => {
                   const data = await getAdPost();
 
-                  setPost(data);
+                  setPost(data!);
                 }}
               >
                 AD PRODUCTION
@@ -160,7 +161,7 @@ function Blog() {
                 onClick={async () => {
                   const data = await getBrandPost();
 
-                  setPost(data);
+                  setPost(data!);
                 }}
               >
                 BRANDING
@@ -168,8 +169,8 @@ function Blog() {
             </Box>
           </Flex>
         </Box>
-
-        <BlogContent {...post!} />
+        {/* Work the else statement */}
+        {post.length > 0 ? <BlogContent {...post} /> : <Box> </Box>}
       </Box>
       <Footer></Footer>
     </>
