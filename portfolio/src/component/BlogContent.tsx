@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { IBlogPost } from "../services";
 
-
 function BlogContent(props: Array<IBlogPost>) {
   const [posts, setPosts] = useState<Array<IBlogPost>>([]);
   // setPosts(props);
@@ -38,6 +37,9 @@ function BlogContent(props: Array<IBlogPost>) {
               h={{ base: "200px", md: "230px" }}
               bgColor="gray"
               bgImage={data.mainImage!.asset.url}
+              bgSize="cover"
+              bgPos="center"
+              bgRepeat="no-repeat"
               pos={{ base: "relative" }}
             >
               <Box
@@ -51,7 +53,6 @@ function BlogContent(props: Array<IBlogPost>) {
                 fontSize={{ base: "0.6rem" }}
               >
                 <Text>
-                 
                   {new Date(data.publishedAt!).toLocaleDateString(undefined, {
                     year: "numeric",
                     month: "long",

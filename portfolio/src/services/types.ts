@@ -16,14 +16,14 @@ export interface IBlogPost {
   mainImage: Image;
   publishedAt: Date;
   slug: Slug;
+  tag: Array<string>;
 }
 
-interface IBody{
+interface IBody {
   _key: string;
   image: Image;
-  subtitle:string;
-  body:string
-
+  subtitle: string;
+  body: string;
 }
 
 interface BlogCategories {
@@ -56,8 +56,10 @@ export interface IProject {
   comment: Array<IComment>;
 }
 
-interface IComment {
+export interface IComment {
   name: string;
   email: string;
   comment: string;
+  publishedAt: Date;
+  reply: Array<IComment>;
 }

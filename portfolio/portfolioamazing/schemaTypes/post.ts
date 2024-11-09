@@ -67,6 +67,12 @@ export default defineType({
         },
       ],
     }),
+    defineField({
+      name: 'tag',
+      title: 'Tags',
+      type: 'array',
+      of:[{ type: 'string'}]
+    })
   ],
 
   preview: {

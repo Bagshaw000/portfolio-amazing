@@ -1,5 +1,5 @@
 import { client } from "./sanity";
-import { IBlogPost } from "./types";
+import { IBlogPost, IComment } from "./types";
 
 export async function getAllPost(): Promise<IBlogPost[] | undefined> {
   try {
@@ -8,7 +8,7 @@ export async function getAllPost(): Promise<IBlogPost[] | undefined> {
               _id,
               url
             },
-            alt,},categories,publishedAt, body}`
+            alt,},categories,publishedAt, body, tag}`
     );
 
     return getData;
@@ -75,10 +75,19 @@ export async function getPost(id: string): Promise<IBlogPost[] | undefined> {
             alt,},category,publishedAt, body[]{subtitle,body, image{ asset -> {
               _id,
               url
-            },alt} }  }`
+            },alt} }  , tag}`
     );
 
     return getData;
+  } catch (err) {
+    if (err instanceof Error) console.log(err.message);
+  }
+}
+
+export async function addComment(id: string,comment: IComment): Promise<IComment[] | undefined> {
+  try {
+    const addData = await client.patch(id).set({comment:comment}).commit();
+    return addData.comment;
   } catch (err) {
     if (err instanceof Error) console.log(err.message);
   }
