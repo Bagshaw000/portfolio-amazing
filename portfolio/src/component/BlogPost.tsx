@@ -11,9 +11,9 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Header from "./Header";
-import { IBlogPost } from "../services";
+import { IBlogPost, IComment } from "../services";
 import { Form, Link, useParams } from "react-router-dom";
-import { getPost } from "../services/blog";
+import { addComment, getPost } from "../services/blog";
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 import { Formik, Field, FieldInputProps, FormikProps } from "formik";
 
@@ -165,7 +165,7 @@ function BlogPost() {
         </Box>
       ))}
 
-      <Box w={{ base: "100vw" }} mb={{base:"100px"}}>
+      <Box w={{ base: "100vw" }} mb={{ base: "100px" }}>
         <Box
           w={{ base: "70vw" }}
           m={{ base: "auto" }}
@@ -184,125 +184,132 @@ function BlogPost() {
             Leave a Comment
           </Text>
 
-          <Box w={{base:"fit-content"}} m={{base:"auto"}}>
-
-         
-
-          <Formik
-            initialValues={{ name: "", email: "", comment: "" }}
-            onSubmit={(values, actions) => {
-              setTimeout(() => {
-                alert(JSON.stringify(values, null, 2));
-                actions.setSubmitting(false);
-              }, 1000);
-            }}
-          >
-            {(props) => (
-              <Form>
-                <Flex flexDir={{ base: "column" }}>
-                  <Flex
-                    m={{ base: "auto" }}
-                    w={{ base: "fit-content" }}
-                    h={{ base: "fit-content" }}
-                    minH={{ base: "400px", sm: "300px", md: "350px" }}
-                    maxH={{ base: "fit-content", sm: "400px", md: "400px" }}
-                    flexDir={{ base: "column" }}
-                    justifyContent={{ base: "space-between" }}
-                  >
-                    <Field
-                      name="name"
-                      w={{ base: "fit-content", color: "white" }}
+          <Box w={{ base: "fit-content" }} m={{ base: "auto" }}>
+            <Formik
+              initialValues={{ name: "", email: "", comment: "" }}
+              onSubmit={(values, actions) => {
+                setTimeout(() => {
+                  alert(JSON.stringify(values, null, 2));
+                  actions.setSubmitting(true);
+                }, 1000);
+                // const comment: IComment = {
+                //   name: values.name,
+                //   email: values.email,
+                //   comment: values.comment,
+                //   publishedAt: new Date(),
+                //   reply: [],
+                // };
+                // const data = await addComment(id, comment);
+                // console.log(data);
+                console.log(values.name);
+              }}
+            >
+              {(props) => (
+                <Form>
+                  <Flex flexDir={{ base: "column" }}>
+                    <Flex
+                      m={{ base: "auto" }}
+                      w={{ base: "fit-content" }}
+                      h={{ base: "fit-content" }}
+                      minH={{ base: "400px", sm: "300px", md: "350px" }}
+                      maxH={{ base: "fit-content", sm: "400px", md: "400px" }}
+                      flexDir={{ base: "column" }}
+                      justifyContent={{ base: "space-between" }}
                     >
-                      {({ field }: { field: FieldInputProps<string> }) => (
-                        <FormControl isRequired w={{ base: "fit-content" }}>
-                          <Input
-                            {...field}
-                            placeholder="Your name"
-                            _placeholder={{ opacity: 0.9, color: 'white' }}
-                            p={{ base: "10px 15px" }}
-                            w={{ base: "70vw" }}
-                            maxW={{ sm: "600px"  }}
-                            h={{ sm: "50px" }}
-                            color="white"
-                            bgColor="#1A191D"
-                          ></Input>
-                        </FormControl>
-                      )}
-                    </Field>
+                      <Field
+                        name="name"
+                        w={{ base: "fit-content", color: "white" }}
+                      >
+                        {({ field }: { field: FieldInputProps<string> }) => (
+                          <FormControl isRequired w={{ base: "fit-content" }}>
+                            <Input
+                              {...field}
+                              placeholder="Your name"
+                              _placeholder={{ opacity: 0.9, color: "white" }}
+                              p={{ base: "10px 15px" }}
+                              w={{ base: "70vw" }}
+                              maxW={{ sm: "600px" }}
+                              h={{ sm: "50px" }}
+                              color="white"
+                              bgColor="#1A191D"
+                            ></Input>
+                          </FormControl>
+                        )}
+                      </Field>
 
-                    <Field name="email" w={{ base: "fit-content" }}>
-                      {({
-                        field,
-                        form,
-                      }: {
-                        field: FieldInputProps<string>;
-                        form: FormikProps<{ email: string }>;
-                      }) => (
-                        <FormControl isRequired w={{ base: "fit-content" }}>
-                          <Input
-                            {...field}
-                            placeholder="Your email"
-                            _placeholder={{ opacity: 0.9, color: 'white' }}
-                            p={{ base: "10px 15px" }}
-                            w={{ base: "70vw" }}
-                            maxW={{ sm: "600px"  }}
-                            h={{ sm: "50px" }}
-                            bgColor="#1A191D"
-                          ></Input>
-                          <FormErrorMessage>
-                            {form.errors.email}
-                          </FormErrorMessage>
-                        </FormControl>
-                      )}
-                    </Field>
+                      <Field name="email" w={{ base: "fit-content" }}>
+                        {({
+                          field,
+                          form,
+                        }: {
+                          field: FieldInputProps<string>;
+                          form: FormikProps<{ email: string }>;
+                        }) => (
+                          <FormControl isRequired w={{ base: "fit-content" }}>
+                            <Input
+                              {...field}
+                              placeholder="Your email"
+                              _placeholder={{ opacity: 0.9, color: "white" }}
+                              p={{ base: "10px 15px" }}
+                              w={{ base: "70vw" }}
+                              maxW={{ sm: "600px" }}
+                              h={{ sm: "50px" }}
+                              color="white"
+                              bgColor="#1A191D"
+                            ></Input>
+                            <FormErrorMessage>
+                              {form.errors.email}
+                            </FormErrorMessage>
+                          </FormControl>
+                        )}
+                      </Field>
 
-                    <Field name="comment">
-                      {({ field }: { field: FieldInputProps<string> }) => (
-                        <FormControl isRequired w={{ base: "fit-content" }}>
-                          <Textarea
-                            {...field}
-                            placeholder="Your comment"
-                            _placeholder={{ opacity: 0.9, color: 'white' }}
-                            p={{ base: "10px 15px" }}
-                            h={{
-                              base: "150px",
-                              sm: "200px",
-                            }}
-                            maxW={{ sm: "600px" }}
-                            w={{ base: "70vw" }}
-                            bgColor="#1A191D"
-                          ></Textarea>
-                        </FormControl>
-                      )}
-                    </Field>
+                      <Field name="comment">
+                        {({ field }: { field: FieldInputProps<string> }) => (
+                          <FormControl isRequired w={{ base: "fit-content" }}>
+                            <Textarea
+                              {...field}
+                              placeholder="Your comment"
+                              _placeholder={{ opacity: 0.9, color: "white" }}
+                              p={{ base: "10px 15px" }}
+                              h={{
+                                base: "150px",
+                                sm: "200px",
+                              }}
+                              maxW={{ sm: "600px" }}
+                              w={{ base: "70vw" }}
+                              color="white"
+                              bgColor="#1A191D"
+                            ></Textarea>
+                          </FormControl>
+                        )}
+                      </Field>
+                    </Flex>
+
+                    <Button
+                      m={{ base: "10px 60px" }}
+                      left={{ base: "55%" }}
+                      p={{ base: "10px 20px", sm: "15px 20px" }}
+                      bgColor={{ base: "brand.600" }}
+                      color={{ base: "white" }}
+                      borderRadius={{ base: "40px" }}
+                      isLoading={props.isSubmitting}
+                      type="submit"
+                      fontWeight={{ base: "200" }}
+                      w={{ base: "35%" }}
+                      maxW={{ sm: "210px" }}
+                      rightIcon={<ArrowForwardIcon />}
+                    >
+                      POST A COMMENT
+                    </Button>
                   </Flex>
-
-                  <Button
-                    m={{ base: "10px 60px" }}
-                    left={{base:"55%"}}
-                    p={{ base: "10px 20px", sm: "15px 20px" }}
-                    bgColor={{ base: "brand.600" }}
-                    color={{ base: "white" }}
-                    borderRadius={{ base: "40px" }}
-                    isLoading={props.isSubmitting}
-                    type="submit"
-                    fontWeight={{base:"200"}}
-                    w={{ base: "35%" }}
-                    maxW={{ sm: "210px" }}
-                    rightIcon={<ArrowForwardIcon />}
-                  >
-                    POST A COMMENT
-
-                    
-                  </Button>
-                </Flex>
-              </Form>
-            )}
-          </Formik>
+                </Form>
+              )}
+            </Formik>
           </Box>
         </Box>
       </Box>
-      <Footer/>
+      <Footer />
     </Box>
   ) : (
     <Box>

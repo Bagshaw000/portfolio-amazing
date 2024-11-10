@@ -37,7 +37,9 @@ export default function PortfolioContent(props: Array<IProject>) {
               h={{ base: "250px", xl: "300px" }}
               minW={{ base: "300px", xl: "530px" }}
               bg="grey"
-              // bgImage={data.image[0]}
+              bgImage={data.images[0]!.asset.url}
+              bgPos="center"
+              bgSize="contain"
               maxW={{ base: "450px", md: "450px", xl: "550px" }}
               m={{ base: "auto" }}
             ></Box>

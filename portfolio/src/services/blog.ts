@@ -92,3 +92,12 @@ export async function addComment(id: string,comment: IComment): Promise<IComment
     if (err instanceof Error) console.log(err.message);
   }
 }
+
+export async function getComment(id: string): Promise<IComment[] | undefined> {
+  try {
+    const getData: Array<IComment> = await client.fetch(`*[_type == "post" && _id == "${id}"]{comment}`);
+    return getData;
+  } catch (err) {
+    if (err instanceof Error) console.log(err.message);
+  }
+}

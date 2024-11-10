@@ -17,10 +17,14 @@ import PortfolioContent from "../component/PortfolioContent";
 import { useState, useEffect } from "react";
 import { IProject } from "../services";
 
-import { getAdProject, getAllProject, getBrandProject, getContentProject } from "../services/project";
+import {
+  getAdProject,
+  getAllProject,
+  getBrandProject,
+  getContentProject,
+} from "../services/project";
 
 function Portfolio() {
-
   const [post, setPost] = useState<Array<IProject> | undefined>([]);
   useEffect(() => {
     async function fetchData() {
@@ -29,9 +33,6 @@ function Portfolio() {
     fetchData();
   }, []);
   // console.log(post);
-
-
-
 
   return (
     <>
@@ -49,7 +50,7 @@ function Portfolio() {
         </Box>
 
         <Box w="100vw" textAlign="center">
-          <Menu closeOnSelect={false} >
+          <Menu closeOnSelect={false}>
             <MenuButton
               m={{ base: "auto" }}
               display={{ base: "block", md: "none" }}
@@ -63,15 +64,48 @@ function Portfolio() {
               p={{ base: "10px 20px" }}
               borderRadius={{ base: "10px" }}
               borderColor={{ base: "grey" }}
-              
             >
               <MenuOptionGroup defaultValue="all" title="CATEGORY" type="radio">
-                <MenuItemOption value="all">ALL</MenuItemOption>
-                <MenuItemOption value="content">
+                <MenuItemOption
+                  value="all"
+                  onClick={async () => {
+                    const data = await getAllProject();
+
+                    setPost(data);
+                  }}
+                >
+                  ALL
+                </MenuItemOption>
+                <MenuItemOption
+                  value="content"
+                  onClick={async () => {
+                    const data = await getContentProject();
+
+                    setPost(data);
+                  }}
+                >
                   CONTENT CREATION
                 </MenuItemOption>
-                <MenuItemOption value="ad">AD PRODUCTION</MenuItemOption>
-                <MenuItemOption value="brand">BRANDING</MenuItemOption>
+                <MenuItemOption
+                  value="ad"
+                  onClick={async () => {
+                    const data = await getAdProject();
+
+                    setPost(data);
+                  }}
+                >
+                  AD PRODUCTION
+                </MenuItemOption>
+                <MenuItemOption
+                  value="brand"
+                  onClick={async () => {
+                    const data = await getBrandProject();
+
+                    setPost(data);
+                  }}
+                >
+                  BRANDING
+                </MenuItemOption>
               </MenuOptionGroup>
             </MenuList>
           </Menu>
@@ -87,47 +121,55 @@ function Portfolio() {
             minW={{ md: "50vw" }}
           >
             <Box w={{ md: "fit-content" }}>
-              <Link onClick={async () => {
-                    const data = await getAllProject();
-                    console.log(data)
-                    setPost(data);
-                  }}>
+              <Link
+                onClick={async () => {
+                  const data = await getAllProject();
+                  console.log(data);
+                  setPost(data);
+                }}
+              >
                 VIEW ALL
               </Link>
             </Box>
             <Box w={{ md: "fit-content" }}>
-              <Link onClick={async () => {
-                    const data = await getContentProject();
-                    console.log(data)
-                    setPost(data);
-                  }}>
+              <Link
+                onClick={async () => {
+                  const data = await getContentProject();
+                  console.log(data);
+                  setPost(data);
+                }}
+              >
                 CONTENT CREATION
               </Link>
             </Box>
 
             <Box w={{ md: "fit-content" }}>
-              <Link onClick={async () => {
-                    const data = await getAdProject();
+              <Link
+                onClick={async () => {
+                  const data = await getAdProject();
 
-                    setPost(data);
-                  }}>
+                  setPost(data);
+                }}
+              >
                 AD PRODUCTION
               </Link>
             </Box>
 
             <Box w={{ md: "fit-content" }}>
-              <Link onClick={async () => {
-                    const data = await getBrandProject();
+              <Link
+                onClick={async () => {
+                  const data = await getBrandProject();
 
-                    setPost(data);
-                  }}>
+                  setPost(data);
+                }}
+              >
                 BRANDING
               </Link>
             </Box>
           </Flex>
         </Box>
 
-        <PortfolioContent {...post!}/>
+        <PortfolioContent {...post!} />
       </Box>
       <Footer></Footer>
     </>

@@ -5,7 +5,7 @@ export async function getAllProject(): Promise<IProject[] | undefined> {
   try {
     const getData: Array<IProject> = await client.fetch(
       `*[_type == "project"]{title,_id,category, duration,tools,overview
-      ,images { asset -> {
+      ,images[] { asset -> {
               _id,
               url
             },
@@ -22,7 +22,7 @@ export async function getContentProject(): Promise<IProject[] | undefined> {
   try {
     const getData = await client.fetch(
       `*[_type == "project" && category == "content" ]{title,_id,category, duration,tools,overview
-      ,images { asset -> {
+      ,images[]{ asset -> {
               _id,
               url
             }, alt}, comment}`
@@ -38,7 +38,7 @@ export async function getAdProject(): Promise<IProject[] | undefined> {
   try {
     const getData: Array<IProject> = await client.fetch(
       `*[_type == "project" && category == "ad" ]{title,_id,category, duration,tools,overview
-      ,images { asset -> {
+      ,images[]{ asset -> {
               _id,
               url
             },
@@ -55,7 +55,7 @@ export async function getBrandProject(): Promise<IProject[] | undefined> {
   try {
     const getData: Array<IProject> = await client.fetch(
       `*[_type == "project" && category == "brand" ]{title,_id,category, duration,tools,overview
-      ,images { asset -> {
+      ,images[]{ asset -> {
               _id,
               url
             },
@@ -72,7 +72,7 @@ export async function getProject(id: string): Promise<IProject[] | undefined> {
   try {
     const getData: Array<IProject> = await client.fetch(
       `*[_type == "project" && _id == ${id} ]{title,_id,category, duration,tools,overview
-      ,images { asset -> {
+      ,images[]{ asset -> {
               _id,
               url
             },
