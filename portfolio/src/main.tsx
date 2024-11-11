@@ -64,12 +64,10 @@ const router = createBrowserRouter([
   {
     path: "/portfolio",
     element: <Portfolio/>,
-    children: [
-      {
-        path: "/portfolio/:projectId",
-        element:<PortfolioPost/>
-      }
-    ]
+  },
+  {
+    path: "/portfolio/:projectId",
+    element:<PortfolioPost/>,
   },
   {
     path: "/blog",

@@ -47,6 +47,7 @@ function BlogPost() {
           m={{ base: "50px auto", lg: "150px auto" }}
           maxW="1500px"
           key={data._id}
+       
         >
           <Link to="/blog">
             <IconButton

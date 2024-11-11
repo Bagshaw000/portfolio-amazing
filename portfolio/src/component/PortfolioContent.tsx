@@ -1,13 +1,13 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { IProject } from "../services";
+import { Link } from "react-router-dom";
 
 export default function PortfolioContent(props: Array<IProject>) {
   const [posts, setPosts] = useState<Array<IProject>>([]);
   // setPosts(props);
-  console.log(posts)
+  console.log(posts);
   useEffect(() => {
-
     return setPosts(Object.values(props));
   }, [props]);
   return posts.length > 0 ? (
@@ -32,17 +32,19 @@ export default function PortfolioContent(props: Array<IProject>) {
             onClick={() => {}}
             key={data._id}
           >
-            <Box
-              w={{ base: "70%", md: "100%" }}
-              h={{ base: "250px", xl: "300px" }}
-              minW={{ base: "300px", xl: "530px" }}
-              bg="grey"
-              bgImage={data.images[0]!.asset.url}
-              bgPos="center"
-              bgSize="contain"
-              maxW={{ base: "450px", md: "450px", xl: "550px" }}
-              m={{ base: "auto" }}
-            ></Box>
+            <Link to={`/portfolio/:${data._id}`}>
+              <Box
+                w={{ base: "70%", md: "100%" }}
+                h={{ base: "250px", xl: "300px" }}
+                minW={{ base: "300px", xl: "530px" }}
+                bg="grey"
+                bgImage={data.images[0]!.asset.url}
+                bgPos="center"
+                bgSize="contain"
+                maxW={{ base: "450px", md: "450px", xl: "550px" }}
+                m={{ base: "auto" }}
+              ></Box>
+            </Link>
             <Text mt={{ base: "30px" }} fontSize={{ base: "1.2rem" }}>
               {" "}
               {data.title}
