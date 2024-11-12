@@ -25,12 +25,12 @@ export default defineType({
       name: 'category',
       title: 'Category',
       type: 'string',
-      initialValue: 'content',
+      initialValue: 'Content Creation',
       options: {
         list: [
-          {title: 'Content Creation', value: 'content'},
-          {title: 'Ad Production', value: 'ad'},
-          {title: 'Branding', value: 'brand'},
+          {title: 'Content Creation', value: 'Content Creation'},
+          {title: 'Ad Production', value: 'Ad Production'},
+          {title: 'Branding', value: 'Branding'},
         ],
         layout: 'radio',
       },
@@ -51,10 +51,10 @@ export default defineType({
       ],
       options: {
         list: [
-          {title: 'Canva', value: 'canva'},
-          {title: 'Capcut', value: 'capcut'},
-          {title: 'Metricool', value: 'metricool'},
-          {title: 'Adobe premier', value: 'adobe'},
+          {title: 'Canva', value: 'Canva'},
+          {title: 'Capcut', value: 'Capcut'},
+          {title: 'Metricool', value: 'Metricool'},
+          {title: 'Adobe premier', value: 'Adobe premier'},
         ],
         layout: 'grid',
       },

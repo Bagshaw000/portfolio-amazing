@@ -63,3 +63,7 @@ export interface IComment {
   publishedAt: Date;
   reply: Array<IComment>;
 }
+
+export interface IProjectImage {
+  images: Array<{url:string}>;
+}
