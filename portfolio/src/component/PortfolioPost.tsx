@@ -1,4 +1,4 @@
-import { Box, Flex, IconButton, Text } from "@chakra-ui/react";
+import { Box, Flex, IconButton, Spinner, Text } from "@chakra-ui/react";
 import Header from "./Header";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
@@ -6,6 +6,7 @@ import { IProject, IProjectImage } from "../services";
 import { getProject, getProjectImage } from "../services/project";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import SimpleImageSlider from "react-simple-image-slider";
+import Footer from "./Footer";
 
 function PortfolioPost() {
   const { projectId } = useParams();
@@ -17,8 +18,8 @@ function PortfolioPost() {
   useEffect(() => {
     async function fetchData() {
       const data = await getProject(id);
-      console.log(await getProject(id));
-      console.log(data);
+      // console.log(await getProject(id));
+      // console.log(data);
       return setProject(data!);
     }
     fetchData().then(() => {
@@ -38,7 +39,7 @@ function PortfolioPost() {
       {project!.map((data) => (
         <Box
           w={{ base: "70vw" }}
-          m={{ base: "50px auto", lg: "100px auto" }}
+          m={{ base: "50px auto" }}
           maxW="1500px"
           key={data._id}
         >
@@ -85,17 +86,19 @@ function PortfolioPost() {
           </Box>
 
           <Box
-            h={{ base: "100px", md: "100px" }}
+            h={{ base: "fit-content", md: "100px" }}
             bgColor="#444444"
             m={{ base: "20px auto" }}
+            p={{ base: "20px 50px", md: "20px 0px" }}
           >
             <Flex
-              flexDir={{ base: "column", sm: "row" }}
-              w={{ base: "inherit", sm: "80%" }}
+              flexDir={{ base: "column", md: "row" }}
+              w={{ base: "inherit", sm: "85%" }}
               h={{ base: "inherit", sm: "100%" }}
               m={{ base: "auto" }}
+              minH={{ base: "250px" }}
               justifyContent={{ base: "space-between" }}
-              alignItems={{ base: "center", sm: "center" }}
+              alignItems={{ base: "start", sm: "start" }}
             >
               <Box>
                 <Flex flexDir={{ base: "column" }}>
@@ -146,11 +149,10 @@ function PortfolioPost() {
                     fontSize={{ base: "0.85rem" }}
                     fontWeight={{ base: "400" }}
                   >
-                    
                     Tools
                   </Text>
 
-                  <Flex flexWrap={{ base: "wrap" }} maxW={{ base: "250px" }}>
+                  <Flex flexWrap={{ base: "wrap" }} maxW={{ base: "150px" }}>
                     {data.tools.map((data) => (
                       <Text
                         fontWeight={{ base: "400" }}
@@ -166,14 +168,41 @@ function PortfolioPost() {
             </Flex>
           </Box>
 
-          <Box>
-            
+          <Box
+            color="white"
+            bgColor="#444444"
+            p={{ base: "50px 50px" }}
+            minH={{ base: "250px" }}
+          >
+            <Text fontSize={{ base: "2.5rem" }} fontWeight={{ base: "500" }}>
+              {" "}
+              Overview
+            </Text>
+            <Text color="#AFADAD" fontSize={{ base: "0.95em" }}>
+              {data.overview}
+            </Text>
           </Box>
         </Box>
       ))}
+      <Footer></Footer>
     </Box>
   ) : (
-    <Box>Loading...</Box>
+    <Box>
+      <Header heading="EXPLORE MY FEATURE WORK" subheading="PORTFOLIO"></Header>
+      <Box textAlign={{ base: "center" }} m={{ base: "100px auto" }} w={{ base: "fit-content" }}>
+        <Spinner
+          size={{ base: "xl" }}
+          color="teal.500"
+          thickness="10px"
+          speed="0.8s"
+          margin={{ base: "auto" }}
+        />
+        <Text fontSize={{ base: "1.5rem" }} color="colorPalette.600">
+          Loading...
+        </Text>
+      </Box>
+      <Footer></Footer>
+    </Box>
   );
 }
 

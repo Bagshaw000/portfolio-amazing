@@ -170,7 +170,25 @@ function Blog() {
           </Flex>
         </Box>
         {/* Work the else statement */}
-        {post.length > 0 ? <BlogContent {...post} /> : <Box> </Box>}
+        {post.length > 0 ? (
+          <BlogContent {...post} />
+        ) : (
+          <Box w={{ base: "100vw" }} textAlign={{ base: "center" }}>
+            <Flex
+              p={{ base: "auto" }}
+              h={{ base: "inherit" }}
+              minH={{ base: "250px" }}
+            >
+              <Text
+                fontSize={{ base: "1rem" }}
+                verticalAlign={{ base: "middle" }}
+                margin={{ base: "auto" }}
+              >
+                No blogs post in this category
+              </Text>
+            </Flex>
+          </Box>
+        )}
       </Box>
       <Footer></Footer>
     </>

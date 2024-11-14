@@ -9,7 +9,7 @@ export async function getAllProject(): Promise<IProject[] | undefined> {
               _id,
               url
             },
-            alt,}, comment}, client`
+            alt,}, comment, client}`
     );
 
     return getData;
@@ -25,7 +25,7 @@ export async function getContentProject(): Promise<IProject[] | undefined> {
       ,images[]{ asset -> {
               _id,
               url
-            }, alt}, comment}, client`
+            }, alt}, comment, client}`
     );
     console.log(getData);
     return getData;

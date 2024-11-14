@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export default function PortfolioContent(props: Array<IProject>) {
   const [posts, setPosts] = useState<Array<IProject>>([]);
   // setPosts(props);
-  console.log(posts);
+  // console.log(posts);
   useEffect(() => {
     return setPosts(Object.values(props));
   }, [props]);
@@ -54,6 +54,12 @@ export default function PortfolioContent(props: Array<IProject>) {
       </Flex>
     </Box>
   ) : (
-    <Box></Box>
+    <Box w={{ base: "100vw" }} textAlign={{ base: "center" }}  >
+      <Flex p={{ base: "auto" }} h={{ base: "inherit" }} minH={{ base: "250px" }}>
+      <Text fontSize={{ base: "1rem" }} verticalAlign={{ base: "middle" }} margin={{ base: "auto" }}>
+        No projects found in this category
+      </Text>
+      </Flex>
+    </Box>
   );
 }

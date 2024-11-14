@@ -44,7 +44,7 @@ function BlogPost() {
       {post!.map((data) => (
         <Box
           w={{ base: "70vw" }}
-          m={{ base: "50px auto", lg: "150px auto" }}
+          m={{ base: "50px auto" }}
           maxW="1500px"
           key={data._id}
        
@@ -179,13 +179,15 @@ function BlogPost() {
             color={{ base: "white" }}
             fontSize={{ base: "2rem" }}
             fontWeight={{ base: "500" }}
+            
             mb={{ base: "40px" }}
+            p={{ base: "10px 20px" }}
           >
             {" "}
             Leave a Comment
           </Text>
 
-          <Box w={{ base: "fit-content" }} m={{ base: "auto" }}>
+          <Box w={{ base: "100%" }} m={{ base: "auto" }}>
             <Formik
               initialValues={{ name: "", email: "", comment: "" }}
               onSubmit={(values, actions) => {
@@ -207,28 +209,33 @@ function BlogPost() {
             >
               {(props) => (
                 <Form>
-                  <Flex flexDir={{ base: "column" }}>
+                  <Flex flexDir={{ base: "column" }} 
+                  w={{ base: "100%" }}
+                  >
                     <Flex
                       m={{ base: "auto" }}
-                      w={{ base: "fit-content" }}
+                      w={{ base: "90%" }}
                       h={{ base: "fit-content" }}
-                      minH={{ base: "400px", sm: "300px", md: "350px" }}
+                      minH={{ base: "400px", sm: "350px" }}
                       maxH={{ base: "fit-content", sm: "400px", md: "400px" }}
                       flexDir={{ base: "column" }}
+                      minW={{ base: "500px" }}
+                      // maxW={{ base: "70%" }}
                       justifyContent={{ base: "space-between" }}
                     >
                       <Field
                         name="name"
-                        w={{ base: "fit-content", color: "white" }}
+                        w={{ base: "100%", color: "white" }}
                       >
                         {({ field }: { field: FieldInputProps<string> }) => (
-                          <FormControl isRequired w={{ base: "fit-content" }}>
+                          <FormControl isRequired w={{ base: "100%" }}>
                             <Input
                               {...field}
                               placeholder="Your name"
                               _placeholder={{ opacity: 0.9, color: "white" }}
                               p={{ base: "10px 15px" }}
-                              w={{ base: "70vw" }}
+                             
+                              w={{ base: "90%" }}
                               maxW={{ sm: "600px" }}
                               h={{ sm: "50px" }}
                               color="white"
@@ -238,7 +245,7 @@ function BlogPost() {
                         )}
                       </Field>
 
-                      <Field name="email" w={{ base: "fit-content" }}>
+                      <Field name="email"  w={{ base: "100%", color: "white" }}>
                         {({
                           field,
                           form,
@@ -246,13 +253,14 @@ function BlogPost() {
                           field: FieldInputProps<string>;
                           form: FormikProps<{ email: string }>;
                         }) => (
-                          <FormControl isRequired w={{ base: "fit-content" }}>
+                          <FormControl isRequired w={{ base: "100%" }}>
                             <Input
                               {...field}
                               placeholder="Your email"
                               _placeholder={{ opacity: 0.9, color: "white" }}
                               p={{ base: "10px 15px" }}
-                              w={{ base: "70vw" }}
+                              
+                              w={{ base: "90%" }}
                               maxW={{ sm: "600px" }}
                               h={{ sm: "50px" }}
                               color="white"
@@ -267,7 +275,7 @@ function BlogPost() {
 
                       <Field name="comment">
                         {({ field }: { field: FieldInputProps<string> }) => (
-                          <FormControl isRequired w={{ base: "fit-content" }}>
+                          <FormControl isRequired w={{ base: "100%" }}>
                             <Textarea
                               {...field}
                               placeholder="Your comment"
@@ -278,7 +286,7 @@ function BlogPost() {
                                 sm: "200px",
                               }}
                               maxW={{ sm: "600px" }}
-                              w={{ base: "70vw" }}
+                              w={{ base: "90%" }}
                               color="white"
                               bgColor="#1A191D"
                             ></Textarea>
@@ -289,7 +297,7 @@ function BlogPost() {
 
                     <Button
                       m={{ base: "10px 60px" }}
-                      left={{ base: "55%" }}
+                      left={{ base: "30%", md: "55%" }}
                       p={{ base: "10px 20px", sm: "15px 20px" }}
                       bgColor={{ base: "brand.600" }}
                       color={{ base: "white" }}

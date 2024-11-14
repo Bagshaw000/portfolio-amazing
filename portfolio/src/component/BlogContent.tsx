@@ -103,7 +103,21 @@ function BlogContent(props: Array<IBlogPost>) {
       </Flex>
     </Box>
   ) : (
-    <Box></Box>
+    <Box w={{ base: "100vw" }} textAlign={{ base: "center" }}>
+      <Flex
+        p={{ base: "auto" }}
+        h={{ base: "inherit" }}
+        minH={{ base: "250px" }}
+      >
+        <Text
+          fontSize={{ base: "1rem" }}
+          verticalAlign={{ base: "middle" }}
+          margin={{ base: "auto" }}
+        >
+          No blogs uploa in this category
+        </Text>
+      </Flex>
+    </Box>
   );
 }
 
