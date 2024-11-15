@@ -47,7 +47,6 @@ function BlogPost() {
           m={{ base: "50px auto" }}
           maxW="1500px"
           key={data._id}
-       
         >
           <Link to="/blog">
             <IconButton
@@ -179,7 +178,6 @@ function BlogPost() {
             color={{ base: "white" }}
             fontSize={{ base: "2rem" }}
             fontWeight={{ base: "500" }}
-            
             mb={{ base: "40px" }}
             p={{ base: "10px 20px" }}
           >
@@ -189,44 +187,41 @@ function BlogPost() {
 
           <Box w={{ base: "100%" }} m={{ base: "auto" }}>
             <Formik
-              initialValues={{ name: "", email: "", comment: "" }}
-              onSubmit={(values, actions) => {
-                setTimeout(() => {
-                  alert(JSON.stringify(values, null, 2));
-                  actions.setSubmitting(true);
-                }, 1000);
-                // const comment: IComment = {
-                //   name: values.name,
-                //   email: values.email,
-                //   comment: values.comment,
-                //   publishedAt: new Date(),
-                //   reply: [],
-                // };
-                // const data = await addComment(id, comment);
-                // console.log(data);
+              initialValues={{ fname: "", email: "", comment: "" }}
+              onSubmit={ (values, actions) => {
+                // setTimeout(() => {
+                //   alert(JSON.stringify(values, null, 2));
+                //   actions.setSubmitting(false);
+                // }, 1000);
+                // actions.setSubmitting(true);
                 console.log(values.name);
+                const comment: IComment = {
+                  name: values.name,
+                  email: values.email,
+                  comment: values.comment,
+                  publishedAt: new Date(),
+                  reply: [],
+                };
+                const data = addComment(id, comment);
+                console.log(data);
+                console.log(values.fname);
               }}
             >
               {(props) => (
                 <Form>
-                  <Flex flexDir={{ base: "column" }} 
-                  w={{ base: "100%" }}
-                  >
+                  <Flex flexDir={{ base: "column" }} w={{ base: "100%" }}>
                     <Flex
                       m={{ base: "auto" }}
                       w={{ base: "90%" }}
                       h={{ base: "fit-content" }}
-                      minH={{ base: "400px", sm: "350px" }}
+                      minH={{ base: "350px", sm: "350px" }}
                       maxH={{ base: "fit-content", sm: "400px", md: "400px" }}
                       flexDir={{ base: "column" }}
-                      minW={{ base: "500px" }}
+                      minW={{ base: "250px" }}
                       // maxW={{ base: "70%" }}
                       justifyContent={{ base: "space-between" }}
                     >
-                      <Field
-                        name="name"
-                        w={{ base: "100%", color: "white" }}
-                      >
+                      <Field name="fname" w={{ base: "100%", color: "white" }}>
                         {({ field }: { field: FieldInputProps<string> }) => (
                           <FormControl isRequired w={{ base: "100%" }}>
                             <Input
@@ -234,7 +229,6 @@ function BlogPost() {
                               placeholder="Your name"
                               _placeholder={{ opacity: 0.9, color: "white" }}
                               p={{ base: "10px 15px" }}
-                             
                               w={{ base: "90%" }}
                               maxW={{ sm: "600px" }}
                               h={{ sm: "50px" }}
@@ -245,7 +239,7 @@ function BlogPost() {
                         )}
                       </Field>
 
-                      <Field name="email"  w={{ base: "100%", color: "white" }}>
+                      <Field name="email" w={{ base: "100%", color: "white" }}>
                         {({
                           field,
                           form,
@@ -259,7 +253,6 @@ function BlogPost() {
                               placeholder="Your email"
                               _placeholder={{ opacity: 0.9, color: "white" }}
                               p={{ base: "10px 15px" }}
-                              
                               w={{ base: "90%" }}
                               maxW={{ sm: "600px" }}
                               h={{ sm: "50px" }}
@@ -272,7 +265,6 @@ function BlogPost() {
                           </FormControl>
                         )}
                       </Field>
-
                       <Field name="comment">
                         {({ field }: { field: FieldInputProps<string> }) => (
                           <FormControl isRequired w={{ base: "100%" }}>
@@ -282,7 +274,7 @@ function BlogPost() {
                               _placeholder={{ opacity: 0.9, color: "white" }}
                               p={{ base: "10px 15px" }}
                               h={{
-                                base: "150px",
+                                base: "200px",
                                 sm: "200px",
                               }}
                               maxW={{ sm: "600px" }}
@@ -294,24 +286,26 @@ function BlogPost() {
                         )}
                       </Field>
                     </Flex>
-
-                    <Button
-                      m={{ base: "10px 60px" }}
-                      left={{ base: "30%", md: "55%" }}
-                      p={{ base: "10px 20px", sm: "15px 20px" }}
-                      bgColor={{ base: "brand.600" }}
-                      color={{ base: "white" }}
-                      borderRadius={{ base: "40px" }}
-                      isLoading={props.isSubmitting}
-                      type="submit"
-                      fontWeight={{ base: "200" }}
-                      w={{ base: "35%" }}
-                      maxW={{ sm: "210px" }}
-                      rightIcon={<ArrowForwardIcon />}
-                    >
-                      POST A COMMENT
-                    </Button>
                   </Flex>
+                  <Button
+                    m={{ base: "10px auto", sm: "10px 40px" }}
+                    // left={{  md: "55%" }}
+                    p={{
+                      base: "10px 20px",
+                      sm: "15px 20px",
+                      lg: "15px 50px",
+                      xl: "15px 70px",
+                    }}
+                    bgColor={{ base: "brand.600" }}
+                    color={{ base: "white" }}
+                    borderRadius={{ base: "40px" }}
+                    isLoading={props.isSubmitting}
+                    type="submit"
+                    fontWeight={{ base: "200" }}
+                    rightIcon={<ArrowForwardIcon />}
+                  >
+                    POST A COMMENT
+                  </Button>
                 </Form>
               )}
             </Formik>

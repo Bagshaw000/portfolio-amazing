@@ -31,7 +31,9 @@ function BlogContent(props: Array<IBlogPost>) {
             minW={{ base: "300px" }}
             maxW={{ base: "350px" }}
             key={data._id}
+            
           >
+            <Link as={ReactRouterLink} to={`/blog/:${data._id}`}>
             <Box
               w={{ base: "100%" }}
               h={{ base: "200px", md: "230px" }}
@@ -61,6 +63,7 @@ function BlogContent(props: Array<IBlogPost>) {
                 </Text>
               </Box>
             </Box>
+            </Link>
             <Flex
               flexDir="column"
               w={{ base: "100%" }}
