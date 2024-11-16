@@ -65,5 +65,12 @@ export interface IComment {
 }
 
 export interface IProjectImage {
-  images: Array<{url:string}>;
+  images: Array<{ url: string }>;
+}
+
+export interface IClientEnquiry {
+  fname: string;
+  lname: string;
+  email: string;
+  message: string;
 }

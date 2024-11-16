@@ -14,6 +14,8 @@ import {
 
 import { Field, FieldInputProps, Form, Formik, FormikProps } from "formik";
 import { EmailIcon } from "@chakra-ui/icons";
+import { clientEnquiry } from "../services/contact";
+import { IClientEnquiry } from "../services";
 
 function Contact() {
   return (
@@ -49,14 +51,14 @@ function Contact() {
         <Box w={{ base: "100vw" }}>
           <Flex
             borderWidth={{ base: "1px" }}
-            p={{ base: "1.5px 10px", md:"2.5px 10px" }}
+            p={{ base: "1.5px 10px", md: "2.5px 10px" }}
             bgColor={{ base: "white" }}
             color={{ base: "gray" }}
             justifyContent={{ base: "start" }}
             alignItems={{ base: "center" }}
             borderRadius={{ base: "5px" }}
             // borderColor={{ base: "gray" }}
-            h={{sm:"50px"}}
+            h={{ sm: "50px" }}
             w={{ base: "70vw" }}
             m={{ base: "auto" }}
             maxW={{ sm: "500px" }}
@@ -81,11 +83,15 @@ function Contact() {
         <Box mt={{ base: "20px" }}>
           <Formik
             initialValues={{ fname: "", lname: "", email: "", message: "" }}
-            onSubmit={(values, actions) => {
-              setTimeout(() => {
-                alert(JSON.stringify(values, null, 2));
-                actions.setSubmitting(false);
-              }, 1000);
+            onSubmit={async (values) => {
+              const data: IClientEnquiry = {
+                fname: values.fname,
+                lname: values.lname,
+                email: values.email,
+                message: values.message,
+              };
+              const res = await clientEnquiry(data);
+              console.log(res.statusCode);
             }}
           >
             {(props) => (
@@ -95,7 +101,7 @@ function Contact() {
                     m={{ base: "auto" }}
                     w={{ base: "fit-content" }}
                     h={{ base: "fit-content" }}
-                    minH={{ base: "400px", sm:"500px", md:"520px" }}
+                    minH={{ base: "400px", sm: "500px", md: "520px" }}
                     flexDir={{ base: "column" }}
                     justifyContent={{ base: "space-between" }}
                   >

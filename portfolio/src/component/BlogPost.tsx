@@ -188,15 +188,15 @@ function BlogPost() {
           <Box w={{ base: "100%" }} m={{ base: "auto" }}>
             <Formik
               initialValues={{ fname: "", email: "", comment: "" }}
-              onSubmit={ (values, actions) => {
+              onSubmit={ (values) => {
                 // setTimeout(() => {
                 //   alert(JSON.stringify(values, null, 2));
                 //   actions.setSubmitting(false);
                 // }, 1000);
                 // actions.setSubmitting(true);
-                console.log(values.name);
+                console.log(values.fname);
                 const comment: IComment = {
-                  name: values.name,
+                  name: values.fname,
                   email: values.email,
                   comment: values.comment,
                   publishedAt: new Date(),
