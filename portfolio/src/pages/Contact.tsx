@@ -15,7 +15,7 @@ import {
 import { Field, FieldInputProps, Form, Formik, FormikProps } from "formik";
 import { EmailIcon } from "@chakra-ui/icons";
 import { clientEnquiry } from "../services/contact";
-import { IClientEnquiry } from "../services";
+// import { IClientEnquiry } from "../services";
 
 function Contact() {
   return (
@@ -83,15 +83,15 @@ function Contact() {
         <Box mt={{ base: "20px" }}>
           <Formik
             initialValues={{ fname: "", lname: "", email: "", message: "" }}
-            onSubmit={async (values) => {
-              const data: IClientEnquiry = {
-                fname: values.fname,
-                lname: values.lname,
-                email: values.email,
-                message: values.message,
-              };
-              const res = await clientEnquiry(data);
-              console.log(res.statusCode);
+            onSubmit={async (values, { setSubmitting, setStatus }) => {
+              try {
+                await clientEnquiry(values);
+                setStatus({ success: true });
+              } catch (err) {
+                setStatus({ success: false, error: `Failed to send message ${err}` });
+              } finally {
+                setSubmitting(false);
+              }
             }}
           >
             {(props) => (
