@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 
 import { Field, FieldInputProps, Form, Formik, FormikProps } from "formik";
-import { EmailIcon } from "@chakra-ui/icons";
+// import { EmailIcon } from "@chakra-ui/icons";
 import { clientEnquiry } from "../services/contact";
 // import { IClientEnquiry } from "../services";
 
@@ -48,7 +48,7 @@ function Contact() {
           </Flex>
         </Box>
 
-        <Box w={{ base: "100vw" }}>
+        {/* <Box w={{ base: "100vw" }}>
           <Flex
             borderWidth={{ base: "1px" }}
             p={{ base: "1.5px 10px", md: "2.5px 10px" }}
@@ -78,7 +78,7 @@ function Contact() {
             </Box>
             <Box></Box>
           </Flex>
-        </Box>
+        </Box> */}
 
         <Box mt={{ base: "20px" }}>
           <Formik

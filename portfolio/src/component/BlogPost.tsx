@@ -23,13 +23,13 @@ function BlogPost() {
   const { blogId } = useParams();
   const id = blogId!.substring(1);
   const [post, setPost] = useState<Array<IBlogPost>>([]);
-  console.log(blogId);
+  
   console.log(id);
 
   useEffect(() => {
     async function fetchData() {
       const data = await getPost(id);
-      console.log(data);
+      // console.log(data);
       return setPost(data!);
     }
     fetchData();
@@ -144,6 +144,7 @@ function BlogPost() {
                       width={{ base: "fit-content" }}
                       fontSize={{ base: "0.6rem" }}
                       ml={{ base: "10px" }}
+                      key={index}
                     >
                       <Text key={index}>{tag}</Text>
                     </Box>
@@ -154,6 +155,7 @@ function BlogPost() {
                       color="white"
                       width={{ base: "fit-content" }}
                       fontSize={{ base: "0.6rem" }}
+                      key={index}
                     >
                       <Text key={index}>{tag}</Text>
                     </Box>
@@ -188,23 +190,25 @@ function BlogPost() {
           <Box w={{ base: "100%" }} m={{ base: "auto" }}>
             <Formik
               initialValues={{ fname: "", email: "", comment: "" }}
-              onSubmit={ (values) => {
-                // setTimeout(() => {
-                //   alert(JSON.stringify(values, null, 2));
-                //   actions.setSubmitting(false);
-                // }, 1000);
-                // actions.setSubmitting(true);
-                console.log(values.fname);
-                const comment: IComment = {
-                  name: values.fname,
-                  email: values.email,
-                  comment: values.comment,
-                  publishedAt: new Date(),
-                  reply: [],
-                };
-                const data = addComment(id, comment);
-                console.log(data);
-                console.log(values.fname);
+              onSubmit={async (values, { setSubmitting, resetForm }) => {
+                try {
+                  console.log("test")
+                  const cmt: IComment = {
+                    name: values.fname,
+                    email: values.email,
+                    comment: values.comment,
+                    publishedAt: new Date(),
+                    reply: [],
+                  };
+                  await addComment(id, cmt);
+                  resetForm();
+                  // Optional: Add success message here
+                } catch (error) {
+                  console.error('Error submitting comment:', error);
+                  // Optional: Add error handling here
+                } finally {
+                  setSubmitting(false);
+                }
               }}
             >
               {(props) => (
