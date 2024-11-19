@@ -84,7 +84,7 @@ export async function getPost(id: string): Promise<IBlogPost[] | undefined> {
   }
 }
 
-export async function addComment(id: string,comment: IComment): Promise<IComment[] | undefined> {
+export async function addComment(id: string,comment: IComment[]): Promise<IComment[] | undefined> {
   try {
     console.log(id,comment)
     const addData = await client.patch(id).set({comment:comment}).commit();

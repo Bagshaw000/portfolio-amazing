@@ -4,6 +4,8 @@ export default defineType({
   name: 'post',
   title: 'Post',
   type: 'document',
+  
+  liveEdit: true,
   fields: [
     defineField({
       name: 'title',
@@ -71,8 +73,27 @@ export default defineType({
       name: 'tag',
       title: 'Tags',
       type: 'array',
-      of:[{ type: 'string'}]
-    })
+      of: [{type: 'string'}],
+    }),
+    defineField({
+      name: 'comment',
+      title: 'Comment',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            
+            
+            {name: 'name', type: 'string', title: 'Name'},
+            {name: 'email', type: 'string', title: 'Email'},
+            {name: 'comment', type: 'string', title: 'Comment'},
+            {name: 'publishedAt', type: 'datetime', title: 'Published at'},
+            {name: 'reply', type: 'array', title: 'Reply', of: [{type: 'string'}]},
+          ],
+        },
+      ],
+    }),
   ],
 
   preview: {

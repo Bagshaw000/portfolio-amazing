@@ -12,10 +12,10 @@ import {
 import { useEffect, useState } from "react";
 import Header from "./Header";
 import { IBlogPost, IComment } from "../services";
-import { Form, Link, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { addComment, getPost } from "../services/blog";
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
-import { Formik, Field, FieldInputProps, FormikProps } from "formik";
+import { Formik, Field, FieldInputProps, Form, FormikProps } from "formik";
 
 import Footer from "./Footer";
 
@@ -23,7 +23,7 @@ function BlogPost() {
   const { blogId } = useParams();
   const id = blogId!.substring(1);
   const [post, setPost] = useState<Array<IBlogPost>>([]);
-  
+
   console.log(id);
 
   useEffect(() => {
@@ -192,19 +192,21 @@ function BlogPost() {
               initialValues={{ fname: "", email: "", comment: "" }}
               onSubmit={async (values, { setSubmitting, resetForm }) => {
                 try {
-                  console.log("test")
-                  const cmt: IComment = {
-                    name: values.fname,
-                    email: values.email,
-                    comment: values.comment,
-                    publishedAt: new Date(),
-                    reply: [],
-                  };
+                  console.log("test");
+                  const cmt: IComment[] = [
+                    {
+                      name: values.fname,
+                      email: values.email,
+                      comment: values.comment,
+                      publishedAt: new Date(),
+                      reply: [],
+                    },
+                  ];
                   await addComment(id, cmt);
                   resetForm();
                   // Optional: Add success message here
                 } catch (error) {
-                  console.error('Error submitting comment:', error);
+                  console.error("Error submitting comment:", error);
                   // Optional: Add error handling here
                 } finally {
                   setSubmitting(false);
