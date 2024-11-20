@@ -11,26 +11,31 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Header from "./Header";
-import { IBlogPost, IComment } from "../services";
+import { IBlogPost, IComment,} from "../services";
 import { Link, useParams } from "react-router-dom";
-import { addComment, getPost } from "../services/blog";
+import { addComment, getComment, getPost } from "../services/blog";
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 import { Formik, Field, FieldInputProps, Form, FormikProps } from "formik";
 
 import Footer from "./Footer";
+import BlogComment from "./BlogComment";
 
 function BlogPost() {
   const { blogId } = useParams();
   const id = blogId!.substring(1);
   const [post, setPost] = useState<Array<IBlogPost>>([]);
+  const [comment, setComment] = useState<Array<IComment>>([]);
 
   console.log(id);
 
   useEffect(() => {
     async function fetchData() {
       const data = await getPost(id);
-      // console.log(data);
-      return setPost(data!);
+      const comments = await getComment(id);
+      const commentArr:IComment[] = comments!.at(0)!.comment;
+      console.log(commentArr)
+  
+      return setComment(commentArr),setPost(data!);
     }
     fetchData();
     //  console.log(posts)
@@ -166,7 +171,7 @@ function BlogPost() {
           </Box>
         </Box>
       ))}
-
+      {/* comment section */}
       <Box w={{ base: "100vw" }} mb={{ base: "100px" }}>
         <Box
           w={{ base: "70vw" }}
@@ -318,6 +323,8 @@ function BlogPost() {
           </Box>
         </Box>
       </Box>
+
+      <BlogComment {...comment!} />
       <Footer />
     </Box>
   ) : (

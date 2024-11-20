@@ -4,7 +4,7 @@ export default defineType({
   name: 'post',
   title: 'Post',
   type: 'document',
-  
+
   liveEdit: true,
   fields: [
     defineField({
@@ -83,8 +83,6 @@ export default defineType({
         {
           type: 'object',
           fields: [
-            
-            
             {name: 'name', type: 'string', title: 'Name'},
             {name: 'email', type: 'string', title: 'Email'},
             {name: 'comment', type: 'string', title: 'Comment'},

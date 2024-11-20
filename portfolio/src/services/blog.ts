@@ -1,5 +1,5 @@
 import { client } from "./sanity";
-import { IBlogPost, IComment } from "./types";
+import { IBlogPost, IComment, ICommentArray } from "./types";
 
 export async function getAllPost(): Promise<IBlogPost[] | undefined> {
   try {
@@ -86,17 +86,16 @@ export async function getPost(id: string): Promise<IBlogPost[] | undefined> {
 
 export async function addComment(id: string,comment: IComment[]): Promise<IComment[] | undefined> {
   try {
-    console.log(id,comment)
-    const addData = await client.patch(id).set({comment:comment}).commit();
+    const addData = await client.patch(id).setIfMissing({comment:comment}).append('comment',comment).commit({autoGenerateArrayKeys: true});
     return addData.comment;
   } catch (err) {
     if (err instanceof Error) console.log(err.message);
   }
 }
 
-export async function getComment(id: string): Promise<IComment[] | undefined> {
+export async function getComment(id: string): Promise<ICommentArray[] | undefined> {
   try {
-    const getData: Array<IComment> = await client.fetch(`*[_type == "post" && _id == "${id}"]{comment}`);
+    const getData: Array<ICommentArray> = await client.fetch(`*[_type == "post" && _id == "${id}"]{comment}`);
     return getData;
   } catch (err) {
     if (err instanceof Error) console.log(err.message);

@@ -62,6 +62,11 @@ export interface IComment {
   comment: string;
   publishedAt: Date;
   reply: Array<IComment>;
+  _key?: string;
+}
+
+export interface ICommentArray {
+  comment: Array<IComment>;
 }
 
 export interface IProjectImage {
