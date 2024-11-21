@@ -87,7 +87,23 @@ export default defineType({
             {name: 'email', type: 'string', title: 'Email'},
             {name: 'comment', type: 'string', title: 'Comment'},
             {name: 'publishedAt', type: 'datetime', title: 'Published at'},
-            {name: 'reply', type: 'array', title: 'Reply', of: [{type: 'string'}]},
+            {
+              name: 'reply',
+              type: 'array',
+              title: 'Reply',
+              of: [
+                {
+                  type: 'object',
+                  fields: [
+                    {name: 'name', type: 'string', title: 'Name'},
+                    {name: 'email', type: 'string', title: 'Email'},
+                    {name: 'comment', type: 'string', title: 'Comment'},
+                    {name: 'publishedAt', type: 'datetime', title: 'Published at'},
+                  {name:"replyTo", type:"string", title:"Reply to"}
+                  ],
+                },
+              ],
+            },
           ],
         },
       ],

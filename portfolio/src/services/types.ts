@@ -61,7 +61,8 @@ export interface IComment {
   email: string;
   comment: string;
   publishedAt: Date;
-  reply: Array<IComment>;
+  reply?: Array<IComment>;
+  replyTo?: string;
   _key?: string;
 }
 
@@ -78,4 +79,10 @@ export interface IClientEnquiry {
   lname: string;
   email: string;
   message: string;
+}
+
+export interface IBlogPostReply {
+  replyTo: string;
+  commentKey: string;
+  isReply: boolean;
 }

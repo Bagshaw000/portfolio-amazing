@@ -84,19 +84,42 @@ export async function getPost(id: string): Promise<IBlogPost[] | undefined> {
   }
 }
 
-export async function addComment(id: string,comment: IComment[]): Promise<IComment[] | undefined> {
+export async function addComment(
+  id: string,
+  comment: IComment[]
+): Promise<IComment[] | undefined> {
   try {
-    const addData = await client.patch(id).setIfMissing({comment:comment}).append('comment',comment).commit({autoGenerateArrayKeys: true});
+    const addData = await client
+      .patch(id)
+      .setIfMissing({ comment: comment })
+      .append("comment", comment)
+      .commit({ autoGenerateArrayKeys: true });
     return addData.comment;
   } catch (err) {
     if (err instanceof Error) console.log(err.message);
   }
 }
 
-export async function getComment(id: string): Promise<ICommentArray[] | undefined> {
+export async function getComment(
+  id: string
+): Promise<ICommentArray[] | undefined> {
   try {
-    const getData: Array<ICommentArray> = await client.fetch(`*[_type == "post" && _id == "${id}"]{comment}`);
+    const getData: Array<ICommentArray> = await client.fetch(
+      `*[_type == "post" && _id == "${id}"]{comment}`
+    );
     return getData;
+  } catch (err) {
+    if (err instanceof Error) console.log(err.message);
+  }
+}
+
+export async function replyComment(postId: string, commentKey: string, reply: IComment[]): Promise<IComment[] | undefined> {
+  try {
+    const addData = await client
+      .patch(postId)
+      .append(`comment[_key=="${commentKey}"].reply`, reply)
+      .commit({autoGenerateArrayKeys: true});
+    return addData.reply;
   } catch (err) {
     if (err instanceof Error) console.log(err.message);
   }
