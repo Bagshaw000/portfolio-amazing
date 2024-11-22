@@ -42,7 +42,7 @@ function BlogPost() {
   // console.log(posts)
 
   return post!.length > 0 ? (
-    <Box>
+    <Box key={post!.at(0)!._id}>
       <Header heading="EXPLORE MY BLOG" subheading="BLOG"></Header>
       {post!.map((data) => (
         <Box
@@ -66,10 +66,11 @@ function BlogPost() {
           <Box
             w={{ base: "80vw", sm: "70vw" }}
             maxW={{ md: "1000px", xl: "100%" }}
-            h={{ base: "300px", sm: "400px", xl: "600px" }}
+            h={{ base: "300px", sm: "400px", lg: "600px",  }}
             bgImg={data!.mainImage!.asset.url}
             bgSize="cover"
             bgPos="center"
+            
             bgRepeat="no-repeat"
             m={{ base: "50px auto" }}
           ></Box>
@@ -147,7 +148,7 @@ function BlogPost() {
                       width={{ base: "fit-content" }}
                       fontSize={{ base: "0.6rem" }}
                       ml={{ base: "10px" }}
-                      key={index}
+                      key={`tag-${tag}-${index}`}
                     >
                       <Text key={index}>{tag}</Text>
                     </Box>
@@ -327,11 +328,18 @@ function BlogPost() {
           m={{ base: "auto" }}
           p={{ base: "40px 0px" }}
         >
-          <Text m={{base:"50px auto"}}  fontSize={{base:"1.9rem"}}>Comments</Text>
-          <BlogComment {...comment!} />
+          <Text m={{ base: "50px auto" }} fontSize={{ base: "1.9rem" }}>
+            Comments
+          </Text>
+
+            <BlogComment
+              key={comment!.at(0)!._key}
+              {...comment!}
+            
+            />
+        
         </Box>
       </Box>
-
       <Footer />
     </Box>
   ) : (

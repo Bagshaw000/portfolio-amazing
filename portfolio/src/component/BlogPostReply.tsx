@@ -56,8 +56,9 @@ function BlogPostReply(props: IBlogPostReply) {
           borderRadius="md"
           zIndex={9999}
           w={{ base: "fit-content" }}
+          minW={{ base: "450px" }}
           m={{ base: "auto" }}
-          p={{ base: "10px 20px" }}
+          p={{ base: "10px 30px" }}
         >
           <Flex
             w={{ base: "100%" }}
@@ -103,7 +104,7 @@ function BlogPostReply(props: IBlogPostReply) {
                   <Flex flexDir={{ base: "column" }} w={{ base: "100%" }}>
                     <Flex
                       m={{ base: "auto" }}
-                      w={{ base: "90%" }}
+                      w={{ base: "100%" }}
                       h={{ base: "fit-content" }}
                       minH={{ base: "350px", sm: "350px" }}
                       maxH={{ base: "fit-content", sm: "400px", md: "400px" }}
@@ -177,7 +178,7 @@ function BlogPostReply(props: IBlogPostReply) {
                     </Flex>
                   </Flex>
                   <Button
-                    m={{ base: "10px auto", sm: "10px 40px" }}
+                    m={{ base: "10px auto", sm: "10px auto" }}
                     // left={{  md: "55%" }}
                     p={{
                       base: "10px 20px",

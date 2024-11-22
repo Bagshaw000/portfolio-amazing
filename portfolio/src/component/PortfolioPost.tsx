@@ -25,7 +25,7 @@ function PortfolioPost() {
     fetchData().then(() => {
       fetchImage();
     });
-
+//fix this image issue
     async function fetchImage() {
       const data = await getProjectImage(project);
       console.log(data);
@@ -158,6 +158,7 @@ function PortfolioPost() {
                         fontWeight={{ base: "400" }}
                         color="white"
                         mr={{ base: "5px" }}
+                     
                       >
                         {data}
                       </Text>

@@ -5,6 +5,7 @@ import { IBlogPost } from "../services";
 
 function BlogContent(props: Array<IBlogPost>) {
   const [posts, setPosts] = useState<Array<IBlogPost>>([]);
+  
   // setPosts(props);
   // console.log(posts)
   useEffect(() => {
