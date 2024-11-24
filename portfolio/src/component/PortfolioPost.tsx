@@ -19,7 +19,7 @@ function PortfolioPost() {
     async function fetchData() {
       const data = await getProject(id);
       // console.log(await getProject(id));
-      // console.log(data);
+      console.log(data);
       return setProject(data!);
     }
     fetchData().then(() => {
@@ -31,7 +31,7 @@ function PortfolioPost() {
       console.log(data);
       return setProjectImage(data!);
     }
-  }, [id]);
+  }, [id, project]);
 
   return project!.length > 0 ? (
     <Box>

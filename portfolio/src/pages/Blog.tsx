@@ -26,10 +26,12 @@ import { useEffect, useState } from "react";
 
 function Blog() {
   const [post, setPost] = useState<Array<IBlogPost>>([]);
+ 
   useEffect(() => {
     async function fetchData() {
       const data = await getAllPost();
       setPost(data!);
+      
     }
     fetchData();
   }, []);

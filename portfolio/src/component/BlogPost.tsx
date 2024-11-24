@@ -227,8 +227,7 @@ function BlogPost() {
                       minH={{ base: "350px", sm: "350px" }}
                       maxH={{ base: "fit-content", sm: "400px", md: "400px" }}
                       flexDir={{ base: "column" }}
-                      minW={{ base: "250px" }}
-                      // maxW={{ base: "70%" }}
+                    
                       justifyContent={{ base: "space-between" }}
                     >
                       <Field name="fname" w={{ base: "100%", color: "white" }}>

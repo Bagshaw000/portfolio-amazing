@@ -3,9 +3,27 @@ import Header from "../component/Header";
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import { SocialIcon } from "react-social-icons";
 import Footer from "../component/Footer";
+import { useState, useEffect } from "react";
+import { IBlogPost, IProject, ITestimonial } from "../services";
+import { getAllPost, getTestimonial } from "../services/blog";
+import { getAllProject } from "../services/project";
 
 export default function Home() {
-  const testimonial = ["Dog", "Bird", "Cat", "Mouse"];
+  const [post, setPost] = useState<Array<IBlogPost>>([]);
+  const [project, setProject] = useState<Array<IProject> | undefined>([]);
+  const [testimonial, setTestimonial] = useState<
+    Array<ITestimonial> | undefined
+  >([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getAllPost();
+      setProject(await getAllProject());
+      setTestimonial(await getTestimonial());
+      setPost(data!);
+    }
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -50,7 +68,7 @@ export default function Home() {
               }}
               maxH={{ md: "800px" }}
               maxW={{ xl: "700px" }}
-              bgPos={{ base: "center", md: "top", lg: "bottom" }}
+              bgPos={{ base: "center", md: "top", lg: "center" }}
               bgRepeat="no-repeat"
               bgSize={{ base: "cover" }}
               borderRadius="20px"
@@ -183,7 +201,8 @@ export default function Home() {
 
         <Box
           bgColor="brand.500"
-          w={{ base: "90vw", lg: "95vw" }}
+          w={{ base: "90vw", lg: "90vw" }}
+          maxW={{ base: "1400px" }}
           m="100px  auto"
           p={{ base: "25px 25px 45px 25px" }}
           borderRadius={{ base: "20px" }}
@@ -525,7 +544,7 @@ export default function Home() {
           </Text>
         </Flex>
         <Flex m={{ base: " 40px auto" }} flexWrap={{ base: "wrap" }}>
-          {testimonial.map(() => (
+          {project!.map((data) => (
             <Box
               w={{ base: "100vw", lg: "38vw" }}
               h={{ base: "80vw" }}
@@ -536,8 +555,9 @@ export default function Home() {
               }}
               minH={{ base: "300px" }}
               maxH={{ sm: "500px" }}
-              bgColor="grey"
-              bgGradient="linear(to-b, transparent, brand.900 90%,brand.900 100%)"
+              bgImg={data.images.at(0)!.asset.url}
+              bgPos="center"
+              bgSize="cover"
               borderRadius="20px"
             >
               <Flex
@@ -547,7 +567,16 @@ export default function Home() {
                 w={{ base: "100%" }}
                 h={{ base: "100%" }}
               >
-                <Text color="white">Project Name</Text>
+                <Box
+                  bgColor="brand.900"
+                  w={{ base: "fit-content" }}
+                  p={{ base: "2% 4%" }}
+                  borderRadius={{ base: "15px" }}
+                  color="white"
+                  fontWeight="300"
+                >
+                  <Text>{data.title}</Text>
+                </Box>
 
                 <ArrowForwardIcon
                   p="5px"
@@ -577,20 +606,14 @@ export default function Home() {
           {/* From the database */}
 
           <Flex flexDir="row" overflow="auto">
-            {testimonial.map(() => (
+            {testimonial!.map((data) => (
               <Flex
                 flexDir="column"
                 ml={{ base: "10%" }}
                 w={{ base: "80%", md: "60%" }}
                 minW={{ base: "70vw", md: "50vw", lg: "40vw" }}
               >
-                <Text>
-                  “This team has greatly enhanced our online presence and
-                  conversion rates through their expert digital marketing
-                  services. Their team's professionalism and effective
-                  strategies have made a significant impact. Highly
-                  recommended!”
-                </Text>
+                <Text>{data.title}</Text>
                 <Flex
                   w={{ base: "30%" }}
                   alignItems={{ base: "center" }}
@@ -601,7 +624,7 @@ export default function Home() {
                     w={{ base: "35%" }}
                     bgColor={{ base: "black" }}
                   ></Box>
-                  <Text>Name</Text>
+                  <Text>{data.title}</Text>
                 </Flex>
               </Flex>
             ))}
@@ -627,43 +650,57 @@ export default function Home() {
           </Text>
         </Flex>
 
-        <Flex>
-          <Box
-            w={{ base: "70vw", md: "50vw" }}
-            maxW={{ lg: "500px" }}
-            h={{ base: "300px", md: "450px" }}
-            bgColor={{ base: "grey" }}
-            borderRadius={{ base: "20px" }}
-            mt={{ base: "20px" }}
-            p={{ base: "5%", lg: "2%" }}
-          >
-            <Flex
-              flexDir={{ base: "column" }}
-              justify={{ base: "space-between" }}
-              h={{ base: "100%" }}
+        <Flex flexDir="row" overflow="auto">
+          {post.map((data) => (
+            <Box
+              w={{ base: "70vw", md: "50vw" }}
+              minW={{ base: "300px" }}
+              maxW={{ lg: "500px" }}
+              h={{ base: "300px", md: "450px" }}
+              bgColor={{ base: "grey" }}
+              bgImg={data.mainImage.asset.url}
+              bgSize="cover"
+              bgRepeat="no-repeat"
+              bgPos="center"
+              borderRadius={{ base: "20px" }}
+              mt={{ base: "20px" }}
+              ml={{ base: "10px", sm:"20px" }}
+              p={{ base: "5%", lg: "2%" }}
             >
-              <Box
-                bgColor="brand.900"
-                w={{ base: "fit-content" }}
-                p={{ base: "2% 4%" }}
-                borderRadius={{ base: "15px" }}
-                color="white"
-                fontWeight="300"
+              <Flex
+                flexDir={{ base: "column" }}
+                justify={{ base: "space-between" }}
+                h={{ base: "100%" }}
               >
-                <Text>12th October 24</Text>
-              </Box>
-              <Box
-                bgColor="brand.900"
-                w={{ base: "fit-content" }}
-                p={{ base: "2% 4%" }}
-                borderRadius={{ base: "15px" }}
-                color="white"
-                fontWeight="300"
-              >
-                <Text>Blog Title</Text>
-              </Box>
-            </Flex>
-          </Box>
+                <Box
+                  bgColor="brand.900"
+                  w={{ base: "fit-content" }}
+                  p={{ base: "2% 4%" }}
+                  borderRadius={{ base: "15px" }}
+                  color="white"
+                  fontWeight="300"
+                >
+                  <Text>
+                    {new Date(data.publishedAt!).toLocaleDateString(undefined, {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </Text>
+                </Box>
+                <Box
+                  bgColor="brand.900"
+                  w={{ base: "fit-content" }}
+                  p={{ base: "2% 4%" }}
+                  borderRadius={{ base: "15px" }}
+                  color="white"
+                  fontWeight="300"
+                >
+                  <Text>{data.title}</Text>
+                </Box>
+              </Flex>
+            </Box>
+          ))}
         </Flex>
       </Box>
       {/* Contact Us */}

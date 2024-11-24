@@ -86,3 +86,8 @@ export interface IBlogPostReply {
   commentKey: string;
   isReply: boolean;
 }
+
+export interface ITestimonial{
+  title:string;
+  comment:string;
+}

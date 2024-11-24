@@ -1,5 +1,5 @@
 import { client } from "./sanity";
-import { IBlogPost, IComment, ICommentArray } from "./types";
+import { IBlogPost, IComment, ICommentArray, ITestimonial } from "./types";
 
 export async function getAllPost(): Promise<IBlogPost[] | undefined> {
   try {
@@ -113,13 +113,29 @@ export async function getComment(
   }
 }
 
-export async function replyComment(postId: string, commentKey: string, reply: IComment[]): Promise<IComment[] | undefined> {
+export async function replyComment(
+  postId: string,
+  commentKey: string,
+  reply: IComment[]
+): Promise<IComment[] | undefined> {
   try {
     const addData = await client
       .patch(postId)
       .append(`comment[_key=="${commentKey}"].reply`, reply)
-      .commit({autoGenerateArrayKeys: true});
+      .commit({ autoGenerateArrayKeys: true });
     return addData.reply;
+  } catch (err) {
+    if (err instanceof Error) console.log(err.message);
+  }
+}
+
+export async function getTestimonial() {
+  try {
+    const getData: Array<ITestimonial> = await client.fetch(
+      `*[_type == "testimonial"]{title,comment}`
+    );
+
+    return getData;
   } catch (err) {
     if (err instanceof Error) console.log(err.message);
   }
