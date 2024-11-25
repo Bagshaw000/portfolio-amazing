@@ -85,7 +85,8 @@ function Contact() {
             initialValues={{ fname: "", lname: "", email: "", message: "" }}
             onSubmit={async (values, { setSubmitting, setStatus }) => {
               try {
-                await clientEnquiry(values);
+                const data ={...values, category:"new"}
+                await clientEnquiry(data);
                 setStatus({ success: true });
               } catch (err) {
                 setStatus({ success: false, error: `Failed to send message ${err}` });

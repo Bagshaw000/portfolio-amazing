@@ -75,10 +75,11 @@ export interface IProjectImage {
 }
 
 export interface IClientEnquiry {
-  fname: string;
-  lname: string;
+  fname?: string;
+  lname?: string;
   email: string;
-  message: string;
+  message?: string;
+  category?: string;
 }
 
 export interface IBlogPostReply {
