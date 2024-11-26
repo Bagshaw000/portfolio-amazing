@@ -31,15 +31,11 @@ function BlogPost() {
       const data = await getPost(id);
       const comments = await getComment(id);
       const commentArr: IComment[] = comments!.at(0)!.comment;
-      console.log(commentArr);
 
       return setComment(commentArr), setPost(data!);
     }
     fetchData();
-    //  console.log(posts)
   }, [id]);
-
-  // console.log(posts)
 
   return post!.length > 0 ? (
     <Box key={post!.at(0)!._id}>
@@ -66,11 +62,10 @@ function BlogPost() {
           <Box
             w={{ base: "80vw", sm: "70vw" }}
             maxW={{ md: "1000px", xl: "100%" }}
-            h={{ base: "300px", sm: "400px", lg: "600px",  }}
+            h={{ base: "300px", sm: "400px", lg: "600px" }}
             bgImg={data!.mainImage!.asset.url}
             bgSize="cover"
             bgPos="center"
-            
             bgRepeat="no-repeat"
             m={{ base: "50px auto" }}
           ></Box>
@@ -137,7 +132,6 @@ function BlogPost() {
                 flexWrap={{ base: "wrap" }}
                 w={{ base: "100%" }}
                 ml={{ base: "0px", md: "10px" }}
-                // justifyContent={{ base: "space-between" }}
               >
                 {data.tag.map((tag, index) =>
                   index > 0 ? (
@@ -196,7 +190,6 @@ function BlogPost() {
               initialValues={{ fname: "", email: "", comment: "" }}
               onSubmit={async (values, { setSubmitting, resetForm }) => {
                 try {
-                  console.log("test");
                   const cmt: IComment[] = [
                     {
                       name: values.fname,
@@ -227,7 +220,6 @@ function BlogPost() {
                       minH={{ base: "350px", sm: "350px" }}
                       maxH={{ base: "fit-content", sm: "400px", md: "400px" }}
                       flexDir={{ base: "column" }}
-                    
                       justifyContent={{ base: "space-between" }}
                     >
                       <Field name="fname" w={{ base: "100%", color: "white" }}>
@@ -298,7 +290,6 @@ function BlogPost() {
                   </Flex>
                   <Button
                     m={{ base: "10px auto", sm: "10px 40px" }}
-                    // left={{  md: "55%" }}
                     p={{
                       base: "10px 20px",
                       sm: "15px 20px",
@@ -331,12 +322,7 @@ function BlogPost() {
             Comments
           </Text>
 
-            <BlogComment
-              key={comment!.at(0)!._key}
-              {...comment!}
-            
-            />
-        
+          <BlogComment key={comment!.at(0)!._key} {...comment!} />
         </Box>
       </Box>
       <Footer />

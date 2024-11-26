@@ -4,7 +4,7 @@ import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import BlogPostReply from "./BlogPostReply";
 
 function BlogComment(props: IComment[]) {
-  console.log(Object.values(props));
+
   const [comments, setComment] = useState<Array<IComment>>([]);
   const [showMore, setShowMore] = useState<number>(2);
   const [showReply, setShowReply] = useState<boolean>(false);

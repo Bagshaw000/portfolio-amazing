@@ -18,14 +18,13 @@ function PortfolioPost() {
   useEffect(() => {
     async function fetchData() {
       const data = await getProject(id);
-      // console.log(await getProject(id));
-      console.log(data);
+
       return setProject(data!);
     }
     fetchData().then(() => {
       fetchImage();
     });
-//fix this image issue
+
     async function fetchImage() {
       const data = await getProjectImage(project);
       console.log(data);
@@ -158,7 +157,6 @@ function PortfolioPost() {
                         fontWeight={{ base: "400" }}
                         color="white"
                         mr={{ base: "5px" }}
-                     
                       >
                         {data}
                       </Text>
@@ -190,7 +188,11 @@ function PortfolioPost() {
   ) : (
     <Box>
       <Header heading="EXPLORE MY FEATURE WORK" subheading="PORTFOLIO"></Header>
-      <Box textAlign={{ base: "center" }} m={{ base: "100px auto" }} w={{ base: "fit-content" }}>
+      <Box
+        textAlign={{ base: "center" }}
+        m={{ base: "100px auto" }}
+        w={{ base: "fit-content" }}
+      >
         <Spinner
           size={{ base: "xl" }}
           color="teal.500"

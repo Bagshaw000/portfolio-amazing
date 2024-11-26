@@ -13,9 +13,8 @@ import {
 } from "@chakra-ui/react";
 
 import { Field, FieldInputProps, Form, Formik, FormikProps } from "formik";
-// import { EmailIcon } from "@chakra-ui/icons";
+
 import { clientEnquiry } from "../services/contact";
-// import { IClientEnquiry } from "../services";
 
 function Contact() {
   return (
@@ -48,48 +47,21 @@ function Contact() {
           </Flex>
         </Box>
 
-        {/* <Box w={{ base: "100vw" }}>
-          <Flex
-            borderWidth={{ base: "1px" }}
-            p={{ base: "1.5px 10px", md: "2.5px 10px" }}
-            bgColor={{ base: "white" }}
-            color={{ base: "gray" }}
-            justifyContent={{ base: "start" }}
-            alignItems={{ base: "center" }}
-            borderRadius={{ base: "5px" }}
-            // borderColor={{ base: "gray" }}
-            h={{ sm: "50px" }}
-            w={{ base: "70vw" }}
-            m={{ base: "auto" }}
-            maxW={{ sm: "500px" }}
-          >
-            <EmailIcon boxSize={{ base: "2.5em" }} />
-            <Box ml={{ base: "10px" }}>
-              <Text fontSize={{ base: "0.9rem" }} m={{ base: "0px" }}>
-                Email
-              </Text>
-              <Text
-                fontSize={{ base: "0.7rem" }}
-                m={{ base: "-4px auto auto auto " }}
-                fontWeight={{ base: "300" }}
-              >
-                dummy email
-              </Text>
-            </Box>
-            <Box></Box>
-          </Flex>
-        </Box> */}
+
 
         <Box mt={{ base: "20px" }}>
           <Formik
             initialValues={{ fname: "", lname: "", email: "", message: "" }}
             onSubmit={async (values, { setSubmitting, setStatus }) => {
               try {
-                const data ={...values, category:"new"}
+                const data = { ...values, category: "new" };
                 await clientEnquiry(data);
                 setStatus({ success: true });
               } catch (err) {
-                setStatus({ success: false, error: `Failed to send message ${err}` });
+                setStatus({
+                  success: false,
+                  error: `Failed to send message ${err}`,
+                });
               } finally {
                 setSubmitting(false);
               }

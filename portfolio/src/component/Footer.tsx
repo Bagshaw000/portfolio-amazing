@@ -1,8 +1,7 @@
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { Box, Button, Flex, FormControl, Input, Text } from "@chakra-ui/react";
-import { Field, FieldInputProps, Formik } from "formik";
-import { Form } from "react-router-dom";
-import {} from "react-router-dom";
+import { Field, FieldInputProps, Formik, Form } from "formik";
+
 import { clientEnquiry } from "../services/contact";
 
 function Footer() {
@@ -13,18 +12,18 @@ function Footer() {
       minH={{ base: "400px" }}
       p={{ base: "7%", md: "5%" }}
       m="auto"
-      w={{ base: "fit-content" }}
+      w={{ base: "100vw" }}
       mb="0px"
     >
       <Flex
-        flex={{ base: "column" }}
-        w={{ md: "90vw" }}
+        flexDir={{ base: "column", lg:"row" }}
+        w={{ base: "90vw" }}
         m="auto"
         justifyContent={{ md: "space-between" }}
       >
         <Flex
           color="grey"
-          flexDir={{ base: "column", md: "row" }}
+          flexDir={{ base: "column", lg: "row" }}
           fontSize={{ base: "1.3rem" }}
           fontWeight={{ base: "300" }}
           justifyContent={{ base: "space-between" }}
@@ -55,6 +54,7 @@ function Footer() {
             initialValues={{ email: "" }}
             onSubmit={async (values, { setSubmitting, setStatus }) => {
               try {
+                console.log("test");
                 await clientEnquiry(values);
                 setStatus({ success: true });
               } catch (err) {
@@ -94,7 +94,7 @@ function Footer() {
                 </Field>
                 <Button
                   bgColor="brand.800"
-                  w={{ base: "100%", md: "30%" }}
+                  w={{ base: "100%", md: "50%" }}
                   // w={{ base: "100%", }}
                   maxW={{ sm: "500px" }}
                   h={{ base: "50px", sm: "60px" }}

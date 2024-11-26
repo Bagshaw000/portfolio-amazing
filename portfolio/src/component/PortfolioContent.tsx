@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 
 export default function PortfolioContent(props: Array<IProject>) {
   const [posts, setPosts] = useState<Array<IProject>>([]);
-  // setPosts(props);
-  // console.log(posts);
+ 
+  
   useEffect(() => {
     return setPosts(Object.values(props));
   }, [props]);

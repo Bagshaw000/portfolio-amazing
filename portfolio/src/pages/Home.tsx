@@ -584,10 +584,7 @@ export default function Home() {
                   borderRadius="20px"
                   color="brand.600"
                   bgColor="brand.800"
-                  // position="absolute"
                   boxSize="2.3em"
-                  // bottom="40%"
-                  // right="8%"
                   transform="rotate(-45deg)"
                 ></ArrowForwardIcon>
               </Flex>
@@ -664,7 +661,7 @@ export default function Home() {
               bgPos="center"
               borderRadius={{ base: "20px" }}
               mt={{ base: "20px" }}
-              ml={{ base: "10px", sm:"20px" }}
+              ml={{ base: "10px", sm: "20px" }}
               p={{ base: "5%", lg: "2%" }}
             >
               <Flex

@@ -32,7 +32,6 @@ function Portfolio() {
     }
     fetchData();
   }, []);
-  // console.log(post);
 
   return (
     <>
@@ -73,7 +72,7 @@ function Portfolio() {
 
                     setPost(data);
                     console.log(data);
-                    console.log("Test")
+                    console.log("Test");
                   }}
                 >
                   ALL

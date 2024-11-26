@@ -43,7 +43,7 @@ function BlogPostReply(props: IBlogPostReply) {
 
       <Modal
         initialFocusRef={initialRef}
-        // finalFocusRef={finalRef}
+        finalFocusRef={finalRef}
         isOpen={isOpen}
         onClose={onClose}
         isCentered
@@ -191,6 +191,7 @@ function BlogPostReply(props: IBlogPostReply) {
                     borderRadius={{ base: "40px" }}
                     isLoading={props.isSubmitting}
                     type="submit"
+               
                     fontWeight={{ base: "200" }}
                     rightIcon={<ArrowForwardIcon />}
                   >

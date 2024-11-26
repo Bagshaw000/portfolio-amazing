@@ -5,9 +5,7 @@ import { IBlogPost } from "../services";
 
 function BlogContent(props: Array<IBlogPost>) {
   const [posts, setPosts] = useState<Array<IBlogPost>>([]);
-  
-  // setPosts(props);
-  // console.log(posts)
+
   useEffect(() => {
     return setPosts(Object.values(props));
   }, [props]);
@@ -32,38 +30,37 @@ function BlogContent(props: Array<IBlogPost>) {
             minW={{ base: "300px" }}
             maxW={{ base: "350px" }}
             key={data._id}
-            
           >
             <Link as={ReactRouterLink} to={`/blog/:${data._id}`}>
-            <Box
-              w={{ base: "100%" }}
-              h={{ base: "200px", md: "230px" }}
-              bgColor="gray"
-              bgImage={data.mainImage!.asset.url}
-              bgSize="cover"
-              bgPos="center"
-              bgRepeat="no-repeat"
-              pos={{ base: "relative" }}
-            >
               <Box
-                p={{ base: " 10px" }}
-                bgColor={{ base: "black" }}
-                color="white"
-                width={{ base: "fit-content" }}
-                pos={{ base: "absolute" }}
-                top={{ base: "5%" }}
-                left={{ base: "5%" }}
-                fontSize={{ base: "0.6rem" }}
+                w={{ base: "100%" }}
+                h={{ base: "200px", md: "230px" }}
+                bgColor="gray"
+                bgImage={data.mainImage!.asset.url}
+                bgSize="cover"
+                bgPos="center"
+                bgRepeat="no-repeat"
+                pos={{ base: "relative" }}
               >
-                <Text>
-                  {new Date(data.publishedAt!).toLocaleDateString(undefined, {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </Text>
+                <Box
+                  p={{ base: " 10px" }}
+                  bgColor={{ base: "black" }}
+                  color="white"
+                  width={{ base: "fit-content" }}
+                  pos={{ base: "absolute" }}
+                  top={{ base: "5%" }}
+                  left={{ base: "5%" }}
+                  fontSize={{ base: "0.6rem" }}
+                >
+                  <Text>
+                    {new Date(data.publishedAt!).toLocaleDateString(undefined, {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </Text>
+                </Box>
               </Box>
-            </Box>
             </Link>
             <Flex
               flexDir="column"
@@ -92,10 +89,6 @@ function BlogContent(props: Array<IBlogPost>) {
                   fontSize={{ base: "0.6rem" }}
                   color={{ base: "brand.600" }}
                   as={ReactRouterLink}
-                  // onClick={() => {
-                  //   // console.log(data);
-                  //   <BlogPost  />;
-                  // }}
                   to={`/blog/:${data._id}`}
                 >
                   Read more
