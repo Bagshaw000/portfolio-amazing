@@ -4,13 +4,15 @@ import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import { SocialIcon } from "react-social-icons";
 import Footer from "../component/Footer";
 import { useState, useEffect } from "react";
-import { IBlogPost, IProject, ITestimonial } from "../services";
+import { IBlogPost, IImages, IProject, ITestimonial } from "../services";
 import { getAllPost, getTestimonial } from "../services/blog";
 import { getAllProject } from "../services/project";
+import { getImages } from "../services/image";
 
 export default function Home() {
   const [post, setPost] = useState<Array<IBlogPost>>([]);
   const [project, setProject] = useState<Array<IProject> | undefined>([]);
+  const [images, setImages] = useState<Array<IImages> | undefined>([]);
   const [testimonial, setTestimonial] = useState<
     Array<ITestimonial> | undefined
   >([]);
@@ -21,6 +23,7 @@ export default function Home() {
       setProject(await getAllProject());
       setTestimonial(await getTestimonial());
       setPost(data!);
+      setImages(await getImages());
     }
     fetchData();
   }, []);
@@ -35,6 +38,7 @@ export default function Home() {
           author: "Seth Godin",
         }}
         subheading=""
+        image={images!.at(0)!.header.asset.url}
       ></Header>
 
       {/* Services section */}
@@ -56,7 +60,7 @@ export default function Home() {
             h={{ lg: "fit-content" }}
           >
             <Box
-              bgImg="url('../src/assets/profile.jpg')"
+              bgImg={images?.at(0)?.profile.asset.url}
               w={{ base: "100%", lg: "55%" }}
               h={{ lg: "100%" }}
               minH={{
@@ -283,7 +287,7 @@ export default function Home() {
                   <Box
                     h={{ base: "250px", sm: "80%" }}
                     w={{ base: "200px", sm: "80%" }}
-                    bgImg="url('../src/assets/Content.jpg')"
+                    bgImg={images?.at(0)?.service.at(0)?.asset.url}
                     bgPos={{ base: "center" }}
                     bgRepeat="no-repeat"
                     bgSize={{ base: "cover" }}
@@ -381,7 +385,7 @@ export default function Home() {
                   <Box
                     h={{ base: "250px", sm: "80%" }}
                     w={{ base: "200px", sm: "80%" }}
-                    bgImg="url('../src/assets/Ad.jpg')"
+                    bgImg={images?.at(0)?.service.at(2)?.asset.url}
                     bgPos={{ base: "center" }}
                     bgRepeat="no-repeat"
                     bgSize={{ base: "cover" }}
@@ -475,7 +479,7 @@ export default function Home() {
                     h={{ base: "250px", sm: "80%" }}
                     w={{ base: "200px", sm: "80%" }}
                     bg="white"
-                    bgImg="url('../src/assets/Brand.jpg')"
+                    bgImg={images?.at(0)?.service.at(1)?.asset.url}
                     bgPos={{ base: "center" }}
                     bgRepeat="no-repeat"
                     bgSize={{ base: "cover" }}

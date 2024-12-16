@@ -5,6 +5,7 @@ export interface HeaderProps {
     author: string;
   };
   subheading?: string | null;
+  image: string;
 }
 
 export interface IBlogPost {
@@ -56,6 +57,13 @@ export interface IProject {
   comment: Array<IComment>;
 }
 
+export interface IImages {
+  _id: string;
+  header: Image;
+  service: Array<Image>;
+  profile: Image;
+}
+
 export interface IComment {
   name: string;
   email: string;
@@ -88,7 +96,7 @@ export interface IBlogPostReply {
   isReply: boolean;
 }
 
-export interface ITestimonial{
-  title:string;
-  comment:string;
+export interface ITestimonial {
+  title: string;
+  comment: string;
 }
