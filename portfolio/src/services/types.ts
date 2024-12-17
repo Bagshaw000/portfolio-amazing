@@ -6,6 +6,7 @@ export interface HeaderProps {
   };
   subheading?: string | null;
  
+  
 }
 
 export interface IBlogPost {

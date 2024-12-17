@@ -41,7 +41,7 @@ export default function Header(props: HeaderProps) {
       minH={{ base: "60vh", md: "40vh" }}
       // m="0px"
       maxH={{ base: "800px", md: "1300px" }}
-      bgImage={images!.at(0)!.header.asset.url}
+      bgImage={images!.at(0)?.header.asset.url}
       bgPos={{ base: "center" }}
       bgRepeat="no-repeat"
       bgSize={{ base: "cover", sm: "cover", md: "cover" }}
