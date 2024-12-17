@@ -35,7 +35,7 @@ function Portfolio() {
 
   return (
     <>
-      <Header heading="EXPLORE MY FEATURE WORK" subheading="PORTFOLIO"></Header>
+      <Header heading="EXPLORE MY FEATURE WORK" subheading="PORTFOLIO" ></Header>
 
       <Box>
         <Box

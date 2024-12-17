@@ -38,7 +38,7 @@ export default function Home() {
           author: "Seth Godin",
         }}
         subheading=""
-        image={images!.at(0)!.header.asset.url}
+      
       ></Header>
 
       {/* Services section */}

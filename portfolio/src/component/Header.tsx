@@ -15,12 +15,23 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import { HeaderProps } from "../services";
+import { HeaderProps, IImages } from "../services";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { getImages } from "../services/image";
 
 export default function Header(props: HeaderProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const heading = props.heading.split(" ");
+
+  const [images, setImages] = useState<Array<IImages> | undefined>([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      setImages(await getImages());
+    }
+    fetchData();
+  }, []);
 
   return (
     <Box
@@ -30,7 +41,7 @@ export default function Header(props: HeaderProps) {
       minH={{ base: "60vh", md: "40vh" }}
       // m="0px"
       maxH={{ base: "800px", md: "1300px" }}
-      bgImage={props.image}
+      bgImage={images!.at(0)!.header.asset.url}
       bgPos={{ base: "center" }}
       bgRepeat="no-repeat"
       bgSize={{ base: "cover", sm: "cover", md: "cover" }}

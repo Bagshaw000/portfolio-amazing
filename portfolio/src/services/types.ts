@@ -5,7 +5,7 @@ export interface HeaderProps {
     author: string;
   };
   subheading?: string | null;
-  image: string;
+ 
 }
 
 export interface IBlogPost {
