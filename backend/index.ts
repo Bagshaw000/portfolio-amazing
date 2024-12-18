@@ -6,7 +6,11 @@ import { Static, Type } from "@sinclair/typebox";
 
 const start = async () => {
   await server.register(cors, {
-    origin: ["http://localhost:5173", "http://[::1]:8080"],
+    origin: [
+      "http://localhost:5173",
+      "http://[::1]:8080",
+      "https://portfolio-amazing.onrender.com",
+    ],
   });
 };
 
@@ -119,7 +123,7 @@ server.post<{ Body: Static<typeof emailSchema> }>(
   }
 );
 
-server.listen({ port: 10000, host:"0.0.0.0" }, (err, address) => {
+server.listen({ port: 10000, host: "0.0.0.0" }, (err, address) => {
   if (err) {
     console.error(err);
     process.exit(1);
