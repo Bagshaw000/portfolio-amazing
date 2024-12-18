@@ -13,14 +13,29 @@ import {
 } from "@chakra-ui/react";
 
 import { Field, FieldInputProps, Form, Formik, FormikProps } from "formik";
-
+import { Bounce, toast } from "react-toastify";
 import { clientEnquiry } from "../services/contact";
+import { useState } from "react";
 
 function Contact() {
+  const [popup, setPopup] = useState(false);
+
   return (
     <>
       <Header heading="LET'S TALK ABOUT IDEAS" subheading="CONTACT"></Header>
-
+      {popup
+        ? toast("🦄 Wow so easy!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          })
+        : ""}
       <Box w={{ base: "100vw" }}>
         <Box w={{ base: "inherit" }} m={{ base: "50px auto" }}>
           <Flex
@@ -47,15 +62,18 @@ function Contact() {
           </Flex>
         </Box>
 
-
-
         <Box mt={{ base: "20px" }}>
           <Formik
             initialValues={{ fname: "", lname: "", email: "", message: "" }}
             onSubmit={async (values, { setSubmitting, setStatus }) => {
               try {
                 const data = { ...values, category: "new" };
-                await clientEnquiry(data);
+                const emailContact = await clientEnquiry(data);
+
+                if (emailContact.status === 200) {
+                  console.log("success alert");
+                  setPopup(true);
+                }
                 setStatus({ success: true });
               } catch (err) {
                 setStatus({

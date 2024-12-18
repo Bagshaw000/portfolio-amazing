@@ -5,10 +5,12 @@ import { IClientEnquiry } from "./types";
 export async function clientEnquiry(data: IClientEnquiry) {
   try {
     console.log(data);
-    await axios.post(
+    const newData = await axios.post(
       "https://portfolio-amazing-backend.onrender.com:10000/email",
       data
     );
+
+    return newData;
   } catch (error) {
     console.error("Error sending message:", error);
     throw error;
