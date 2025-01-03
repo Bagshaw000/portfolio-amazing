@@ -68,6 +68,7 @@ function Contact() {
             onSubmit={async (values, { setSubmitting, setStatus }) => {
               try {
                 const data = { ...values, category: "new" };
+                
                 const emailContact = await clientEnquiry(data);
 
                 if (emailContact.status === 200) {
