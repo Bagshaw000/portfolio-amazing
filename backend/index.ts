@@ -59,6 +59,39 @@ server.post<{ Body: Static<typeof emailSchema> }>(
         </html>
       `,
       });
+
+      if (response.success) {
+        return reply.status(200).send({ message: "Email sent successfully" });
+      } else {
+        return reply.status(500).send({ message: "Failed to send email" });
+      }
+    } else if (request.body.category == "subscribe") {
+      const response = await client.send({
+        from: { name: "Amazing Irechukwu", email: SENDER_EMAIL },
+        to: [{ email: RECIPIENT_EMAIL }],
+        subject: "Subscription to news letter",
+        // text: "Welcome to Mailtrap Sending!",
+        html: `<!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Subscribe to Newletter</title>
+  </head>
+  <body style="font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f9f9f9;">
+      <div style="max-width: 600px; margin: auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+          <h2 style="color: #333;">News Letter</h2>
+          <p style="font-size: 1rem; line-height: 1.5; color: #555;">
+              <span style="font-weight: bold; color: #222;">Full Name: </span> with email ${request.body.email}
+          </p>
+          <p style="font-size: 1rem; line-height: 1.5; color: #555;">
+              <span style="font-weight: bold; color: #222;">Message:</span> ${request.body.email}  ${request.body.message}
+          </p>
+      </div>
+  </body>
+  </html>
+  `,
+      });
     } else {
       const response = await client.send({
         from: { name: "Amazing Irechukwu", email: SENDER_EMAIL },
@@ -86,40 +119,42 @@ server.post<{ Body: Static<typeof emailSchema> }>(
   </html>
   `,
       });
+
+      if (response.success) {
+        return reply.status(200).send({ message: "Email sent successfully" });
+      } else {
+        return reply.status(500).send({ message: "Failed to send email" });
+      }
     }
 
-    const response = await client.send({
-      from: { name: "Amazing Irechukwu", email: SENDER_EMAIL },
-      to: [{ email: RECIPIENT_EMAIL }],
-      subject: "New Client Enquiry",
-      // text: "Welcome to Mailtrap Sending!",
-      html: `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client Inquiry</title>
-</head>
-<body style="font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f9f9f9;">
-    <div style="max-width: 600px; margin: auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-        <h2 style="color: #333;">Client Inquiry</h2>
-        <p style="font-size: 1rem; line-height: 1.5; color: #555;">
-            <span style="font-weight: bold; color: #222;">Full Name: </span> ${request.body.fname}  ${request.body.lname} with email ${request.body.email}
-        </p>
-        <p style="font-size: 1rem; line-height: 1.5; color: #555;">
-            <span style="font-weight: bold; color: #222;">Message:</span> ${request.body.fname}  ${request.body.message}
-        </p>
-    </div>
-</body>
-</html>
-`,
-    });
+    //     const response = await client.send({
+    //       from: { name: "Amazing Irechukwu", email: SENDER_EMAIL },
+    //       to: [{ email: RECIPIENT_EMAIL }],
+    //       subject: "New Client Enquiry",
+    //       // text: "Welcome to Mailtrap Sending!",
+    //       html: `<!DOCTYPE html>
+    // <html lang="en">
+    // <head>
+    //     <meta charset="UTF-8">
+    //     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    //     <title>Client Inquiry</title>
+    // </head>
+    // <body style="font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f9f9f9;">
+    //     <div style="max-width: 600px; margin: auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    //         <h2 style="color: #333;">Client Inquiry</h2>
+    //         <p style="font-size: 1rem; line-height: 1.5; color: #555;">
+    //             <span style="font-weight: bold; color: #222;">Full Name: </span> ${request.body.fname}  ${request.body.lname} with email ${request.body.email}
+    //         </p>
+    //         <p style="font-size: 1rem; line-height: 1.5; color: #555;">
+    //             <span style="font-weight: bold; color: #222;">Message:</span> ${request.body.fname}  ${request.body.message}
+    //         </p>
+    //     </div>
+    // </body>
+    // </html>
+    // `,
+    //     });
 
-    if (response.success) {
-      return reply.status(200).send({ message: "Email sent successfully" });
-    } else {
-      return reply.status(500).send({ message: "Failed to send email" });
-    }
+
   }
 );
 

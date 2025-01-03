@@ -54,8 +54,9 @@ function Footer() {
             initialValues={{ email: "" }}
             onSubmit={async (values, { setSubmitting, setStatus }) => {
               try {
-                console.log("test");
-                await clientEnquiry(values);
+                // console.log("test");
+                const data = { ...values, category: "subscribe" };
+                await clientEnquiry(data);
                 setStatus({ success: true });
               } catch (err) {
                 setStatus({
