@@ -3,6 +3,7 @@ import { MailtrapClient } from "mailtrap";
 import cors from "@fastify/cors";
 const server = fastify();
 import { Static, Type } from "@sinclair/typebox";
+import 'dotenv/config'
 
 const start = async () => {
   await server.register(cors, {
@@ -139,7 +140,7 @@ server.get("/", (request, reply) => {
   console.log("Test");
 });
 
-server.listen({ port: 10000 | 8000, host: "localhost" }, (err, address) => {
+server.listen({ port: parseInt(process.env.SERVER_PORT || "8000"), host: "localhost" }, (err, address) => {
   if (err) {
     console.error(err);
     process.exit(1);
