@@ -135,6 +135,10 @@ server.post<{ Body: Static<typeof emailSchema> }>(
   }
 );
 
+server.get("/",  (request, reply)=> {
+console.log("Test")
+})
+
 server.listen({ port: 10000, host: "0.0.0.0" }, (err, address) => {
   if (err) {
     console.error(err);
