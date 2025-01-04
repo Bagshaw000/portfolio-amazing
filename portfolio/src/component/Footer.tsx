@@ -54,12 +54,12 @@ function Footer() {
             initialValues={{ email: "" }}
             onSubmit={async (values, { setSubmitting, setStatus }) => {
               try {
-                // console.log("test");
+               
                 const data = { ...values, category: "subscribe" };
                 const reqData = await clientEnquiry(data);
 
                 if (reqData.status == 200) {
-                  console.log(reqData.status)
+                 
                   setStatus({ success: true });
                 }
                 setStatus({
@@ -103,7 +103,6 @@ function Footer() {
                 <Button
                   bgColor="brand.800"
                   w={{ base: "100%", md: "50%" }}
-                  // w={{ base: "100%", }}
                   maxW={{ sm: "500px" }}
                   h={{ base: "50px", sm: "60px" }}
                   borderRadius={{ base: "10px" }}

@@ -76,8 +76,7 @@ function BlogPostReply(props: IBlogPostReply) {
               initialValues={{ fname: "", email: "", comment: "" }}
               onSubmit={async (values, { setSubmitting, resetForm }) => {
                 try {
-                  console.log("test");
-                  console.log(props.commentKey);
+                 
                   const cmt: IComment[] = [
                     {
                       name: values.fname,
@@ -87,8 +86,8 @@ function BlogPostReply(props: IBlogPostReply) {
                       replyTo: props.replyTo,
                     },
                   ];
-                  const reply = await replyComment(id, props.commentKey, cmt);
-                  console.log(reply);
+                  await replyComment(id, props.commentKey, cmt);
+                  
                   resetForm();
                   // Optional: Add success message here
                 } catch (error) {
@@ -191,7 +190,6 @@ function BlogPostReply(props: IBlogPostReply) {
                     borderRadius={{ base: "40px" }}
                     isLoading={props.isSubmitting}
                     type="submit"
-               
                     fontWeight={{ base: "200" }}
                     rightIcon={<ArrowForwardIcon />}
                   >

@@ -11,7 +11,7 @@ import Footer from "./Footer";
 function PortfolioPost() {
   const { projectId } = useParams();
   const id = projectId!.substring(1);
-  console.log(id);
+ 
   const [project, setProject] = useState<Array<IProject>>([]);
   const [projectImage, setProjectImage] = useState<IProjectImage>();
 
@@ -27,7 +27,7 @@ function PortfolioPost() {
 
     async function fetchImage() {
       const data = await getProjectImage(project);
-      console.log(data);
+     
       return setProjectImage(data!);
     }
   }, [id, project]);
@@ -45,7 +45,7 @@ function PortfolioPost() {
           <Link to="/portfolio">
             <IconButton
               onClick={() => {
-                console.log("clicked");
+               
               }}
               aria-label="Search database"
               icon={<ArrowBackIcon />}
