@@ -23,6 +23,16 @@ const start = async () => {
 
 start();
 
+
+server.listen({ port: parseInt(process.env.SERVER_PORT || "8000"), host: "localhost" }, (err, address) => {
+  if (err) {
+    console.error(err);
+    process.exit(1);
+  }
+  console.log(`Server listening at ${address}`);
+});
+
+
 const emailSchema = Type.Object({
   fname: Type.String(),
   lname: Type.String(),
@@ -30,6 +40,8 @@ const emailSchema = Type.Object({
   message: Type.String(),
   category: Type.String(),
 });
+
+
 
 server.post<{ Body: Static<typeof emailSchema> }>(
   "/email",
@@ -136,14 +148,7 @@ server.post<{ Body: Static<typeof emailSchema> }>(
   }
 );
 
-server.get("/", (request, reply) => {
-  console.log("Test");
-});
+// server.get("/", (request, reply) => {
+//   console.log("Test");
+// });
 
-server.listen({ port: parseInt(process.env.SERVER_PORT || "8000"), host: "localhost" }, (err, address) => {
-  if (err) {
-    console.error(err);
-    process.exit(1);
-  }
-  console.log(`Server listening at ${address}`);
-});
