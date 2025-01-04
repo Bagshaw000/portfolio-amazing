@@ -16,7 +16,7 @@ function Footer() {
       mb="0px"
     >
       <Flex
-        flexDir={{ base: "column", lg:"row" }}
+        flexDir={{ base: "column", lg: "row" }}
         w={{ base: "90vw" }}
         m="auto"
         justifyContent={{ md: "space-between" }}
@@ -56,8 +56,15 @@ function Footer() {
               try {
                 // console.log("test");
                 const data = { ...values, category: "subscribe" };
-                await clientEnquiry(data);
-                setStatus({ success: true });
+                const reqData = await clientEnquiry(data);
+
+                if (reqData.status == 200) {
+                  console.log(reqData.status)
+                  setStatus({ success: true });
+                }
+                setStatus({
+                  success: false,
+                });
               } catch (err) {
                 setStatus({
                   success: false,

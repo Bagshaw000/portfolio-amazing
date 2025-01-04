@@ -4,7 +4,7 @@ import { IClientEnquiry } from "./types";
 
 export async function clientEnquiry(data: IClientEnquiry) {
   try {
-    console.log(data);
+    // console.log(data);
     const newData = await axios.post(
       "https://portfolio-amazing-backend.onrender.com:10000/email",
       data

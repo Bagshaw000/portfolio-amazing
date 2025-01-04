@@ -10,6 +10,12 @@ const start = async () => {
       "http://localhost:5173",
       "http://[::1]:8080",
       "https://portfolio-amazing.onrender.com",
+      "https://44.226.145.213:10000",
+      "https://54.187.200.255:10000",
+      "https://34.213.214.55:10000",
+      "https://35.164.95.156:10000",
+      "https://44.230.95.183:10000",
+      "https://44.229.200.200:10000",
     ],
   });
 };
@@ -126,35 +132,6 @@ server.post<{ Body: Static<typeof emailSchema> }>(
         return reply.status(500).send({ message: "Failed to send email" });
       }
     }
-
-    //     const response = await client.send({
-    //       from: { name: "Amazing Irechukwu", email: SENDER_EMAIL },
-    //       to: [{ email: RECIPIENT_EMAIL }],
-    //       subject: "New Client Enquiry",
-    //       // text: "Welcome to Mailtrap Sending!",
-    //       html: `<!DOCTYPE html>
-    // <html lang="en">
-    // <head>
-    //     <meta charset="UTF-8">
-    //     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    //     <title>Client Inquiry</title>
-    // </head>
-    // <body style="font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f9f9f9;">
-    //     <div style="max-width: 600px; margin: auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-    //         <h2 style="color: #333;">Client Inquiry</h2>
-    //         <p style="font-size: 1rem; line-height: 1.5; color: #555;">
-    //             <span style="font-weight: bold; color: #222;">Full Name: </span> ${request.body.fname}  ${request.body.lname} with email ${request.body.email}
-    //         </p>
-    //         <p style="font-size: 1rem; line-height: 1.5; color: #555;">
-    //             <span style="font-weight: bold; color: #222;">Message:</span> ${request.body.fname}  ${request.body.message}
-    //         </p>
-    //     </div>
-    // </body>
-    // </html>
-    // `,
-    //     });
-
-
   }
 );
 

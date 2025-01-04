@@ -74,8 +74,9 @@ function Contact() {
                 if (emailContact.status === 200) {
                   console.log("success alert");
                   setPopup(true);
+                  setStatus({ success: true })
                 }
-                setStatus({ success: true });
+              
               } catch (err) {
                 setStatus({
                   success: false,
