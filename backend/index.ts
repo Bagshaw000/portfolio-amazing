@@ -24,7 +24,7 @@ const start = async () => {
 start();
 
 
-server.listen({ port: parseInt(process.env.SERVER_PORT || "8000"), host: "localhost" }, (err, address) => {
+server.listen({ port: parseInt(process.env.SERVER_PORT || "8000"), host: "0.0.0.0" }, (err, address) => {
   if (err) {
     console.error(err);
     process.exit(1);
