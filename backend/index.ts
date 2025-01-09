@@ -103,6 +103,11 @@ server.post<{ Body: bodySchemaType }>(
   </html>
   `,
       });
+      if (response.success) {
+        return reply.status(200).send({ message: "Email sent successfully" });
+      } else {
+        return reply.status(500).send({ message: "Failed to send email" });
+      }
     } else {
       const response = await client.send({
         from: { name: "Amazing Irechukwu", email: SENDER_EMAIL },
