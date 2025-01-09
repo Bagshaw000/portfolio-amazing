@@ -10,7 +10,10 @@ export async function clientEnquiry(data: IClientEnquiry) {
       data
     );
 
-    return newData;
+    if(newData.status === 200){
+      return true
+    }
+    return false;
   } catch (error) {
     console.error("Error sending message:", error);
     throw error;

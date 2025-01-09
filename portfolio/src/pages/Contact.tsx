@@ -68,15 +68,14 @@ function Contact() {
             onSubmit={async (values, { setSubmitting, setStatus }) => {
               try {
                 const data = { ...values, category: "new" };
-                
+
                 const emailContact = await clientEnquiry(data);
 
-                if (emailContact.status === 200) {
+                if (emailContact == true) {
                   console.log("success alert");
                   setPopup(true);
-                  setStatus({ success: true })
+                  setStatus({ success: true });
                 }
-              
               } catch (err) {
                 setStatus({
                   success: false,

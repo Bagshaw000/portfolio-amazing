@@ -58,7 +58,7 @@ function Footer() {
                 const data = { ...values, category: "subscribe" };
                 const reqData = await clientEnquiry(data);
 
-                if (reqData.status == 200) {
+                if (reqData == true) {
                  
                   setStatus({ success: true });
                 }
