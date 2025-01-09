@@ -71,8 +71,8 @@ function Portfolio() {
                     const data = await getAllProject();
 
                     setPost(data);
-                    console.log(data);
-                    console.log("Test");
+                    // console.log(data);
+                    // console.log("Test");
                   }}
                 >
                   ALL
