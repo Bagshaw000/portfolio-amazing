@@ -8,7 +8,7 @@ import { TypeBoxTypeProvider } from "@fastify/type-provider-typebox";
 
 server.withTypeProvider<TypeBoxTypeProvider>();
 await server.register(cors);
-console.log("Server deployed")
+
 server.listen(
   { port: parseInt(process.env.SERVER_PORT || "8000"), host: "0.0.0.0" },
   (err, address) => {
@@ -29,6 +29,12 @@ const bodySchema = Type.Object({
 });
 
 export type bodySchemaType = Static<typeof bodySchema>;
+
+
+server.get("/", () => {
+  console.log("Server deployed");
+});
+
 
 server.post<{ Body: bodySchemaType }>(
   "/email",
