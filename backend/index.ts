@@ -30,11 +30,9 @@ const bodySchema = Type.Object({
 
 export type bodySchemaType = Static<typeof bodySchema>;
 
-
 server.get("/", () => {
   console.log("Server deployed");
 });
-
 
 server.post<{ Body: bodySchemaType }>(
   "/email",
@@ -50,6 +48,7 @@ server.post<{ Body: bodySchemaType }>(
     const client = new MailtrapClient({ token: TOKEN });
 
     if (request.body.category == "new") {
+      console.log("new print");
       const response = await client.send({
         from: { name: "Amazing Irechukwu", email: SENDER_EMAIL },
         to: [{ email: RECIPIENT_EMAIL }],
@@ -83,6 +82,7 @@ server.post<{ Body: bodySchemaType }>(
         return reply.status(500).send({ message: "Failed to send email" });
       }
     } else if (request.body.category == "subscribe") {
+      console.log("subscribe print");
       const response = await client.send({
         from: { name: "Amazing Irechukwu", email: SENDER_EMAIL },
         to: [{ email: RECIPIENT_EMAIL }],
