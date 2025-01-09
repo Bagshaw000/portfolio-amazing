@@ -3,35 +3,21 @@ import { MailtrapClient } from "mailtrap";
 import cors from "@fastify/cors";
 const server = fastify();
 import { Static, Type } from "@sinclair/typebox";
-import 'dotenv/config'
+import "dotenv/config";
 
-const start = async () => {
-  await server.register(cors, {
-    origin: [
-      "http://localhost:5173",
-      "http://[::1]:8080",
-      "https://portfolio-amazing.onrender.com",
-      "https://44.226.145.213:10000",
-      "https://54.187.200.255:10000",
-      "https://34.213.214.55:10000",
-      "https://35.164.95.156:10000",
-      "https://44.230.95.183:10000",
-      "https://44.229.200.200:10000",
-    ],
-  });
-};
+// start();
+await server.register(cors);
 
-start();
-
-
-server.listen({ port: parseInt(process.env.SERVER_PORT || "8000"), host: "0.0.0.0" }, (err, address) => {
-  if (err) {
-    console.error(err);
-    process.exit(1);
+server.listen(
+  { port: parseInt(process.env.SERVER_PORT || "8000"), host: "0.0.0.0" },
+  (err, address) => {
+    if (err) {
+      console.error(err);
+      process.exit(1);
+    }
+    console.log(`Server listening at ${address}`);
   }
-  console.log(`Server listening at ${address}`);
-});
-
+);
 
 const emailSchema = Type.Object({
   fname: Type.String(),
@@ -40,8 +26,6 @@ const emailSchema = Type.Object({
   message: Type.String(),
   category: Type.String(),
 });
-
-
 
 server.post<{ Body: Static<typeof emailSchema> }>(
   "/email",
@@ -151,4 +135,3 @@ server.post<{ Body: Static<typeof emailSchema> }>(
 // server.get("/", (request, reply) => {
 //   console.log("Test");
 // });
-
