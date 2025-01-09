@@ -4,8 +4,9 @@ import cors from "@fastify/cors";
 const server = fastify();
 import { Static, Type } from "@sinclair/typebox";
 import "dotenv/config";
+import { TypeBoxTypeProvider } from "@fastify/type-provider-typebox";
 
-// start();
+server.withTypeProvider<TypeBoxTypeProvider>();
 await server.register(cors);
 
 server.listen(
@@ -19,16 +20,23 @@ server.listen(
   }
 );
 
-const emailSchema = Type.Object({
-  fname: Type.String(),
-  lname: Type.String(),
+const bodySchema = Type.Object({
+  fname: Type.Optional(Type.String()),
+  lname: Type.Optional(Type.String()),
   email: Type.String(),
-  message: Type.String(),
+  message: Type.Optional(Type.String()),
   category: Type.String(),
 });
 
-server.post<{ Body: Static<typeof emailSchema> }>(
+export type bodySchemaType = Static<typeof bodySchema>;
+
+server.post<{ Body: bodySchemaType }>(
   "/email",
+  {
+    schema: {
+      body: bodySchema,
+    },
+  },
   async (request, reply) => {
     const TOKEN = "65ee2f769f5a1a5f1f7507ebb68168b6";
     const SENDER_EMAIL = "enquiry@demomailtrap.com";
