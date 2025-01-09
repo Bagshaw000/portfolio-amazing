@@ -125,7 +125,7 @@ function Portfolio() {
               <Link
                 onClick={async () => {
                   const data = await getAllProject();
-                  console.log(data);
+          
                   setPost(data);
                 }}
               >
@@ -136,7 +136,7 @@ function Portfolio() {
               <Link
                 onClick={async () => {
                   const data = await getContentProject();
-                  console.log(data);
+                  
                   setPost(data);
                 }}
               >
