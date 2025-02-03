@@ -30,8 +30,9 @@ const bodySchema = Type.Object({
 
 export type bodySchemaType = Static<typeof bodySchema>;
 
-server.get("/", () => {
+server.get("/", (response, reply) => {
   console.log("Server deployed");
+  reply.send("Server deployed")
 });
 
 server.post<{ Body: bodySchemaType }>(

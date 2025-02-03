@@ -19,3 +19,5 @@ export async function clientEnquiry(data: IClientEnquiry) {
     throw error;
   }
 }
+// "https://portfolio-amazing-backend.onrender.com:10000/email",
+// "http://127.0.0.1:10000/email
